@@ -1,0 +1,40 @@
+#!/bin/bash
+
+DEFAULT_BROWSER="headless-chrome"
+DEFAULT_ENV=local
+
+# This loop makes it possible to parse args regardless the order they were passed in.
+for i in "$@"; do
+  case $i in
+    -b=*|--browser=*)
+      BROWSER_TYPE="${i#*=}"
+      shift
+      ;;
+    -t=*|--tags=*)
+      TAGS="${i#*=}"
+      shift
+      ;;
+    --staging)
+      ENV=staging
+      shift
+      ;;
+    --qa)
+      ENV=qa
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option $i"
+      exit 1
+      ;;
+    *)
+      ;;
+  esac
+done
+
+if [ -n "$TAGS" ]; then
+  TAGS_OPTION=-Dcucumber.filter.tags="${TAGS}"
+else
+  TAGS_OPTION=""
+fi
+
+sbt -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="${ENV:=$DEFAULT_ENV}" $TAGS_OPTION "testOnly uk.gov.hmrc.test.ui.cucumber.runner.Runner"
