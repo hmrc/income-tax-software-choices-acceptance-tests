@@ -24,6 +24,7 @@ import uk.gov.hmrc.test.ui.driver.BrowserDriver
 import java.time.Duration
 
 trait BasePage extends BrowserDriver with Matchers {
+
   val continueButton = "continue-button"
 
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)

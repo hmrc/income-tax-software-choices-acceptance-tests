@@ -19,8 +19,11 @@ package uk.gov.hmrc.test.ui.pages
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object SoftwareChoicesHomePage extends BasePage {
-  val url: String     = TestConfiguration.url("software-choices-frontend") + "/"
-  val pageTitle = "income-tax-software-choices-frontend"
+
+  val url: String = TestConfiguration.url("software-choices-frontend") + "/"
+
+  val pageTitle =
+    "Choose the right software for your needs - Find software for Making Tax Digital for Income Tax - GOV.UK"
 
   def loadPage: this.type = {
     driver.navigate().to(url)

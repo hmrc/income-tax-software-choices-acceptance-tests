@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage
 import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage.assertUrl
 
-class HelloWorldStepDef extends BaseStepDef {
+class SoftwareChoicesStepDef extends BaseStepDef {
 
   Given("I navigate to the Software Choices home page") { () =>
     SoftwareChoicesHomePage.loadPage
