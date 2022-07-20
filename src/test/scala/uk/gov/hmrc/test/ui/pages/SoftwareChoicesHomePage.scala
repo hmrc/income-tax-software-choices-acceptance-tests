@@ -29,6 +29,11 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val softwareVendorsId: String = "software-vendor-0"
 
+  val toFilterId: Map[String, String] = Map(
+    "Free trial" -> "free-trial-filter",
+    "Free version" -> "free-version-filter"
+  )
+
   def loadPage: this.type = {
     driver.navigate().to(url)
     onPage(pageTitle)
