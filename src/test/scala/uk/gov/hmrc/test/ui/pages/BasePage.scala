@@ -31,6 +31,10 @@ trait BasePage extends BrowserDriver with Matchers {
     .withTimeout(Duration.ofSeconds(10))
     .pollingEvery(Duration.ofMillis(500))
 
+  def write(id: String, text: String): Unit = driver
+    .findElement(By.id(id))
+    .sendKeys(text)
+
   def assertUrl(url: String): Unit =
     fluentWait.until(ExpectedConditions.urlContains(url))
 

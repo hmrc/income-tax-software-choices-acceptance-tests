@@ -25,9 +25,14 @@ object SoftwareChoicesHomePage extends BasePage {
   val pageTitle =
     "Choose the right software for your needs - Find software for Making Tax Digital for Income Tax - GOV.UK"
 
+  val searchBarId: String = "searchTerm"
+
+  val softwareVendorsId: String = "software-vendor-0"
+
   def loadPage: this.type = {
     driver.navigate().to(url)
     onPage(pageTitle)
     this
   }
+
 }
