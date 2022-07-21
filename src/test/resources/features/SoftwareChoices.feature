@@ -14,7 +14,7 @@ Feature: Software Choices
     Then I am presented with a list of vendors matching 'test software vendor name one'
 
   # Pricing checkboxes
-  Scenario: User filters for a free trail
+  Scenario: User filters for a free trial
     When I select the 'Free trial' checkbox
     And I click to apply filters
     Then I am presented with a list of vendors which provide 'Free trial'
@@ -36,6 +36,16 @@ Feature: Software Choices
     Then I am presented with a list of vendors which provide 'Agent'
 
   # Compatible with checkboxes
+  Scenario: User filters for compatible with Microsoft Windows
+    When I select the 'Microsoft' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Microsoft'
+
+  Scenario: User filters for compatible with Mac OS
+    When I select the 'Mac OS' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Mac OS'
+
 
 
   # Mobile app checkboxes

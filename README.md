@@ -23,7 +23,7 @@ This repo contains the acceptance tests for the income tax subscription service.
 
 ### Before running any tests
 
-Start the services `./scripts/run_services.sh`
+Start the services `./scripts/run_services`
 
 Params:
 * Additional sm parameters such as `--offline` can be added if desired
@@ -46,18 +46,6 @@ Example:
 *Run tests with custom tag in the Chrome browser against the staging environment.*
 ```
 ./scripts/run_tests --tags=@customTag --browser=chrome --staging
-```
-
-#### Running ZAP tests in Jenkins
-```
-./run_zap_tests.sh
-```
-
-More details [here](./docs/acceptance-tests.md#Running-ZAP-tests)  
-
-#### Running a11y tests in Jenkins
-```
-./run_a11y_tests.sh
 ```
 
 ## How to use
