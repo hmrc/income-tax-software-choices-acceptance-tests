@@ -25,7 +25,15 @@ Feature: Software Choices
     Then I am presented with a list of vendors which provide 'Free version'
 
   # Business type checkboxes
+  Scenario: User filters for a individual
+    When I select the 'Individual' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Individual'
 
+  Scenario: User filters for a agent
+    When I select the 'Agent' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Agent'
 
   # Compatible with checkboxes
 

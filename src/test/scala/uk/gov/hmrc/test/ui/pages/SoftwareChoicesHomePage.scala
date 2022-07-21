@@ -31,7 +31,9 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val toFilterId: Map[String, String] = Map(
     "Free trial" -> "free-trial-filter",
-    "Free version" -> "free-version-filter"
+    "Free version" -> "free-version-filter",
+    "Individual" -> "individual-filter",
+    "Agent" -> "agent-filter"
   )
 
   def loadPage: this.type = {
