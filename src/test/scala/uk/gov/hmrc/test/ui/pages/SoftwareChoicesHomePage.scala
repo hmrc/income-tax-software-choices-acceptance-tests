@@ -33,7 +33,9 @@ object SoftwareChoicesHomePage extends BasePage {
     "Free trial" -> "free-trial-filter",
     "Free version" -> "free-version-filter",
     "Individual" -> "individual-filter",
-    "Agent" -> "agent-filter"
+    "Agent" -> "agent-filter",
+    "Microsoft" -> "microsoft-windows-filter",
+    "Mac OS" -> "mac-os-filter"
   )
 
   def loadPage: this.type = {
