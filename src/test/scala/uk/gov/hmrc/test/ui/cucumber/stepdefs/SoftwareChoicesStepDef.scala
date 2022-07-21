@@ -38,7 +38,8 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   And("""^I wait for the software vendor list to update$""") { () =>
-    fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.id(softwareVendorsId)))
+    fluentWait
+      .until(ExpectedConditions.presenceOfElementLocated(By.id(softwareVendorsId)))
   }
 
   Then("""^I am presented with a list of vendors matching '(.*)'$""") { (matchingTerm: String) =>
@@ -46,6 +47,46 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .findElements(By.cssSelector(".govuk-grid-column-two-thirds > div > h3"))
       .asScala
       .foreach(_.getText should include(matchingTerm))
+  }
+
+  When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
+    val checkboxId: String = toFilterId(checkbox)
+    driver
+      .findElement(By.id(checkboxId))
+      .click()
+  }
+
+  And("""^I click to apply filters$""") { () =>
+    driver
+      .findElement(By.cssSelector(".apply-filters-button"))
+      .click()
+  }
+
+  Then("""^I am presented with a list of vendors which provide '(.*)'$""") { (text: String) =>
+    driver
+      .findElements(By.cssSelector("#software-vendor-list > div"))
+      .asScala
+      .foreach(_.getText should include(text))
+  }
+
+  Given("""^I have selected all filters$""") { () =>
+    driver
+      .findElements(By.cssSelector("input[type=checkbox]"))
+      .asScala
+      .foreach(_.click())
+  }
+
+  When("""^I click to clear filters$""") { () =>
+    driver
+      .findElement(By.cssSelector(".clear-filters-button"))
+      .click()
+  }
+
+  Then("""^There are no selected filters$""") { () =>
+    driver
+      .findElements(By.cssSelector("input[type=checkbox]"))
+      .asScala
+      .foreach(_.isSelected shouldBe false)
   }
 
 }
