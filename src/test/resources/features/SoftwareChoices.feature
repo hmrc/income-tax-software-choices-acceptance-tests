@@ -6,6 +6,7 @@ Feature: Software Choices
   Background:
     Given I navigate to the Software Choices home page
     Then I am on the Software Choices home page
+    And I am presented with a list of '4' vendors
 
   # Search bar
   Scenario: User searches for a software vendor through the search bar
@@ -55,7 +56,10 @@ Feature: Software Choices
 
 
   # Software compatibility checkboxes
-  # will have to test differently to the rest as this information isn't on the vendor detail
+  Scenario: User filters for VAT
+    When I select the 'VAT' checkbox
+    And I click to apply filters
+    Then I am presented with a list of '1' vendors
 
   # Accessibility needs checkboxes
   Scenario: User filters for compatible with Visual accessibility needs
@@ -83,3 +87,4 @@ Feature: Software Choices
     Given I have selected all filters
     When I click to clear filters
     Then There are no selected filters
+    And I am presented with a list of '4' vendors

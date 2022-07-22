@@ -36,6 +36,7 @@ object SoftwareChoicesHomePage extends BasePage {
     "Agent" -> "agent-filter",
     "Microsoft" -> "microsoft-windows-filter",
     "Mac OS" -> "mac-os-filter",
+    "VAT" -> "vat-filter",
     "Visual" -> "visual-filter",
     "Hearing" -> "hearing-filter",
     "Motor" -> "motor-filter",
