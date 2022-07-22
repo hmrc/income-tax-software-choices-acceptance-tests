@@ -49,6 +49,13 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .foreach(_.getText should include(matchingTerm))
   }
 
+  Then("""^I am presented with a list of '(.*)' vendors$""") { (count: String) =>
+    fluentWait
+      .until(ExpectedConditions.presenceOfElementLocated(By.id("vendor-count")))
+    driver
+      .findElement(By.id("vendor-count")).getText should include(count)
+  }
+
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
     val checkboxId: String = toFilterId(checkbox)
     driver

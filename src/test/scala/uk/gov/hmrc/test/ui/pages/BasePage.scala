@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
-import org.openqa.selenium.{By, WebDriver}
+import org.openqa.selenium.{By, NoSuchElementException, WebDriver}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -30,6 +30,7 @@ trait BasePage extends BrowserDriver with Matchers {
   val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
     .withTimeout(Duration.ofSeconds(10))
     .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[NoSuchElementException])
 
   def write(id: String, text: String): Unit = driver
     .findElement(By.id(id))
