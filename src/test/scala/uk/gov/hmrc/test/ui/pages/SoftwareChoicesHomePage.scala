@@ -35,7 +35,11 @@ object SoftwareChoicesHomePage extends BasePage {
     "Individual" -> "individual-filter",
     "Agent" -> "agent-filter",
     "Microsoft" -> "microsoft-windows-filter",
-    "Mac OS" -> "mac-os-filter"
+    "Mac OS" -> "mac-os-filter",
+    "Visual" -> "visual-filter",
+    "Hearing" -> "hearing-filter",
+    "Motor" -> "motor-filter",
+    "Cognitive" -> "cognitive-filter"
   )
 
   def loadPage: this.type = {

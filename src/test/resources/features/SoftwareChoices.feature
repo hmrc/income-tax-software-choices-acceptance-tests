@@ -58,7 +58,25 @@ Feature: Software Choices
   # will have to test differently to the rest as this information isn't on the vendor detail
 
   # Accessibility needs checkboxes
+  Scenario: User filters for compatible with Visual accessibility needs
+    When I select the 'Visual' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Visual'
 
+  Scenario: User filters for compatible with Hearing accessibility needs
+    When I select the 'Hearing' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Hearing'
+
+  Scenario: User filters for compatible with Motor accessibility needs
+    When I select the 'Motor' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Motor'
+
+  Scenario: User filters for compatible with Cognitive accessibility needs
+    When I select the 'Cognitive' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Cognitive'
 
   # Clear filters
   Scenario: User clears filters
