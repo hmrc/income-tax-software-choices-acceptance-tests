@@ -47,12 +47,28 @@ Feature: Software Choices
     And I click to apply filters
     Then I am presented with a list of vendors which provide 'Mac OS'
 
-
-
   # Mobile app checkboxes
+  Scenario: User filters for compatible with Android
+    When I select the 'Android' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Android'
+
+  Scenario: User filters for compatible with Apple iOS
+    When I select the 'Apple iOS' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Apple iOS'
 
 
   # Software type checkboxes
+  Scenario: User filters for compatible with browser based
+    When I select the 'Browser based' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Browser based'
+
+  Scenario: User filters for compatible with application based
+    When I select the 'Application based' checkbox
+    And I click to apply filters
+    Then I am presented with a list of vendors which provide 'Application based'
 
 
   # Software compatibility checkboxes
