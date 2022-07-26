@@ -25,6 +25,22 @@ Feature: Software Choices
     And I click to apply filters
     Then I am presented with a list of vendors which provide 'Free version'
 
+  # Income type checkboxes
+  Scenario: User filters for sole trader
+    When I select the 'Sole trader' checkbox
+    And I click to apply filters
+    Then I am presented with a list of '2' vendors
+
+  Scenario: User filters for UK property
+    When I select the 'UK property' checkbox
+    And I click to apply filters
+    Then I am presented with a list of '2' vendors
+
+  Scenario: User filters for overseas property
+    When I select the 'Overseas property' checkbox
+    And I click to apply filters
+    Then I am presented with a list of '2' vendors
+
   # Business type checkboxes
   Scenario: User filters for a individual
     When I select the 'Individual' checkbox
@@ -75,7 +91,7 @@ Feature: Software Choices
   Scenario: User filters for VAT
     When I select the 'VAT' checkbox
     And I click to apply filters
-    Then I am presented with a list of '1' vendors
+    Then I am presented with a list of '2' vendors
 
   # Accessibility needs checkboxes
   Scenario: User filters for compatible with Visual accessibility needs
