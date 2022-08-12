@@ -74,7 +74,6 @@ Feature: Software Choices
     And I click to apply filters
     Then I am presented with a list of vendors which provide 'Apple iOS'
 
-
   # Software type checkboxes
   Scenario: User filters for compatible with browser based
     When I select the 'Browser based' checkbox
@@ -86,6 +85,16 @@ Feature: Software Choices
     And I click to apply filters
     Then I am presented with a list of vendors which provide 'Application based'
 
+  # Software for checkboxes
+  Scenario: User filters for compatible with record keeping
+    When I select the 'Record keeping' checkbox
+    And I click to apply filters
+    Then I am presented with a list of '2' vendors
+
+  Scenario: User filters for compatible with bridging
+    When I select the 'Bridging' checkbox
+    And I click to apply filters
+    Then I am presented with a list of '2' vendors
 
   # Software compatibility checkboxes
   Scenario: User filters for VAT
