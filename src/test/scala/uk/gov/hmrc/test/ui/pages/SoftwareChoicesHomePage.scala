@@ -47,7 +47,9 @@ object SoftwareChoicesHomePage extends BasePage {
     "Visual" -> "visual-filter",
     "Hearing" -> "hearing-filter",
     "Motor" -> "motor-filter",
-    "Cognitive" -> "cognitive-filter"
+    "Cognitive" -> "cognitive-filter",
+    "Record keeping" -> "record-keeping-filter",
+    "Bridging" -> "bridging-filter"
   )
 
   def loadPage: this.type = {

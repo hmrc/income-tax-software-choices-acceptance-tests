@@ -49,11 +49,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .foreach(_.getText should include(matchingTerm))
   }
 
-  Then("""^I am presented with a list of '(.*)' vendors$""") { (count: String) =>
+  Then("""^I am presented with a list of '([0-9]*)' vendors$""") { (count: Int) =>
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.id("vendor-count")))
     driver
-      .findElement(By.id("vendor-count")).getText should include(count)
+      .findElement(By.id("vendor-count")).getText should include(count.toString)
   }
 
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
