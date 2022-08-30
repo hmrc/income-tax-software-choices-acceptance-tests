@@ -22,6 +22,10 @@ for i in "$@"; do
       ENV=qa
       shift
       ;;
+    --continuous)
+      CONTINUOUS="~"
+      shift
+      ;;
     -*|--*)
       echo "Unknown option $i"
       exit 1
@@ -37,4 +41,4 @@ else
   TAGS_OPTION=""
 fi
 
-sbt -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="${ENV:=$DEFAULT_ENV}" $TAGS_OPTION "testOnly uk.gov.hmrc.test.ui.cucumber.runner.Runner"
+sbt -Dbrowser="${BROWSER_TYPE:=$DEFAULT_BROWSER}" -Denvironment="${ENV:=$DEFAULT_ENV}" $TAGS_OPTION "${CONTINUOUS:=}testOnly uk.gov.hmrc.test.ui.cucumber.runner.Runner"

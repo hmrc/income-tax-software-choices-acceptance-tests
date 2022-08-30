@@ -17,7 +17,14 @@ This repo contains the acceptance tests for the income tax subscription service.
 * [sbt](http://www.scala-sbt.org/)
 * MongoDB (*[See Persistence](#Persistence)*)
 * HMRC Service manager (*[Install Service-Manager](https://github.com/hmrc/service-manager/wiki/Install#install-service-manager)*)
-* Browser drivers (*[Browser drivers](#Browser-drivers)*)
+
+Also, possibly:
+* Chrome
+* Chromedriver (version must match Chrome version)
+
+Chromedriver can be downloaded from https://chromedriver.chromium.org/downloads or installed with `brew install --cask chromedriver` and should be placed on your path.
+
+You will need to "trust" chromedriver. Open with ctrl-click in Finder and follow the instructions.
 
 ## How to start
 
@@ -40,12 +47,18 @@ Params:
 * `-b=chrome` or `--browser=chrome` to specify a browser (By default run tests in a headless environment).
 * `--staging` to run tests against the staging environment.
 * `--qa` to run tests against the QA environment.
+* `--continuous` to run tests every time a file is changed
 
 Example:
 
 *Run tests with custom tag in the Chrome browser against the staging environment.*
 ```
 ./scripts/run_tests --tags=@customTag --browser=chrome --staging
+```
+
+*Run only tests labeled '@beta' locally, every time a file changes.*
+```
+./scripts/run_tests --tags=@beta --continuous
 ```
 
 ## How to use
