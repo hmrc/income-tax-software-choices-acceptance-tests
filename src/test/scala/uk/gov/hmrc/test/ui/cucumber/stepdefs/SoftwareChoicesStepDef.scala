@@ -49,11 +49,27 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .foreach(_.getText should include(matchingTerm))
   }
 
-  Then("""^I am presented with a list of '([0-9]*)' vendors$""") { (count: Int) =>
-    fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.id("vendor-count")))
+  Then("""^I am presented with an alpha list of vendors matching '(.*)'$""") { (matchingTerm: String) =>
     driver
-      .findElement(By.id("vendor-count")).getText should include(count.toString)
+      .findElements(By.cssSelector(".govuk-grid-column-two-thirds > div > h3"))
+      .asScala
+      .foreach(_.getText should include(matchingTerm))
+  }
+
+  Then("""^I am presented with an alpha list of (.*) vendors$""") { (count: Int) =>
+    val alphaCountId = "vendor-count"
+    fluentWait
+      .until(ExpectedConditions.presenceOfElementLocated(By.id(alphaCountId)))
+    driver
+      .findElement(By.id(alphaCountId)).getText should include(count.toString)
+  }
+
+  Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
+    val betaCountClass = "software-vendors-num"
+    fluentWait
+      .until(ExpectedConditions.presenceOfElementLocated(By.className(betaCountClass)))
+    driver
+      .findElement(By.className(betaCountClass)).getText should include(count.toString)
   }
 
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
@@ -63,10 +79,34 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
+  And("""^I click on the first vendor$""") { () =>
+    driver
+      .findElement(By.id("software-vendor-0"))
+      .findElement(By.className("govuk-link"))
+      .click()
+  }
+
+  And("""^I wait for the details page to load$""") { () =>
+    fluentWait
+      .until(ExpectedConditions.presenceOfElementLocated(By.className("hmrc-report-technical-issue")))
+  }
+
   And("""^I click to apply filters$""") { () =>
     driver
       .findElement(By.cssSelector(".apply-filters-button"))
       .click()
+  }
+
+  Then("""^I am presented with an alpha list of vendors which provide '(.*)'$""") { (text: String) =>
+    driver
+      .findElements(By.cssSelector("#software-vendor-list > div"))
+      .asScala
+      .foreach(_.getText should include(text))
+  }
+
+  Then("""^The page contains the label for '(.*)'$""") { (filterFeature: String) =>
+    driver
+      .findElement(By.id("main-content")).getText should include (toLabel.get(filterFeature).getOrElse(fail("Unknown label")))
   }
 
   Then("""^I am presented with a list of vendors which provide '(.*)'$""") { (text: String) =>
