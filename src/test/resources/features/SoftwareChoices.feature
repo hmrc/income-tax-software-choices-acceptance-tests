@@ -20,27 +20,42 @@ Feature: Software Choices
     When I select the 'Free trial' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Free trial'
 
   Scenario: User filters for a free version
     When I select the 'Free version' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Free version'
 
   # Income type checkboxes
   Scenario: User filters for sole trader
     When I select the 'Sole trader' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Sole trader'
 
   Scenario: User filters for UK property
     When I select the 'UK property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'UK property'
 
   Scenario: User filters for overseas property
     When I select the 'Overseas property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Overseas property'
 
   # Business type checkboxes
   Scenario: User filters for a individual
@@ -66,7 +81,7 @@ Feature: Software Choices
     Then I am presented with a list of 2 vendors
     And I click on the first vendor
     And I wait for the details page to load
-    And The page contains the label for 'Microsoft'
+    And The page contains the label for 'Microsoft Windows'
 
   Scenario: User filters for compatible with Mac OS
     When I select the 'Mac OS' checkbox
@@ -76,12 +91,14 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Mac OS'
 
-
   # Mobile app checkboxes
   Scenario: User filters for compatible with Android
     When I select the 'Android' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Android'
 
   Scenario: User filters for compatible with Apple iOS
     When I select the 'Apple iOS' checkbox
@@ -89,7 +106,7 @@ Feature: Software Choices
     Then I am presented with a list of 2 vendors
     And I click on the first vendor
     And I wait for the details page to load
-    And The page contains the label for 'Apple iOS'
+    And The page contains the label for 'iOS'
 
   # Software type checkboxes
   Scenario: User filters for compatible with browser based
@@ -113,6 +130,9 @@ Feature: Software Choices
     When I select the 'Record keeping' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Record keeping'
 
   Scenario: User filters for compatible with bridging
     When I select the 'Bridging' checkbox
@@ -146,7 +166,7 @@ Feature: Software Choices
     Then I am presented with a list of 2 vendors
     And I click on the first vendor
     And I wait for the details page to load
-    And The page contains the label for 'Visual'
+    And The page contains the label for 'Hearing'
 
   Scenario: User filters for compatible with Motor accessibility needs
     When I select the 'Motor' checkbox
@@ -154,7 +174,7 @@ Feature: Software Choices
     Then I am presented with a list of 2 vendors
     And I click on the first vendor
     And I wait for the details page to load
-    And The page contains the label for 'Visual'
+    And The page contains the label for 'Motor'
 
   Scenario: User filters for compatible with Cognitive accessibility needs
     When I select the 'Cognitive' checkbox
@@ -162,7 +182,7 @@ Feature: Software Choices
     Then I am presented with a list of 2 vendors
     And I click on the first vendor
     And I wait for the details page to load
-    And The page contains the label for 'Visual'
+    And The page contains the label for 'Cognitive'
 
   # Multiple filters
   Scenario: User filters for a free trial AND a free version
