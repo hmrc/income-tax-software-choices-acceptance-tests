@@ -52,29 +52,6 @@ object SoftwareChoicesHomePage extends BasePage {
     "Bridging" -> "bridging-filter"
   )
 
-  val toLabel: Map[String, String] = Map(
-    "Free trial" -> "free-trial",
-    "Free version" -> "free-version",
-    "Sole trader" -> "sole-trader",
-    "UK property" -> "uk-property",
-    "Overseas property" -> "overseas-property",
-    "Individual" -> "individual",
-    "Agent" -> "agent",
-    "Microsoft" -> "microsoft-windows",
-    "Mac OS" -> "mac-os",
-    "VAT" -> "vat",
-    "Android" -> "android",
-    "Apple iOS" -> "apple-ios",
-    "Browser based" -> "browser-based",
-    "Application based" -> "application-based",
-    "Visual" -> "visual",
-    "Hearing" -> "hearing",
-    "Motor" -> "motor",
-    "Cognitive" -> "cognitive",
-    "Record keeping" -> "record-keeping",
-    "Bridging" -> "bridging"
-  )
-
   def loadPage: this.type = {
     driver.navigate().to(url)
     onPage(pageTitle)

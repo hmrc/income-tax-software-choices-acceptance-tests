@@ -104,9 +104,9 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .foreach(_.getText should include(text))
   }
 
-  Then("""^The page contains the label for '(.*)'$""") { (filterFeature: String) =>
+  Then("""^The page contains the label for '(.*)'$""") { (text: String) =>
     driver
-      .findElement(By.id("main-content")).getText should include (toLabel.get(filterFeature).getOrElse(fail("Unknown label")))
+      .findElement(By.id("main-content")).getText should include (text)
   }
 
   Then("""^I am presented with a list of vendors which provide '(.*)'$""") { (text: String) =>
