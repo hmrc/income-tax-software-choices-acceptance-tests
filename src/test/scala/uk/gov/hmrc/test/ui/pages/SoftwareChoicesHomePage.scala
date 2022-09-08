@@ -29,6 +29,18 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val softwareVendorsId: String = "software-vendor-0"
 
+  val toAccordionFoldId: Map[String, String] = Map(
+    "Pricing" -> "accordion-default-heading-1",
+    "Income type" -> "accordion-default-heading-2",
+    "Compatible with" -> "accordion-default-heading-3",
+    "Mobile app" -> "accordion-default-heading-4",
+    "Software type" -> "accordion-default-heading-5",
+    "Software for" -> "accordion-default-heading-6",
+    "Business type" -> "accordion-default-heading-7",
+    "Software compatibility" -> "accordion-default-heading-8",
+    "Accessibility needs" -> "accordion-default-heading-9"
+  )
+
   val toFilterId: Map[String, String] = Map(
     "Free trial" -> "free-trial-filter",
     "Free version" -> "free-version-filter",
