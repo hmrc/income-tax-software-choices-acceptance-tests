@@ -1,5 +1,4 @@
 @ITSC
-@Justin
 Feature: Software Choices
 
   # Get onto the page
@@ -167,6 +166,17 @@ Feature: Software Choices
     And I click on the first vendor
     And I wait for the details page to load
     And The page contains the label for 'VAT'
+
+  # Language checkboxes
+  @Justin
+  Scenario: User filters for Welsh
+    Given I open the 'Language' accordion fold
+    And I select the 'Welsh' checkbox
+    And I click to apply filters
+    Then I am presented with a list of 1 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Welsh'
 
   # Accessibility needs checkboxes
   Scenario: User filters for compatible with Visual accessibility needs

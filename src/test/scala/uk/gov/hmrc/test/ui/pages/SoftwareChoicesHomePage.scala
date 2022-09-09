@@ -38,30 +38,41 @@ object SoftwareChoicesHomePage extends BasePage {
     "Software for" -> "accordion-default-heading-6",
     "Business type" -> "accordion-default-heading-7",
     "Software compatibility" -> "accordion-default-heading-8",
-    "Accessibility needs" -> "accordion-default-heading-9"
+    "Language" -> "accordion-default-heading-9",
+    "Accessibility needs" -> "accordion-default-heading-10"
   )
 
   val toFilterId: Map[String, String] = Map(
     "Free trial" -> "free-trial-filter",
     "Free version" -> "free-version-filter",
+
     "Sole trader" -> "sole-trader-filter",
     "UK property" -> "uk-property-filter",
     "Overseas property" -> "overseas-property-filter",
-    "Individual" -> "individual-filter",
-    "Agent" -> "agent-filter",
+
     "Microsoft" -> "microsoft-windows-filter",
     "Mac OS" -> "mac-os-filter",
-    "VAT" -> "vat-filter",
+
     "Android" -> "android-filter",
     "Apple iOS" -> "apple-ios-filter",
+
     "Browser based" -> "browser-based-filter",
     "Application based" -> "application-based-filter",
+
+    "Record keeping" -> "record-keeping-filter",
+    "Bridging" -> "bridging-filter",
+
+    "Individual" -> "individual-filter",
+    "Agent" -> "agent-filter",
+
+    "VAT" -> "vat-filter",
+
+    "Welsh" -> "welsh-filter",
+
     "Visual" -> "visual-filter",
     "Hearing" -> "hearing-filter",
     "Motor" -> "motor-filter",
     "Cognitive" -> "cognitive-filter",
-    "Record keeping" -> "record-keeping-filter",
-    "Bridging" -> "bridging-filter"
   )
 
   def loadPage: this.type = {

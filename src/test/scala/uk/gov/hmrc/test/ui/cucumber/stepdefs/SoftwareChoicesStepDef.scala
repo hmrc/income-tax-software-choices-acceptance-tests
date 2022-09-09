@@ -75,6 +75,7 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
     val accordionFold = driver
       .findElement(By.id(toAccordionFoldId(accordionFoldName)))
+      .findElement(By.xpath("./.."))
     if (accordionFold.getAttribute("aria-expanded") == "false")
       accordionFold.click()
   }
@@ -83,6 +84,7 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     toAccordionFoldId.values.foreach(accordionFoldId => {
       val accordionFold = driver
         .findElement(By.id(accordionFoldId))
+        .findElement(By.xpath("./.."))
       if (accordionFold.getAttribute("aria-expanded") == "false")
         accordionFold.click()
     })
