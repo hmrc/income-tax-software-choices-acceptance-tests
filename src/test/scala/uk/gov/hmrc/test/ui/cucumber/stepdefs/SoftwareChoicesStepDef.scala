@@ -72,6 +72,24 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .findElement(By.className(betaCountClass)).getText should include(count.toString)
   }
 
+  When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
+    val accordionFold = driver
+      .findElement(By.id(toAccordionFoldId(accordionFoldName)))
+      .findElement(By.xpath("./.."))
+    if (accordionFold.getAttribute("aria-expanded") == "false")
+      accordionFold.click()
+  }
+
+  When("I have opened all folds") { () =>
+    toAccordionFoldId.values.foreach(accordionFoldId => {
+      val accordionFold = driver
+        .findElement(By.id(accordionFoldId))
+        .findElement(By.xpath("./.."))
+      if (accordionFold.getAttribute("aria-expanded") == "false")
+        accordionFold.click()
+    })
+  }
+
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
     val checkboxId: String = toFilterId(checkbox)
     driver
@@ -117,10 +135,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Given("""^I have selected all filters$""") { () =>
-    driver
-      .findElements(By.cssSelector("input[type=checkbox]"))
-      .asScala
-      .foreach(_.click())
+    toFilterId.values.foreach(checkboxId => {
+      val filter = driver
+        .findElement(By.id(checkboxId))
+      if (!filter.isSelected) filter.click()
+    })
   }
 
   When("""^I click to clear filters$""") { () =>
@@ -130,10 +149,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Then("""^There are no selected filters$""") { () =>
-    driver
-      .findElements(By.cssSelector("input[type=checkbox]"))
-      .asScala
-      .foreach(_.isSelected shouldBe false)
+    toFilterId.values.foreach(checkboxId => {
+      driver
+        .findElement(By.id(checkboxId))
+        .isSelected shouldBe false
+    })
   }
 
 }
