@@ -34,6 +34,15 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Free version'
 
+  Scenario: User filters for paid for
+    Given I open the 'Pricing' accordion fold
+    And I select the 'Paid for' checkbox
+    And I click to apply filters
+    Then I am presented with a list of 1 vendors
+    And I click on the first vendor
+    And I wait for the details page to load
+    And The page contains the label for 'Paid for'
+
   # Income type checkboxes
   Scenario: User filters for sole trader
     Given I open the 'Income type' accordion fold
@@ -168,7 +177,6 @@ Feature: Software Choices
     And The page contains the label for 'VAT'
 
   # Language checkboxes
-  @Justin
   Scenario: User filters for Welsh
     Given I open the 'Language' accordion fold
     And I select the 'Welsh' checkbox

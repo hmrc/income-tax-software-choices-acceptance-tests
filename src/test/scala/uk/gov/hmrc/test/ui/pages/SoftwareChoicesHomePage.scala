@@ -45,6 +45,7 @@ object SoftwareChoicesHomePage extends BasePage {
   val toFilterId: Map[String, String] = Map(
     "Free trial" -> "free-trial-filter",
     "Free version" -> "free-version-filter",
+    "Paid for" -> "paid-for-filter",
 
     "Sole trader" -> "sole-trader-filter",
     "UK property" -> "uk-property-filter",
