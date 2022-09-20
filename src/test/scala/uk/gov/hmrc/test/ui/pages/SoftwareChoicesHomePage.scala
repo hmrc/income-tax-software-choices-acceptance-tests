@@ -22,9 +22,6 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val url: String = TestConfiguration.url("software-choices-frontend") + "/"
 
-  val pageTitle =
-    "Choose the right software for your needs - Find software for Making Tax Digital for Income Tax - GOV.UK"
-
   val searchBarId: String = "searchTerm"
 
   val softwareVendorsId: String = "software-vendor-0"
@@ -78,7 +75,7 @@ object SoftwareChoicesHomePage extends BasePage {
 
   def loadPage: this.type = {
     driver.navigate().to(url)
-    onPage(pageTitle)
+    assertUrl(url)
     this
   }
 
