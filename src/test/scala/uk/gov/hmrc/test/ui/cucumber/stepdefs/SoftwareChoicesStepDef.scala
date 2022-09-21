@@ -90,6 +90,16 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     })
   }
 
+  When("I have closed all folds") { () =>
+    toAccordionFoldId.values.foreach(accordionFoldId => {
+      val accordionFold = driver
+        .findElement(By.id(accordionFoldId))
+        .findElement(By.xpath("./.."))
+      if (accordionFold.getAttribute("aria-expanded") == "true")
+        accordionFold.click()
+    })
+  }
+
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
     val checkboxId: String = toFilterId(checkbox)
     driver

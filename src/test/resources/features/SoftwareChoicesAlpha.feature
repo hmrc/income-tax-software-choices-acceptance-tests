@@ -1,5 +1,5 @@
 @ITSC
-
+@Alpha
 Feature: Software Choices (Alpha Version)
 
   # Get onto the page
