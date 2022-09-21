@@ -1,5 +1,5 @@
 @ITSC
-@Justin
+@Beta
 Feature: Software Choices
 
   # Get onto the page
@@ -251,3 +251,9 @@ Feature: Software Choices
     And I click to apply filters
     Then I am presented with a list of 1 vendors
 
+      # All filters
+  Scenario: User clears and closes all filters
+    When I have opened all folds
+    And I click to clear filters
+    And I have closed all folds
+    Then I am presented with a list of 4 vendors
