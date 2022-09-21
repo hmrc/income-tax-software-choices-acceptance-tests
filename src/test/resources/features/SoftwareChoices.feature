@@ -17,15 +17,6 @@ Feature: Software Choices
     Then I am presented with a list of vendors matching 'test software vendor name one'
 
   # Pricing checkboxes
-  Scenario: User filters for a free trial
-    Given I open the 'Pricing' accordion fold
-    And I select the 'Free trial' checkbox
-    And I click to apply filters
-    Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
-    And I wait for the details page to load
-    And The page contains the label for 'Free trial'
-
   Scenario: User filters for a free version
     Given I open the 'Pricing' accordion fold
     And I select the 'Free version' checkbox
@@ -35,8 +26,23 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Free version'
 
+  Scenario: User filters for a free trial
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I open the 'Pricing' accordion fold
+    And I select the 'Free trial' checkbox
+    And I click to apply filters
+    Then I am presented with a list of 2 vendors
+    And I click on the test software vendor name one link
+    And I wait for the details page to load
+    And The page contains the label for 'Free trial'
+
   Scenario: User filters for paid for
-    Given I open the 'Pricing' accordion fold
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I open the 'Pricing' accordion fold
     And I select the 'Paid for' checkbox
     And I click to apply filters
     Then I am presented with a list of 1 vendors
@@ -226,7 +232,10 @@ Feature: Software Choices
 
   # Multiple filters
   Scenario: User filters for a free trial AND a free version
-    Given I open the 'Pricing' accordion fold
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I open the 'Pricing' accordion fold
     And I select the 'Free trial' checkbox
     And I select the 'Free version' checkbox
     And I click to apply filters
@@ -251,7 +260,6 @@ Feature: Software Choices
     And I click to apply filters
     Then I am presented with a list of 1 vendors
 
-      # All filters
   Scenario: User clears and closes all filters
     When I have opened all folds
     And I click to clear filters
