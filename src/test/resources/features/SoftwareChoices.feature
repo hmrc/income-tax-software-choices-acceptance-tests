@@ -193,9 +193,9 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Welsh'
 
-  # Accessibility needs checkboxes
-  Scenario: User filters for compatible with Visual accessibility needs
-    Given I open the 'Accessibility needs' accordion fold
+  # Accessibility features checkboxes
+  Scenario: User filters for compatible with Visual accessibility features
+    Given I open the 'Accessibility features' accordion fold
     And I select the 'Visual' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
@@ -203,8 +203,8 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Visual'
 
-  Scenario: User filters for compatible with Hearing accessibility needs
-    Given I open the 'Accessibility needs' accordion fold
+  Scenario: User filters for compatible with Hearing accessibility features
+    Given I open the 'Accessibility features' accordion fold
     And I select the 'Hearing' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
@@ -212,8 +212,8 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Hearing'
 
-  Scenario: User filters for compatible with Motor accessibility needs
-    Given I open the 'Accessibility needs' accordion fold
+  Scenario: User filters for compatible with Motor accessibility features
+    Given I open the 'Accessibility features' accordion fold
     And I select the 'Motor' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
@@ -221,8 +221,8 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Motor'
 
-  Scenario: User filters for compatible with Cognitive accessibility needs
-    Given I open the 'Accessibility needs' accordion fold
+  Scenario: User filters for compatible with Cognitive accessibility features
+    Given I open the 'Accessibility features' accordion fold
     And I select the 'Cognitive' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
