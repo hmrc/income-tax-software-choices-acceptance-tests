@@ -22,7 +22,7 @@ Feature: Software Choices
     And I select the 'Free trial' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Free trial'
 
@@ -31,7 +31,7 @@ Feature: Software Choices
     And I select the 'Free version' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Free version'
 
@@ -40,7 +40,7 @@ Feature: Software Choices
     And I select the 'Paid for' checkbox
     And I click to apply filters
     Then I am presented with a list of 1 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Paid for'
 
@@ -50,7 +50,7 @@ Feature: Software Choices
     And I select the 'Sole trader' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Sole trader'
 
@@ -59,7 +59,7 @@ Feature: Software Choices
     And I select the 'UK property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'UK property'
 
@@ -68,7 +68,7 @@ Feature: Software Choices
     And I select the 'Overseas property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Overseas property'
 
@@ -78,7 +78,7 @@ Feature: Software Choices
     And I select the 'Individual' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Individual'
 
@@ -87,7 +87,7 @@ Feature: Software Choices
     And I select the 'Agent' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Agent'
 
@@ -97,7 +97,7 @@ Feature: Software Choices
     And I select the 'Microsoft' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Microsoft Windows'
 
@@ -106,7 +106,7 @@ Feature: Software Choices
     And I select the 'Mac OS' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Mac OS'
 
@@ -116,7 +116,7 @@ Feature: Software Choices
     And I select the 'Android' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Android'
 
@@ -125,7 +125,7 @@ Feature: Software Choices
     And I select the 'Apple iOS' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'iOS'
 
@@ -135,7 +135,7 @@ Feature: Software Choices
     And I select the 'Browser based' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Browser based'
 
@@ -144,7 +144,7 @@ Feature: Software Choices
     And I select the 'Application based' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Application based'
 
@@ -154,7 +154,7 @@ Feature: Software Choices
     And I select the 'Record keeping' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Record keeping'
 
@@ -163,7 +163,7 @@ Feature: Software Choices
     And I select the 'Bridging' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Bridging'
 
@@ -173,7 +173,7 @@ Feature: Software Choices
     And I select the 'VAT' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'VAT'
 
@@ -183,7 +183,7 @@ Feature: Software Choices
     And I select the 'Welsh' checkbox
     And I click to apply filters
     Then I am presented with a list of 1 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Welsh'
 
@@ -193,7 +193,7 @@ Feature: Software Choices
     And I select the 'Visual' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Visual'
 
@@ -202,7 +202,7 @@ Feature: Software Choices
     And I select the 'Hearing' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Hearing'
 
@@ -211,7 +211,7 @@ Feature: Software Choices
     And I select the 'Motor' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Motor'
 
@@ -220,7 +220,7 @@ Feature: Software Choices
     And I select the 'Cognitive' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Cognitive'
 
@@ -231,7 +231,7 @@ Feature: Software Choices
     And I select the 'Free version' checkbox
     And I click to apply filters
     Then I am presented with a list of 1 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Free trial'
     And The page contains the label for 'Free version'
