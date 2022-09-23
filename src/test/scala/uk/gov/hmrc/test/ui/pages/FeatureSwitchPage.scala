@@ -23,7 +23,8 @@ object FeatureSwitchPage extends BasePage {
   val url: String = TestConfiguration.url("software-choices-frontend") + "/test-only/feature-switch"
 
   val switches: Map[String, String] = Map(
-    "Beta Features" -> "enable-beta-features"
+    "Beta Features" -> "enable-beta-features",
+    "Extra Pricing Options" -> "enable-extra-pricing-options",
   )
 
   def loadPage: this.type = {

@@ -18,3 +18,15 @@ Feature: Feature Switch
     And I click to update the Feature Switches
     Then I wait for the page to return
     And The 'Beta Features' check box is unchecked
+
+  Scenario: User checks the Extra Pricing Options checkbox
+    When I check the 'Extra Pricing Options' check box
+    And I click to update the Feature Switches
+    Then I wait for the page to return
+    And The 'Extra Pricing Options' check box is checked
+
+  Scenario: User unchecks the Extra Pricing Options checkbox
+    When I uncheck the 'Extra Pricing Options' check box
+    And I click to update the Feature Switches
+    Then I wait for the page to return
+    And The 'Extra Pricing Options' check box is unchecked

@@ -17,15 +17,26 @@ Feature: Software Choices (Alpha Version)
     Then I am presented with an alpha list of vendors matching 'test software vendor name one'
 
   # Pricing checkboxes
-  Scenario: User filters for a free trial
-    When I select the 'Free trial' checkbox
-    And I click to apply filters
-    Then I am presented with an alpha list of vendors which provide 'Free trial'
-
   Scenario: User filters for a free version
     When I select the 'Free version' checkbox
     And I click to apply filters
     Then I am presented with an alpha list of vendors which provide 'Free version'
+
+  Scenario: User filters for a free trial
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    When I select the 'Free trial' checkbox
+    And I click to apply filters
+    Then I am presented with an alpha list of vendors which provide 'Free trial'
+
+  Scenario: User filters for paid for
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I select the 'Paid for' checkbox
+    And I click to apply filters
+    Then I am presented with an alpha list of vendors which provide 'Paid for'
 
   # Income type checkboxes
   Scenario: User filters for sole trader
