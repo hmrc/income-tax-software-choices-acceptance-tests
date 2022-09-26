@@ -36,7 +36,7 @@ object SoftwareChoicesHomePage extends BasePage {
     "Business type" -> "accordion-default-heading-7",
     "Software compatibility" -> "accordion-default-heading-8",
     "Language" -> "accordion-default-heading-9",
-    "Accessibility needs" -> "accordion-default-heading-10"
+    "Accessibility features" -> "accordion-default-heading-10"
   )
 
   val toFilterId: Map[String, String] = Map(
