@@ -60,18 +60,17 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     val alphaCountId = "vendor-count"
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.id(alphaCountId)))
-//    driver
-//      .findElement(By.id(alphaCountId)).getText should include(count.toString)
-    logger.warn(s"[SoftwareChoicesStepDef] - not actually testing number of vendors = $count")
+    driver
+      .findElement(By.id(alphaCountId)).getText should include(count.toString)
+
   }
 
   Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
     val betaCountClass = "software-vendors-num"
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.className(betaCountClass)))
-//    driver
-//      .findElement(By.className(betaCountClass)).getText should include(count.toString)
-    logger.warn(s"[SoftwareChoicesStepDef] - not actually testing number of vendors = $count")
+    driver
+      .findElement(By.className(betaCountClass)).getText should include(count.toString)
   }
 
   When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
