@@ -1,5 +1,6 @@
 @ITSC
 @Alpha
+
 Feature: Software Choices (Alpha Version)
 
   # Get onto the page
@@ -139,6 +140,7 @@ Feature: Software Choices (Alpha Version)
   # Clear filters
   Scenario: User clears filters
     Given I have selected all filters
+    Then There are only selected filters
     When I click to clear filters
-    Then There are no selected filters
+    Then There are no selected and enabled filters
     And I am presented with an alpha list of 4 vendors

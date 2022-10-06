@@ -152,18 +152,24 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     })
   }
 
+  Then("""^There are only selected filters$""") { () =>
+    driver
+      .findElements(By.cssSelector("input[type=checkbox]"))
+      .asScala
+      .foreach(_.isSelected shouldBe true)
+  }
+
   When("""^I click to clear filters$""") { () =>
     driver
       .findElement(By.cssSelector(".clear-filters-button"))
       .click()
   }
 
-  Then("""^There are no selected filters$""") { () =>
+  Then("""^There are no selected and enabled filters$""") { () =>
     toFilterId.values.foreach(checkboxId => {
-      driver
+      val cb = driver
         .findElement(By.id(checkboxId))
-        .isSelected shouldBe false
+      cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
     })
   }
-
 }

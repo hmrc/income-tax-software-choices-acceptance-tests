@@ -1,5 +1,6 @@
 @ITSC
 @Beta
+
 Feature: Software Choices
 
   # Get onto the page
@@ -9,6 +10,7 @@ Feature: Software Choices
     And I navigate to the Software Choices home page
     Then I am on the Software Choices home page
     And I am presented with a list of 4 vendors
+    And There are no selected and enabled filters
 
   # Search bar
   Scenario: User searches for a software vendor through the search bar
@@ -249,8 +251,9 @@ Feature: Software Choices
   Scenario: User clears filters
     When I have opened all folds
     And I have selected all filters
-    And I click to clear filters
-    Then There are no selected filters
+    Then There are only selected filters
+    When I click to clear filters
+    Then There are no selected and enabled filters
     And I am presented with a list of 4 vendors
 
   # All filters
@@ -265,3 +268,4 @@ Feature: Software Choices
     And I click to clear filters
     And I have closed all folds
     Then I am presented with a list of 4 vendors
+
