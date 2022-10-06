@@ -26,51 +26,49 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val softwareVendorsId: String = "software-vendor-0"
 
-  val toAccordionFoldId: Map[String, String] = Map(
-    "Pricing" -> "accordion-default-heading-1",
-    "Income type" -> "accordion-default-heading-2",
-    "Compatible with" -> "accordion-default-heading-3",
-    "Mobile app" -> "accordion-default-heading-4",
-    "Software type" -> "accordion-default-heading-5",
-    "Software for" -> "accordion-default-heading-6",
-    "Business type" -> "accordion-default-heading-7",
-    "Software compatibility" -> "accordion-default-heading-8",
-    "Language" -> "accordion-default-heading-9",
-    "Accessibility features" -> "accordion-default-heading-10"
+  private val filterSections: Seq[String] = Seq(
+    "Accessibility features",
+    "Pricing",
+    "Income type",
+    "Compatible with",
+    "Mobile app",
+    "Software type",
+    "Software for",
+    "Business type",
+    "Software compatibility",
+    "Language"
   )
 
+  val toAccordionFoldId: Map[String, String] = filterSections
+    .zip(1 to filterSections.size)
+    .map { case (section, index) =>
+      section -> s"accordion-default-heading-$index"
+    }
+    .toMap
+
   val toFilterId: Map[String, String] = Map(
-    "Free trial" -> "free-trial-filter",
-    "Free version" -> "free-version-filter",
-    "Paid for" -> "paid-for-filter",
-
-    "Sole trader" -> "sole-trader-filter",
-    "UK property" -> "uk-property-filter",
+    "Free trial"        -> "free-trial-filter",
+    "Free version"      -> "free-version-filter",
+    "Paid for"          -> "paid-for-filter",
+    "Sole trader"       -> "sole-trader-filter",
+    "UK property"       -> "uk-property-filter",
     "Overseas property" -> "overseas-property-filter",
-
-    "Microsoft" -> "microsoft-windows-filter",
-    "Mac OS" -> "mac-os-filter",
-
-    "Android" -> "android-filter",
-    "Apple iOS" -> "apple-ios-filter",
-
-    "Browser based" -> "browser-based-filter",
+    "Microsoft"         -> "microsoft-windows-filter",
+    "Mac OS"            -> "mac-os-filter",
+    "Android"           -> "android-filter",
+    "Apple iOS"         -> "apple-ios-filter",
+    "Browser based"     -> "browser-based-filter",
     "Application based" -> "application-based-filter",
-
-    "Record keeping" -> "record-keeping-filter",
-    "Bridging" -> "bridging-filter",
-
-    "Individual" -> "individual-filter",
-    "Agent" -> "agent-filter",
-
-    "VAT" -> "vat-filter",
-
-    "Welsh" -> "welsh-filter",
-
-    "Visual" -> "visual-filter",
-    "Hearing" -> "hearing-filter",
-    "Motor" -> "motor-filter",
-    "Cognitive" -> "cognitive-filter",
+    "Record keeping"    -> "record-keeping-filter",
+    "Bridging"          -> "bridging-filter",
+    "Individual"        -> "individual-filter",
+    "Agent"             -> "agent-filter",
+    "VAT"               -> "vat-filter",
+    "Welsh"             -> "welsh-filter",
+    "Visual"            -> "visual-filter",
+    "Hearing"           -> "hearing-filter",
+    "Motor"             -> "motor-filter",
+    "Cognitive"         -> "cognitive-filter"
   )
 
   def loadPage: this.type = {
