@@ -22,16 +22,14 @@ object FeatureSwitchPage extends BasePage {
 
   val url: String = TestConfiguration.url("software-choices-frontend") + "/test-only/feature-switch"
 
-  val pageTitle =
-    "Feature switch - Find software for Making Tax Digital for Income Tax - GOV.UK"
-
   val switches: Map[String, String] = Map(
-    "Beta Features" -> "enable-beta-features"
+    "Beta Features" -> "enable-beta-features",
+    "Extra Pricing Options" -> "enable-extra-pricing-options",
   )
 
   def loadPage: this.type = {
     driver.navigate().to(url)
-    onPage(pageTitle)
+    assertUrl(url)
     this
   }
 

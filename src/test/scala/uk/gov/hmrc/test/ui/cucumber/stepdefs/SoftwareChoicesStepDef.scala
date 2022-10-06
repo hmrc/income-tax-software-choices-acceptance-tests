@@ -62,6 +62,7 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .until(ExpectedConditions.presenceOfElementLocated(By.id(alphaCountId)))
     driver
       .findElement(By.id(alphaCountId)).getText should include(count.toString)
+
   }
 
   Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
@@ -72,6 +73,34 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .findElement(By.className(betaCountClass)).getText should include(count.toString)
   }
 
+  When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
+    val accordionFold = driver
+      .findElement(By.id(toAccordionFoldId(accordionFoldName)))
+      .findElement(By.xpath("./.."))
+    if (accordionFold.getAttribute("aria-expanded") == "false")
+      accordionFold.click()
+  }
+
+  When("I have opened all folds") { () =>
+    toAccordionFoldId.values.foreach(accordionFoldId => {
+      val accordionFold = driver
+        .findElement(By.id(accordionFoldId))
+        .findElement(By.xpath("./.."))
+      if (accordionFold.getAttribute("aria-expanded") == "false")
+        accordionFold.click()
+    })
+  }
+
+  When("I have closed all folds") { () =>
+    toAccordionFoldId.values.foreach(accordionFoldId => {
+      val accordionFold = driver
+        .findElement(By.id(accordionFoldId))
+        .findElement(By.xpath("./.."))
+      if (accordionFold.getAttribute("aria-expanded") == "true")
+        accordionFold.click()
+    })
+  }
+
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
     val checkboxId: String = toFilterId(checkbox)
     driver
@@ -79,10 +108,9 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
-  And("""^I click on the first vendor$""") { () =>
+  And("""^I click on the (.*) link$""") { (vendor: String) =>
     driver
-      .findElement(By.id("software-vendor-0"))
-      .findElement(By.className("govuk-link"))
+      .findElement(By.linkText(s"$vendor"))
       .click()
   }
 
@@ -117,10 +145,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Given("""^I have selected all filters$""") { () =>
-    driver
-      .findElements(By.cssSelector("input[type=checkbox]"))
-      .asScala
-      .foreach(_.click())
+    toFilterId.values.foreach(checkboxId => {
+      val filter = driver
+        .findElement(By.id(checkboxId))
+      if (!filter.isSelected) filter.click()
+    })
   }
 
   Then("""^There are only selected filters$""") { () =>
@@ -137,9 +166,10 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Then("""^There are no selected and enabled filters$""") { () =>
-    driver
-      .findElements(By.cssSelector("input[type=checkbox]"))
-      .asScala
-      .foreach(cb => (cb.isEnabled && cb.isSelected) shouldBe false) //Can't be Enabled AND Selected
+    toFilterId.values.foreach(checkboxId => {
+      val cb = driver
+        .findElement(By.id(checkboxId))
+      cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
+    })
   }
 }

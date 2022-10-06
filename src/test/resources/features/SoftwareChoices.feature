@@ -1,4 +1,5 @@
 @ITSC
+@Beta
 
 Feature: Software Choices
 
@@ -18,189 +19,253 @@ Feature: Software Choices
     Then I am presented with a list of vendors matching 'test software vendor name one'
 
   # Pricing checkboxes
-  Scenario: User filters for a free trial
-    When I select the 'Free trial' checkbox
-    And I click to apply filters
-    Then I am presented with a list of 2 vendors
-    And I click on the first vendor
-    And I wait for the details page to load
-    And The page contains the label for 'Free trial'
-
   Scenario: User filters for a free version
-    When I select the 'Free version' checkbox
+    Given I open the 'Pricing' accordion fold
+    And I select the 'Free version' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Free version'
 
-  # Income type checkboxes
-  Scenario: User filters for sole trader
-    When I select the 'Sole trader' checkbox
+  Scenario: User filters for a free trial
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I open the 'Pricing' accordion fold
+    And I select the 'Free trial' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
+    And I wait for the details page to load
+    And The page contains the label for 'Free trial'
+
+  Scenario: User filters for paid for
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I open the 'Pricing' accordion fold
+    And I select the 'Paid for' checkbox
+    And I click to apply filters
+    Then I am presented with a list of 1 vendors
+    And I click on the test software vendor name one link
+    And I wait for the details page to load
+    And The page contains the label for 'Paid for'
+
+  # Income type checkboxes
+  Scenario: User filters for sole trader
+    Given I open the 'Income type' accordion fold
+    And I select the 'Sole trader' checkbox
+    And I click to apply filters
+    Then I am presented with a list of 2 vendors
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Sole trader'
 
   Scenario: User filters for UK property
-    When I select the 'UK property' checkbox
+    Given I open the 'Income type' accordion fold
+    And I select the 'UK property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'UK property'
 
   Scenario: User filters for overseas property
-    When I select the 'Overseas property' checkbox
+    Given I open the 'Income type' accordion fold
+    And I select the 'Overseas property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Overseas property'
 
   # Business type checkboxes
   Scenario: User filters for a individual
-    When I select the 'Individual' checkbox
+    Given I open the 'Business type' accordion fold
+    And I select the 'Individual' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Individual'
 
   Scenario: User filters for a agent
-    When I select the 'Agent' checkbox
+    Given I open the 'Business type' accordion fold
+    And I select the 'Agent' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Agent'
 
   # Compatible with checkboxes
   Scenario: User filters for compatible with Microsoft Windows
-    When I select the 'Microsoft' checkbox
+    Given I open the 'Compatible with' accordion fold
+    And I select the 'Microsoft' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Microsoft Windows'
 
   Scenario: User filters for compatible with Mac OS
-    When I select the 'Mac OS' checkbox
+    Given I open the 'Compatible with' accordion fold
+    And I select the 'Mac OS' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Mac OS'
 
   # Mobile app checkboxes
   Scenario: User filters for compatible with Android
-    When I select the 'Android' checkbox
+    Given I open the 'Mobile app' accordion fold
+    And I select the 'Android' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Android'
 
   Scenario: User filters for compatible with Apple iOS
-    When I select the 'Apple iOS' checkbox
+    Given I open the 'Mobile app' accordion fold
+    And I select the 'Apple iOS' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'iOS'
 
   # Software type checkboxes
-  Scenario: User filters for compatible with browser based
-    When I select the 'Browser based' checkbox
+  Scenario: User filters for software type browser based
+    Given I open the 'Software type' accordion fold
+    And I select the 'Browser based' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Browser based'
 
-  Scenario: User filters for compatible with application based
-    When I select the 'Application based' checkbox
+  Scenario: User filters for software type application based
+    Given I open the 'Software type' accordion fold
+    And I select the 'Application based' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Application based'
 
   # Software for checkboxes
-  Scenario: User filters for compatible with record keeping
-    When I select the 'Record keeping' checkbox
+  Scenario: User filters for Software for record keeping
+    Given I open the 'Software for' accordion fold
+    And I select the 'Record keeping' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Record keeping'
 
   Scenario: User filters for compatible with bridging
-    When I select the 'Bridging' checkbox
+    Given I open the 'Software for' accordion fold
+    And I select the 'Bridging' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Bridging'
 
   # Software compatibility checkboxes
   Scenario: User filters for VAT
-    When I select the 'VAT' checkbox
+    Given I open the 'Software compatibility' accordion fold
+    And I select the 'VAT' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'VAT'
 
-  # Accessibility needs checkboxes
-  Scenario: User filters for compatible with Visual accessibility needs
-    When I select the 'Visual' checkbox
+  # Language checkboxes
+  Scenario: User filters for Welsh
+    Given I open the 'Language' accordion fold
+    And I select the 'Welsh' checkbox
+    And I click to apply filters
+    Then I am presented with a list of 1 vendors
+    And I click on the test software vendor name one link
+    And I wait for the details page to load
+    And The page contains the label for 'Welsh'
+
+  # Accessibility features checkboxes
+  Scenario: User filters for compatible with Visual accessibility features
+    Given I open the 'Accessibility features' accordion fold
+    And I select the 'Visual' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Visual'
 
-  Scenario: User filters for compatible with Hearing accessibility needs
-    When I select the 'Hearing' checkbox
+  Scenario: User filters for compatible with Hearing accessibility features
+    Given I open the 'Accessibility features' accordion fold
+    And I select the 'Hearing' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Hearing'
 
-  Scenario: User filters for compatible with Motor accessibility needs
-    When I select the 'Motor' checkbox
+  Scenario: User filters for compatible with Motor accessibility features
+    Given I open the 'Accessibility features' accordion fold
+    And I select the 'Motor' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Motor'
 
-  Scenario: User filters for compatible with Cognitive accessibility needs
-    When I select the 'Cognitive' checkbox
+  Scenario: User filters for compatible with Cognitive accessibility features
+    Given I open the 'Accessibility features' accordion fold
+    And I select the 'Cognitive' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Cognitive'
 
   # Multiple filters
   Scenario: User filters for a free trial AND a free version
-    When I select the 'Free trial' checkbox
-    When I select the 'Free version' checkbox
+    Given On the feature switch page I check features
+      | Extra Pricing Options |
+    And I navigate to the Software Choices home page
+    And I open the 'Pricing' accordion fold
+    And I select the 'Free trial' checkbox
+    And I select the 'Free version' checkbox
     And I click to apply filters
     Then I am presented with a list of 1 vendors
-    And I click on the first vendor
+    And I click on the test software vendor name one link
     And I wait for the details page to load
     And The page contains the label for 'Free trial'
     And The page contains the label for 'Free version'
 
   # Clear filters
   Scenario: User clears filters
-    Given I have selected all filters
+    When I have opened all folds
+    And I have selected all filters
     Then There are only selected filters
     When I click to clear filters
     Then There are no selected and enabled filters
     And I am presented with a list of 4 vendors
+
+  # All filters
+  Scenario: User uses all filters
+    When I have opened all folds
+    And I have selected all filters
+    And I click to apply filters
+    Then I am presented with a list of 1 vendors
+
+  Scenario: User clears and closes all filters
+    When I have opened all folds
+    And I click to clear filters
+    And I have closed all folds
+    Then I am presented with a list of 4 vendors
+
