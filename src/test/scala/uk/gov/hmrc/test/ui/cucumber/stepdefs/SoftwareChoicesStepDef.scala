@@ -172,4 +172,16 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
     })
   }
+
+  val extraPricingOptions = Seq("free-trial-filter", "paid-for-filter")
+
+  Then("""^There are no selected and enabled filters excluding extra pricing options$""") { () =>
+    toFilterId.values
+      .filter(f => !extraPricingOptions.contains(f)) // Remove extra pricing options until we roll them in properly
+      .foreach(checkboxId => {
+      val cb = driver
+        .findElement(By.id(checkboxId))
+      cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
+    })
+  }
 }
