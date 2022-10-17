@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage
 import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage._
 
-import scala.jdk.CollectionConverters.iterableAsScalaIterableConverter
+import scala.jdk.CollectionConverters._
 
 class SoftwareChoicesStepDef extends BaseStepDef {
 

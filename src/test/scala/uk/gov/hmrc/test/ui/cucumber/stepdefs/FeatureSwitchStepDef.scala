@@ -33,7 +33,7 @@ class FeatureSwitchStepDef extends BaseStepDef {
 
   When("""^I (.*) the '(.*)' check box$""") { (checkOrUncheck: String, featureName: String) => setFeature(featureName, checkOrUncheck) }
 
-  And("""^I click to update the Feature Switches$""") { () => submitFeatureSwitches }
+  And("""^I click to update the Feature Switches$""") { () => submitFeatureSwitches() }
 
   And("""^I wait for the page to return$""") { () => waitForPage }
 
@@ -52,7 +52,7 @@ class FeatureSwitchStepDef extends BaseStepDef {
   And("^On the feature switch page I (.*) features$") { (checkOrUncheck: String, collection: DataTable) =>
     FeatureSwitchPage.loadPage
     collection.asList().forEach(featureName => setFeature(featureName, checkOrUncheck))
-    submitFeatureSwitches
+    submitFeatureSwitches()
     waitForPage
   }
 
@@ -66,7 +66,7 @@ class FeatureSwitchStepDef extends BaseStepDef {
       checkBox.click()
   }
 
-  private def submitFeatureSwitches = {
+  private def submitFeatureSwitches(): Unit = {
     driver
       .findElement(By.id(submitButtonId))
       .click()
@@ -78,11 +78,9 @@ class FeatureSwitchStepDef extends BaseStepDef {
   }
 
   private def getCheckBox(featureName: String) = {
-
-    val checkBoxValue: String = switches.get(featureName).getOrElse(fail("Unknown feature name: $featureName"))
+    val checkBoxValue: String = switches.getOrElse(featureName, fail(s"Unknown feature name: $featureName"))
     driver
       .findElement(By.xpath(s"""//*[@value="$checkBoxValue"]"""))
-
   }
 
 }

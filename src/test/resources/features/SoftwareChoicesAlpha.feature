@@ -38,7 +38,7 @@ Feature: Software Choices (Alpha Version)
     And I navigate to the Software Choices home page
     And I select the 'Paid for' checkbox
     And I click to apply filters
-    Then I am presented with an alpha list of vendors which provide 'Paid for'
+    Then I am presented with an alpha list of 1 vendors
 
   # Income type checkboxes
   Scenario: User filters for sole trader
