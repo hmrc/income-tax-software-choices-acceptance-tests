@@ -25,6 +25,7 @@ object FeatureSwitchPage extends BasePage {
   val switches: Map[String, String] = Map(
     "Beta Features" -> "enable-beta-features",
     "Extra Pricing Options" -> "enable-extra-pricing-options",
+    "Overseas Property Option" -> "enable-overseasproperty-option"
   )
 
   def loadPage: this.type = {

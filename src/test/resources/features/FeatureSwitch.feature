@@ -30,3 +30,15 @@ Feature: Feature Switch
     And I click to update the Feature Switches
     Then I wait for the page to return
     And The 'Extra Pricing Options' check box is unchecked
+
+  Scenario: User checks the Overseas Property Option checkbox
+    When I check the 'Overseas Property Option' check box
+    And I click to update the Feature Switches
+    Then I wait for the page to return
+    And The 'Overseas Property Option' check box is checked
+
+  Scenario: User unchecks the Overseas Property Option checkbox
+    When I uncheck the 'Overseas Property Option' check box
+    And I click to update the Feature Switches
+    Then I wait for the page to return
+    And The 'Overseas Property Option' check box is unchecked

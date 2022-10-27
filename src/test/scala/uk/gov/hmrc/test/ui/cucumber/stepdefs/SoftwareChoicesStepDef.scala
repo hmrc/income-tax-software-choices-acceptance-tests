@@ -175,13 +175,16 @@ class SoftwareChoicesStepDef extends BaseStepDef {
 
   val extraPricingOptions = Seq("free-trial-filter", "paid-for-filter")
 
-  Then("""^There are no selected and enabled filters excluding extra pricing options$""") { () =>
+  val overseasPropertyOption = Seq("overseas-property-filter")
+
+  Then("""^There are no selected and enabled filters excluding extra pricing options and overseas property option$""") { () =>
     toFilterId.values
-      .filter(f => !extraPricingOptions.contains(f)) // Remove extra pricing options until we roll them in properly
+      .filter(f => !(overseasPropertyOption++extraPricingOptions).contains(f))
       .foreach(checkboxId => {
-      val cb = driver
-        .findElement(By.id(checkboxId))
-      cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
-    })
+        val cb = driver
+          .findElement(By.id(checkboxId))
+        cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
+      })
   }
+
 }

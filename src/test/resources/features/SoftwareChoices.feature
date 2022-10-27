@@ -9,7 +9,7 @@ Feature: Software Choices
     And I navigate to the Software Choices home page
     Then I am on the Software Choices home page
     And I am presented with a list of 4 vendors
-    And There are no selected and enabled filters excluding extra pricing options
+    And There are no selected and enabled filters excluding extra pricing options and overseas property option
 
   # Search bar
   Scenario: User searches for a software vendor through the search bar
@@ -71,7 +71,10 @@ Feature: Software Choices
     And The page contains the label for 'UK property'
 
   Scenario: User filters for overseas property
-    Given I open the 'Income type' accordion fold
+    Given On the feature switch page I check features
+      | Overseas Property Option |
+    And I navigate to the Software Choices home page
+    And I open the 'Income type' accordion fold
     And I select the 'Overseas property' checkbox
     And I click to apply filters
     Then I am presented with a list of 2 vendors
@@ -252,7 +255,7 @@ Feature: Software Choices
     And I have selected all filters
     Then There are only selected filters
     When I click to clear filters
-    Then There are no selected and enabled filters excluding extra pricing options
+    Then There are no selected and enabled filters excluding extra pricing options and overseas property option
     And I am presented with a list of 4 vendors
 
   # All filters
