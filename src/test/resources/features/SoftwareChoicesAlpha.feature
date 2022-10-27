@@ -52,6 +52,9 @@ Feature: Software Choices (Alpha Version)
     Then I am presented with an alpha list of 2 vendors
 
   Scenario: User filters for overseas property
+    Given On the feature switch page I check features
+      | Overseas Property Option |
+    And I navigate to the Software Choices home page
     When I select the 'Overseas property' checkbox
     And I click to apply filters
     Then I am presented with an alpha list of 2 vendors
@@ -143,5 +146,5 @@ Feature: Software Choices (Alpha Version)
     Given I have selected all filters
     Then There are only selected filters
     When I click to clear filters
-    Then There are no selected and enabled filters excluding extra pricing options
+    Then There are no selected and enabled filters excluding extra pricing options and overseas property option
     And I am presented with an alpha list of 4 vendors
