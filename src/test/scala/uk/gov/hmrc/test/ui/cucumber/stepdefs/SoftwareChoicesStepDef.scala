@@ -108,9 +108,15 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
-  And("""^I click on the (.*) link$""") { (vendor: String) =>
+  And("""^I click on the test software vendor name one link$""") { () =>
     driver
-      .findElement(By.linkText(s"$vendor"))
+      .findElement(By.linkText("test software vendor name one"))
+      .click()
+  }
+
+  And("""^I click on the glossary link$""") { () =>
+    driver
+      .findElement(By.linkText("explanations"))
       .click()
   }
 

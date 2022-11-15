@@ -25,6 +25,7 @@ object FeatureSwitchPage extends BasePage {
   val switches: Map[String, String] = Map(
     "Beta Features" -> "enable-beta-features",
     "Extra Pricing Options" -> "enable-extra-pricing-options",
+    "Income and Deduction" -> "enable-income-and-deduction",
     "Overseas Property Option" -> "enable-overseasproperty-option"
   )
 
