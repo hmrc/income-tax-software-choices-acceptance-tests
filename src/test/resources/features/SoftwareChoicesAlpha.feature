@@ -15,7 +15,6 @@ Feature: Software Choices (Alpha Version)
   # Search bar
   Scenario: User searches for a software vendor through the search bar
     When I enter 'test software vendor one' into the search bar
-    And I wait for the software vendor list to update
     Then I am presented with an alpha list of vendors matching 'test software vendor name one'
 
   # Pricing checkboxes

@@ -35,11 +35,10 @@ class SoftwareChoicesStepDef extends BaseStepDef {
 
   When("""^I enter '(.*)' into the search bar$""") { (searchTerm: String) =>
     write(searchBarId, searchTerm)
-  }
-
-  And("""^I wait for the software vendor list to update$""") { () =>
     fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.id(softwareVendorsId)))
+      .until(
+        ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
+      )
   }
 
   Then("""^I am presented with a list of vendors matching '(.*)'$""") { (matchingTerm: String) =>
@@ -61,7 +60,8 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.id(alphaCountId)))
     driver
-      .findElement(By.id(alphaCountId)).getText should include(count.toString)
+      .findElement(By.id(alphaCountId))
+      .getText should include(count.toString)
 
   }
 
@@ -70,7 +70,8 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.className(betaCountClass)))
     driver
-      .findElement(By.className(betaCountClass)).getText should include(count.toString)
+      .findElement(By.className(betaCountClass))
+      .getText should include(count.toString)
   }
 
   When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
@@ -82,23 +83,23 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   When("I have opened all folds") { () =>
-    toAccordionFoldId.values.foreach(accordionFoldId => {
+    toAccordionFoldId.values.foreach { accordionFoldId =>
       val accordionFold = driver
         .findElement(By.id(accordionFoldId))
         .findElement(By.xpath("./.."))
       if (accordionFold.getAttribute("aria-expanded") == "false")
         accordionFold.click()
-    })
+    }
   }
 
   When("I have closed all folds") { () =>
-    toAccordionFoldId.values.foreach(accordionFoldId => {
+    toAccordionFoldId.values.foreach { accordionFoldId =>
       val accordionFold = driver
         .findElement(By.id(accordionFoldId))
         .findElement(By.xpath("./.."))
       if (accordionFold.getAttribute("aria-expanded") == "true")
         accordionFold.click()
-    })
+    }
   }
 
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
@@ -129,6 +130,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     driver
       .findElement(By.cssSelector(".apply-filters-button"))
       .click()
+
+    fluentWait
+      .until(
+        ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
+      )
   }
 
   Then("""^I am presented with an alpha list of vendors which provide '(.*)'$""") { (text: String) =>
@@ -140,7 +146,8 @@ class SoftwareChoicesStepDef extends BaseStepDef {
 
   Then("""^The page contains the label for '(.*)'$""") { (text: String) =>
     driver
-      .findElement(By.id("main-content")).getText should include (text)
+      .findElement(By.id("main-content"))
+      .getText should include(text)
   }
 
   Then("""^I am presented with a list of vendors which provide '(.*)'$""") { (text: String) =>
@@ -151,11 +158,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Given("""^I have selected all filters$""") { () =>
-    toFilterId.values.foreach(checkboxId => {
+    toFilterId.values.foreach { checkboxId =>
       val filter = driver
         .findElement(By.id(checkboxId))
       if (!filter.isSelected) filter.click()
-    })
+    }
   }
 
   Then("""^There are only selected filters$""") { () =>
@@ -172,25 +179,26 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Then("""^There are no selected and enabled filters$""") { () =>
-    toFilterId.values.foreach(checkboxId => {
+    toFilterId.values.foreach { checkboxId =>
       val cb = driver
         .findElement(By.id(checkboxId))
       cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
-    })
+    }
   }
 
-  val extraPricingOptions = Seq("free-trial-filter", "paid-for-filter")
+  val extraPricingOptions: Seq[String] = Seq("free-trial-filter", "paid-for-filter")
 
-  val overseasPropertyOption = Seq("overseas-property-filter")
+  val overseasPropertyOption: Seq[String] = Seq("overseas-property-filter")
 
-  Then("""^There are no selected and enabled filters excluding extra pricing options and overseas property option$""") { () =>
-    toFilterId.values
-      .filter(f => !(overseasPropertyOption++extraPricingOptions).contains(f))
-      .foreach(checkboxId => {
-        val cb = driver
-          .findElement(By.id(checkboxId))
-        cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
-      })
+  Then("""^There are no selected and enabled filters excluding extra pricing options and overseas property option$""") {
+    () =>
+      toFilterId.values
+        .filter(f => !(overseasPropertyOption ++ extraPricingOptions).contains(f))
+        .foreach { checkboxId =>
+          val cb = driver
+            .findElement(By.id(checkboxId))
+          cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
+        }
   }
 
 }
