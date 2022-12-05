@@ -35,6 +35,16 @@ class SoftwareChoicesStepDef extends BaseStepDef {
 
   When("""^I enter '(.*)' into the search bar$""") { (searchTerm: String) =>
     write(searchBarId, searchTerm)
+  }
+
+  And("""^I wait for the magic javascript$""") { () =>
+//    fluentWait
+//      .until(
+//        ExpectedConditions.not(
+//          ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
+//        )
+//      )
+    Thread.sleep(500)
     fluentWait
       .until(
         ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
@@ -126,17 +136,6 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .until(ExpectedConditions.presenceOfElementLocated(By.className("hmrc-report-technical-issue")))
   }
 
-  And("""^I click to apply filters$""") { () =>
-    driver
-      .findElement(By.cssSelector(".apply-filters-button"))
-      .click()
-
-    fluentWait
-      .until(
-        ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
-      )
-  }
-
   Then("""^I am presented with an alpha list of vendors which provide '(.*)'$""") { (text: String) =>
     driver
       .findElements(By.cssSelector("#software-vendor-list > div"))
@@ -165,6 +164,14 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     }
   }
 
+  Given("""^I have unselected all filters$""") { () =>
+    toFilterId.values.foreach { checkboxId =>
+      val filter = driver
+        .findElement(By.id(checkboxId))
+      if (filter.isSelected) filter.click()
+    }
+  }
+
   Then("""^There are only selected filters$""") { () =>
     driver
       .findElements(By.cssSelector("input[type=checkbox]"))
@@ -172,12 +179,12 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .foreach(_.isSelected shouldBe true)
   }
 
-  When("""^I click to clear filters$""") { () =>
-    driver
-      .findElement(By.cssSelector(".clear-filters-button"))
-      .click()
-  }
-
+  //  When("""^I click to clear filters$""") { () =>
+  //    driver
+  //      .findElement(By.cssSelector(".clear-filters-button"))
+  //      .click()
+  //  }
+  //
   Then("""^There are no selected and enabled filters$""") { () =>
     toFilterId.values.foreach { checkboxId =>
       val cb = driver

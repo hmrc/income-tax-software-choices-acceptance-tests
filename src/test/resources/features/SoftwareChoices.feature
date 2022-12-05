@@ -20,7 +20,7 @@ Feature: Software Choices
   Scenario: User filters for a free version
     Given I open the 'Pricing' accordion fold
     And I select the 'Free version' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -32,7 +32,7 @@ Feature: Software Choices
     And I navigate to the Software Choices home page
     And I open the 'Pricing' accordion fold
     And I select the 'Free trial' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -44,7 +44,7 @@ Feature: Software Choices
     And I navigate to the Software Choices home page
     And I open the 'Pricing' accordion fold
     And I select the 'Paid for' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 1 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -54,7 +54,7 @@ Feature: Software Choices
   Scenario: User filters for sole trader
     Given I open the 'Income type' accordion fold
     And I select the 'Sole trader' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -63,7 +63,7 @@ Feature: Software Choices
   Scenario: User filters for UK property
     Given I open the 'Income type' accordion fold
     And I select the 'UK property' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -75,7 +75,7 @@ Feature: Software Choices
     And I navigate to the Software Choices home page
     And I open the 'Income type' accordion fold
     And I select the 'Overseas property' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -85,7 +85,7 @@ Feature: Software Choices
   Scenario: User filters for a individual
     Given I open the 'Business type' accordion fold
     And I select the 'Individual' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -94,7 +94,7 @@ Feature: Software Choices
   Scenario: User filters for a agent
     Given I open the 'Business type' accordion fold
     And I select the 'Agent' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -104,7 +104,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Microsoft Windows
     Given I open the 'Compatible with' accordion fold
     And I select the 'Microsoft' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -113,7 +113,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Mac OS
     Given I open the 'Compatible with' accordion fold
     And I select the 'Mac OS' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -123,7 +123,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Android
     Given I open the 'Mobile app' accordion fold
     And I select the 'Android' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -132,7 +132,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Apple iOS
     Given I open the 'Mobile app' accordion fold
     And I select the 'Apple iOS' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -142,7 +142,7 @@ Feature: Software Choices
   Scenario: User filters for software type browser based
     Given I open the 'Software type' accordion fold
     And I select the 'Browser based' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -151,7 +151,7 @@ Feature: Software Choices
   Scenario: User filters for software type application based
     Given I open the 'Software type' accordion fold
     And I select the 'Application based' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -161,7 +161,7 @@ Feature: Software Choices
   Scenario: User filters for Software for record keeping
     Given I open the 'Software for' accordion fold
     And I select the 'Record keeping' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -170,7 +170,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with bridging
     Given I open the 'Software for' accordion fold
     And I select the 'Bridging' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -180,7 +180,7 @@ Feature: Software Choices
   Scenario: User filters for VAT
     Given I open the 'Software compatibility' accordion fold
     And I select the 'VAT' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -190,7 +190,7 @@ Feature: Software Choices
   Scenario: User filters for Welsh
     Given I open the 'Language' accordion fold
     And I select the 'Welsh' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 1 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -200,7 +200,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Visual accessibility features
     Given I open the 'Accessibility features' accordion fold
     And I select the 'Visual' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -209,7 +209,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Hearing accessibility features
     Given I open the 'Accessibility features' accordion fold
     And I select the 'Hearing' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -218,7 +218,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Motor accessibility features
     Given I open the 'Accessibility features' accordion fold
     And I select the 'Motor' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -227,7 +227,7 @@ Feature: Software Choices
   Scenario: User filters for compatible with Cognitive accessibility features
     Given I open the 'Accessibility features' accordion fold
     And I select the 'Cognitive' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -241,7 +241,7 @@ Feature: Software Choices
     And I open the 'Pricing' accordion fold
     And I select the 'Free trial' checkbox
     And I select the 'Free version' checkbox
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 1 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
@@ -249,24 +249,27 @@ Feature: Software Choices
     And The page contains the label for 'Free version'
 
   # Clear filters
+  @Justin
   Scenario: User clears filters
     When I have opened all folds
     And I have selected all filters
     Then There are only selected filters
-    When I click to clear filters
+    And I have unselected all filters
     Then There are no selected and enabled filters excluding extra pricing options and overseas property option
+    And I wait for the magic javascript
     And I am presented with a list of 4 vendors
 
   # All filters
   Scenario: User uses all filters
     When I have opened all folds
     And I have selected all filters
-    And I click to apply filters
+    And I wait for the magic javascript
     Then I am presented with a list of 1 vendors
 
   Scenario: User clears and closes all filters
     When I have opened all folds
-    And I click to clear filters
+    And I have unselected all filters
     And I have closed all folds
+    And I wait for the magic javascript
     Then I am presented with a list of 4 vendors
 
