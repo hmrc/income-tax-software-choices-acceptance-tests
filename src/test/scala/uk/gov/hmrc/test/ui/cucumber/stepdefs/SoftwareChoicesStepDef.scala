@@ -138,7 +138,7 @@ class SoftwareChoicesStepDef extends BaseStepDef {
 
   Then("""^I am presented with an alpha list of vendors which provide '(.*)'$""") { (text: String) =>
     driver
-      .findElements(By.cssSelector("#software-vendor-list > div"))
+      .findElements(By.cssSelector("#software-vendor-list > div:not(:first-child)"))
       .asScala
       .foreach(_.getText should include(text))
   }
