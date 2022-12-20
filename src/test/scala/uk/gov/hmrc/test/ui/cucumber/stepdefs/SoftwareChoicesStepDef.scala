@@ -38,12 +38,6 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   And("""^I wait for the magic javascript$""") { () =>
-//    fluentWait
-//      .until(
-//        ExpectedConditions.not(
-//          ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
-//        )
-//      )
     Thread.sleep(500)
     fluentWait
       .until(
@@ -66,21 +60,19 @@ class SoftwareChoicesStepDef extends BaseStepDef {
   }
 
   Then("""^I am presented with an alpha list of (.*) vendors$""") { (count: Int) =>
-    val alphaCountId = "vendor-count"
     fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.id(alphaCountId)))
+      .until(ExpectedConditions.presenceOfElementLocated(By.id(vendorCountId)))
     driver
-      .findElement(By.id(alphaCountId))
+      .findElement(By.id(vendorCountId))
       .getText should include(count.toString)
 
   }
 
   Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
-    val betaCountClass = "software-vendors-num"
     fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.className(betaCountClass)))
+      .until(ExpectedConditions.presenceOfElementLocated(By.id(vendorCountId)))
     driver
-      .findElement(By.className(betaCountClass))
+      .findElement(By.id(vendorCountId))
       .getText should include(count.toString)
   }
 
