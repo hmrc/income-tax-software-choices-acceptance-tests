@@ -24,6 +24,8 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val searchBarId: String = "searchTerm"
 
+  val vendorCountId: String = "vendor-count"
+
   val softwareVendorsId: String = "software-vendor-0"
 
   private val filterSections: Seq[String] = Seq(
