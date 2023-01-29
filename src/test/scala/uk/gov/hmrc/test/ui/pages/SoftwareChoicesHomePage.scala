@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,28 +49,28 @@ object SoftwareChoicesHomePage extends BasePage {
     .toMap
 
   val toFilterId: Map[String, String] = Map(
-    "Free trial"        -> "free-trial-filter",
-    "Free version"      -> "free-version-filter",
-    "Paid for"          -> "paid-for-filter",
-    "Sole trader"       -> "sole-trader-filter",
-    "UK property"       -> "uk-property-filter",
-    "Overseas property" -> "overseas-property-filter",
-    "Microsoft"         -> "microsoft-windows-filter",
-    "Mac OS"            -> "mac-os-filter",
-    "Android"           -> "android-filter",
-    "Apple iOS"         -> "apple-ios-filter",
-    "Browser based"     -> "browser-based-filter",
-    "Application based" -> "application-based-filter",
-    "Record keeping"    -> "record-keeping-filter",
-    "Bridging"          -> "bridging-filter",
-    "Individual"        -> "individual-filter",
-    "Agent"             -> "agent-filter",
-    "VAT"               -> "vat-filter",
-    "Welsh"             -> "welsh-filter",
-    "Visual"            -> "visual-filter",
-    "Hearing"           -> "hearing-filter",
-    "Motor"             -> "motor-filter",
-    "Cognitive"         -> "cognitive-filter"
+    "Free trial"                    -> "free-trial-filter",
+    "Free version"                  -> "free-version-filter",
+    "Paid for"                      -> "paid-for-filter",
+    "Sole trader"                   -> "sole-trader-filter",
+    "UK property"                   -> "uk-property-filter",
+    "Overseas property"             -> "overseas-property-filter",
+    "Microsoft"                     -> "microsoft-windows-filter",
+    "Mac OS"                        -> "mac-os-filter",
+    "Android"                       -> "android-filter",
+    "Apple iOS"                     -> "apple-ios-filter",
+    "Browser based"                 -> "browser-based-filter",
+    "Application based"             -> "application-based-filter",
+    "Record keeping"                -> "record-keeping-filter",
+    "Bridging"                      -> "bridging-filter",
+    "Individual"                    -> "individual-filter",
+    "Agent"                         -> "agent-filter",
+    "VAT"                           -> "vat-filter",
+    "Welsh"                         -> "welsh-filter",
+    "Impaired vision and blindness" -> "visual-filter",
+    "Deafness and impaired hearing" -> "hearing-filter",
+    "Motor difficulties"            -> "motor-filter",
+    "Cognitive impairments"         -> "cognitive-filter"
   )
 
   def loadPage: this.type = {

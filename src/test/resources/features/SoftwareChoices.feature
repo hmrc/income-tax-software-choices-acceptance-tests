@@ -197,41 +197,41 @@ Feature: Software Choices
     And The page contains the label for 'Welsh'
 
   # Accessibility features checkboxes
-  Scenario: User filters for compatible with Visual accessibility features
+  Scenario: User filters for compatible with Impaired vision and blindness accessibility features
     Given I open the 'Accessibility features' accordion fold
-    And I select the 'Visual' checkbox
+    And I select the 'Impaired vision and blindness' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
-    And The page contains the label for 'Visual'
+    And The page contains the label for 'Impaired vision and blindness'
 
-  Scenario: User filters for compatible with Hearing accessibility features
+  Scenario: User filters for compatible with Deafness and impaired hearing accessibility features
     Given I open the 'Accessibility features' accordion fold
-    And I select the 'Hearing' checkbox
+    And I select the 'Deafness and impaired hearing' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
-    And The page contains the label for 'Hearing'
+    And The page contains the label for 'Deafness and impaired hearing'
 
-  Scenario: User filters for compatible with Motor accessibility features
+  Scenario: User filters for compatible with Motor difficulties accessibility features
     Given I open the 'Accessibility features' accordion fold
-    And I select the 'Motor' checkbox
+    And I select the 'Motor difficulties' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
-    And The page contains the label for 'Motor'
+    And The page contains the label for 'Motor difficulties'
 
-  Scenario: User filters for compatible with Cognitive accessibility features
+  Scenario: User filters for compatible with Cognitive impairments accessibility features
     Given I open the 'Accessibility features' accordion fold
-    And I select the 'Cognitive' checkbox
+    And I select the 'Cognitive impairments' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the test software vendor name one link
     And I wait for the details page to load
-    And The page contains the label for 'Cognitive'
+    And The page contains the label for 'Cognitive impairments'
 
   # Multiple filters
   Scenario: User filters for a free trial AND a free version
