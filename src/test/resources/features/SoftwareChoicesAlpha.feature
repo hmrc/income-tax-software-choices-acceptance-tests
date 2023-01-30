@@ -120,25 +120,25 @@ Feature: Software Choices (Alpha Version)
     Then I am presented with an alpha list of 2 vendors
 
   # Accessibility features checkboxes
-  Scenario: User filters for compatible with Visual accessibility features
-    When I select the 'Visual' checkbox
+  Scenario: User filters for compatible with Impaired vision and blindness accessibility features
+    When I select the 'Impaired vision and blindness' checkbox
     And I wait for the magic javascript
-    Then I am presented with an alpha list of vendors which provide 'Visual'
+    Then I am presented with an alpha list of vendors which provide 'Impaired vision and blindness'
 
-  Scenario: User filters for compatible with Hearing accessibility features
-    When I select the 'Hearing' checkbox
+  Scenario: User filters for compatible with Deafness and impaired hearing accessibility features
+    When I select the 'Deafness and impaired hearing' checkbox
     And I wait for the magic javascript
-    Then I am presented with an alpha list of vendors which provide 'Hearing'
+    Then I am presented with an alpha list of vendors which provide 'Deafness and impaired hearing'
 
-  Scenario: User filters for compatible with Motor accessibility features
-    When I select the 'Motor' checkbox
+  Scenario: User filters for compatible with Motor difficulties accessibility features
+    When I select the 'Motor difficulties' checkbox
     And I wait for the magic javascript
-    Then I am presented with an alpha list of vendors which provide 'Motor'
+    Then I am presented with an alpha list of vendors which provide 'Motor difficulties'
 
-  Scenario: User filters for compatible with Cognitive accessibility features
-    When I select the 'Cognitive' checkbox
+  Scenario: User filters for compatible impairments with Cognitive accessibility features
+    When I select the 'Cognitive impairments' checkbox
     And I wait for the magic javascript
-    Then I am presented with an alpha list of vendors which provide 'Cognitive'
+    Then I am presented with an alpha list of vendors which provide 'Cognitive impairments'
 
   # Clear filters
 #  Scenario: User clears filters
