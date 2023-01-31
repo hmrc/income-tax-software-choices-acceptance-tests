@@ -31,7 +31,7 @@ object SoftwareChoicesHomePage extends BasePage {
   private val filterSections: Seq[String] = Seq(
     "Accessibility features",
     "Pricing",
-    "Income type",
+    "Suitable for",
     "Compatible with",
     "Mobile app",
     "Software type",

@@ -52,7 +52,7 @@ Feature: Software Choices
 
   # Income type checkboxes
   Scenario: User filters for sole trader
-    Given I open the 'Income type' accordion fold
+    Given I open the 'Suitable for' accordion fold
     And I select the 'Sole trader' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
@@ -61,7 +61,7 @@ Feature: Software Choices
     And The page contains the label for 'Sole trader'
 
   Scenario: User filters for UK property
-    Given I open the 'Income type' accordion fold
+    Given I open the 'Suitable for' accordion fold
     And I select the 'UK property' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
@@ -73,7 +73,7 @@ Feature: Software Choices
     Given On the feature switch page I check features
       | Overseas Property Option |
     And I navigate to the Software Choices home page
-    And I open the 'Income type' accordion fold
+    And I open the 'Suitable for' accordion fold
     And I select the 'Overseas property' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
