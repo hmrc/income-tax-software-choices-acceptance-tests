@@ -32,7 +32,7 @@ object SoftwareChoicesHomePage extends BasePage {
     "Accessibility features",
     "Pricing",
     "Suitable for",
-    "Compatible with",
+    "Operating system",
     "Mobile app",
     "Software type",
     "Software for",

@@ -100,9 +100,9 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Agent'
 
-  # Compatible with checkboxes
-  Scenario: User filters for compatible with Microsoft Windows
-    Given I open the 'Compatible with' accordion fold
+  # Operating system checkboxes
+  Scenario: User filters for operating system Microsoft Windows
+    Given I open the 'Operating system' accordion fold
     And I select the 'Microsoft' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
@@ -110,8 +110,8 @@ Feature: Software Choices
     And I wait for the details page to load
     And The page contains the label for 'Microsoft Windows'
 
-  Scenario: User filters for compatible with Mac OS
-    Given I open the 'Compatible with' accordion fold
+  Scenario: User filters for operating system Mac OS
+    Given I open the 'Operating system' accordion fold
     And I select the 'Mac OS' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
