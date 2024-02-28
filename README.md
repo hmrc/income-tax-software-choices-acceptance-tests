@@ -15,12 +15,11 @@ This repo contains the acceptance tests for the income tax subscription service.
 ## Prerequisites
 
 * [sbt](http://www.scala-sbt.org/)
-* MongoDB (*[See Persistence](#Persistence)*)
+* Either [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) or [local-selenium-grid](https://github.com/hmrc/local-selenium-grid)
 * HMRC Service manager (*[Install Service-Manager](https://github.com/hmrc/service-manager/wiki/Install#install-service-manager)*)
 
 Also, possibly:
-* Chrome
-* Chromedriver (version must match Chrome version)
+* Chromedriver
 
 Chromedriver can be downloaded from https://chromedriver.chromium.org/downloads or installed with `brew install --cask chromedriver` and should be placed on your path.
 
@@ -30,35 +29,16 @@ You will need to "trust" chromedriver. Open with ctrl-click in Finder and follow
 
 ### Before running any tests
 
-Start the services `./scripts/run_services`
-
-Params:
+1. Start the services `sm2 --start ITSA_SOFTWARE_CHOICES_ALL`
 * Additional sm parameters such as `--offline` can be added if desired
+
+2. Start your chosen selenium grid by going to the repository and running the `./start.sh` script.
 
 ### Scripts
 
 #### Running the Journey tests
 ```
-./scripts/run_tests
-```
-
-Params:
-* `-t=@customTag` or `--tags=@customTag` to specify which tags to run, add `~` in from of the tag to ignore these tests (Default value `@ITSA`).
-* `-b=chrome` or `--browser=chrome` to specify a browser (By default run tests in a headless environment).
-* `--staging` to run tests against the staging environment.
-* `--qa` to run tests against the QA environment.
-* `--continuous` to run tests every time a file is changed
-
-Example:
-
-*Run tests with custom tag in the Chrome browser against the staging environment.*
-```
-./scripts/run_tests --tags=@customTag --browser=chrome --staging
-```
-
-*Run only tests labeled '@beta' locally, every time a file changes.*
-```
-./scripts/run_tests --tags=@beta --continuous
+./run_tests.sh
 ```
 
 ## How to use
@@ -100,9 +80,7 @@ I am on the 'Agent' Eligibility Terms page and click "Accept and continue"
 ```
 
 ## Browser drivers
-
 ### macOS
-
 With Homebrew (*[Install Homebrew](https://github.com/Homebrew/install#install-homebrew-on-macos-or-linux)*):
 ```shell
 # Chrome browser
@@ -110,17 +88,3 @@ brew install --cask chromedriver
 # Firefox browser
 brew install geckodriver
 ```
-
-More details [here](./docs/acceptance-tests.md#Installing-local-driver-binaries)
-
-## Persistence
-
-Data is stored as key/value in Mongo DB. See json reads/writes implementations (especially tests) for details.
-
-To connect to the mongo db provided by docker (recommended) please use
-
-```
-docker exec -it mongo-db mongosh
-```
-
-Various commands are available.  Start with `show dbs` to see which databases are populated.

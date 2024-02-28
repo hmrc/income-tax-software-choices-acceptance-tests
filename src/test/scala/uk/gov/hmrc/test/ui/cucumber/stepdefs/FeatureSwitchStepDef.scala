@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,16 +26,18 @@ class FeatureSwitchStepDef extends BaseStepDef {
   private val submitButtonId = "continue-button"
 
   Given("^I navigate to the Feature Switch page$") { () =>
-    FeatureSwitchPage.loadPage
+    FeatureSwitchPage.loadPage()
   }
 
-  Then("^I am on the Feature Switch page$") { () => assertUrl(FeatureSwitchPage.url) }
+  Then("^I am on the Feature Switch page$")(() => assertUrl(FeatureSwitchPage.url))
 
-  When("""^I (.*) the '(.*)' check box$""") { (checkOrUncheck: String, featureName: String) => setFeature(featureName, checkOrUncheck) }
+  When("""^I (.*) the '(.*)' check box$""") { (checkOrUncheck: String, featureName: String) =>
+    setFeature(featureName, checkOrUncheck)
+  }
 
-  And("""^I click to update the Feature Switches$""") { () => submitFeatureSwitches() }
+  And("""^I click to update the Feature Switches$""")(() => submitFeatureSwitches())
 
-  And("""^I wait for the page to return$""") { () => waitForPage }
+  And("""^I wait for the page to return$""")(() => waitForPage)
 
   And("""^The '(.*)' check box is (.*)$""") { (featureName: String, checkOrUncheck: String) =>
     val checkBox = getCheckBox(featureName)
@@ -50,7 +52,7 @@ class FeatureSwitchStepDef extends BaseStepDef {
   }
 
   And("^On the feature switch page I (.*) features$") { (checkOrUncheck: String, collection: DataTable) =>
-    FeatureSwitchPage.loadPage
+    FeatureSwitchPage.loadPage()
     collection.asList().forEach(featureName => setFeature(featureName, checkOrUncheck))
     submitFeatureSwitches()
     waitForPage
@@ -66,16 +68,14 @@ class FeatureSwitchStepDef extends BaseStepDef {
       checkBox.click()
   }
 
-  private def submitFeatureSwitches(): Unit = {
+  private def submitFeatureSwitches(): Unit =
     driver
       .findElement(By.id(submitButtonId))
       .click()
-  }
 
-  private def waitForPage = {
+  private def waitForPage =
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.id(submitButtonId)))
-  }
 
   private def getCheckBox(featureName: String) = {
     val checkBoxValue: String = switches.getOrElse(featureName, fail(s"Unknown feature name: $featureName"))

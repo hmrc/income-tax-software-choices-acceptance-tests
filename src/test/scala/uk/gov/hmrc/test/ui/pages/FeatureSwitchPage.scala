@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,16 +23,15 @@ object FeatureSwitchPage extends BasePage {
   val url: String = TestConfiguration.url("software-choices-frontend") + "/test-only/feature-switch"
 
   val switches: Map[String, String] = Map(
-    "Beta Features" -> "enable-beta-features",
-    "Extra Pricing Options" -> "enable-extra-pricing-options",
-    "Income and Deduction" -> "enable-income-and-deduction",
+    "Beta Features"            -> "enable-beta-features",
+    "Extra Pricing Options"    -> "enable-extra-pricing-options",
+    "Income and Deduction"     -> "enable-income-and-deduction",
     "Overseas Property Option" -> "enable-overseasproperty-option"
   )
 
-  def loadPage: this.type = {
+  def loadPage(): Unit = {
     driver.navigate().to(url)
     assertUrl(url)
-    this
   }
 
 }

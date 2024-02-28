@@ -1,4 +1,0 @@
-#!/bin/bash
-
-sm --start ITSA_SOFTWARE_CHOICES_ALL \
-  $@
