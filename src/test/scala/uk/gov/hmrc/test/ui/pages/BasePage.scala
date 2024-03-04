@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,9 @@ trait BasePage extends BrowserDriver with Matchers {
 
   val continueButton = "continue-button"
 
-  val fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
-    .withTimeout(Duration.ofSeconds(10))
-    .pollingEvery(Duration.ofMillis(500))
+  def fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(2))
+    .pollingEvery(Duration.ofMillis(250))
     .ignoring(classOf[NoSuchElementException])
 
   def write(id: String, text: String): Unit = driver

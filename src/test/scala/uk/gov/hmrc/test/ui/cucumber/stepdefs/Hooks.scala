@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,17 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.scala.{EN, ScalaDsl, Scenario}
-import org.openqa.selenium.{OutputType, TakesScreenshot}
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import io.cucumber.scala.{EN, ScalaDsl}
+import uk.gov.hmrc.selenium.webdriver.Browser
 
-class Hooks extends ScalaDsl with EN with BrowserDriver {
-  After { scenario: Scenario =>
-    if (scenario.isFailed) {
-      val screenshotName = scenario.getName.replaceAll(" ", "_")
-      val screenshot     = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.BYTES)
-      scenario.attach(screenshot, "image/png", screenshotName)
-    }
+object Hooks extends ScalaDsl with EN with Browser {
+
+  Before {
+    startBrowser()
   }
+
+  After {
+    quitBrowser()
+  }
+
 }

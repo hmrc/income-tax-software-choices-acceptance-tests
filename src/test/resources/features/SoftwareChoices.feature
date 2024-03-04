@@ -249,7 +249,6 @@ Feature: Software Choices
     And The page contains the label for 'Free version'
 
   # Clear filters
-  @Justin
   Scenario: User clears filters
     When I have opened all folds
     And I have selected all filters

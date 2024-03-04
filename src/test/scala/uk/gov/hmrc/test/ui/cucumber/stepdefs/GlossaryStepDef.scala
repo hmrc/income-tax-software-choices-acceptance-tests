@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,9 +35,7 @@ class GlossaryStepDef extends BaseStepDef {
   }
 
   And("""^On the glossary page, I wait for the list to update$""") { () =>
-    fluentWait.until(
-      ExpectedConditions.presenceOfElementLocated(By.cssSelector(".loading"))
-    )
+    Thread.sleep(500)
     fluentWait.until(
       ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading"))
     )
