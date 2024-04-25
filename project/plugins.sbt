@@ -9,4 +9,4 @@ addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.0")
 
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.2")
 
-addSbtPlugin("uk.gov.hmrc" % "sbt-test-report" % "0.23.0")
+addSbtPlugin("uk.gov.hmrc" % "sbt-test-report" % "0.26.0")
