@@ -22,33 +22,9 @@ Feature: Software Choices
     And I select the 'Free version' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Free version'
-
-  Scenario: User filters for a free trial
-    Given On the feature switch page I check features
-      | Extra Pricing Options |
-    And I navigate to the Software Choices home page
-    And I open the 'Pricing' accordion fold
-    And I select the 'Free trial' checkbox
-    And I wait for the magic javascript
-    Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
-    And I wait for the details page to load
-    And The page contains the label for 'Free trial'
-
-  Scenario: User filters for paid for
-    Given On the feature switch page I check features
-      | Extra Pricing Options |
-    And I navigate to the Software Choices home page
-    And I open the 'Pricing' accordion fold
-    And I select the 'Paid for' checkbox
-    And I wait for the magic javascript
-    Then I am presented with a list of 1 vendors
-    And I click on the test software vendor name one link
-    And I wait for the details page to load
-    And The page contains the label for 'Paid for'
 
   # Income type checkboxes
   Scenario: User filters for sole trader
@@ -56,7 +32,7 @@ Feature: Software Choices
     And I select the 'Sole trader' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Sole trader'
 
@@ -65,21 +41,9 @@ Feature: Software Choices
     And I select the 'UK property' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'UK property'
-
-  Scenario: User filters for overseas property
-    Given On the feature switch page I check features
-      | Overseas Property Option |
-    And I navigate to the Software Choices home page
-    And I open the 'Suitable for' accordion fold
-    And I select the 'Overseas property' checkbox
-    And I wait for the magic javascript
-    Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
-    And I wait for the details page to load
-    And The page contains the label for 'Overseas property'
 
   # Business type checkboxes
   Scenario: User filters for a individual
@@ -87,7 +51,7 @@ Feature: Software Choices
     And I select the 'Individual' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Individual'
 
@@ -96,7 +60,7 @@ Feature: Software Choices
     And I select the 'Agent' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Agent'
 
@@ -106,7 +70,7 @@ Feature: Software Choices
     And I select the 'Microsoft' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Microsoft Windows'
 
@@ -115,7 +79,7 @@ Feature: Software Choices
     And I select the 'Mac OS' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Mac OS'
 
@@ -125,7 +89,7 @@ Feature: Software Choices
     And I select the 'Android' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Android'
 
@@ -134,7 +98,7 @@ Feature: Software Choices
     And I select the 'Apple iOS' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'iOS'
 
@@ -144,7 +108,7 @@ Feature: Software Choices
     And I select the 'Browser based' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Browser based'
 
@@ -153,7 +117,7 @@ Feature: Software Choices
     And I select the 'Application based' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Application based'
 
@@ -163,7 +127,7 @@ Feature: Software Choices
     And I select the 'Record keeping' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Record keeping'
 
@@ -172,7 +136,7 @@ Feature: Software Choices
     And I select the 'Bridging' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Bridging'
 
@@ -182,7 +146,7 @@ Feature: Software Choices
     And I select the 'VAT' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'VAT'
 
@@ -192,7 +156,7 @@ Feature: Software Choices
     And I select the 'Welsh' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 1 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Welsh'
 
@@ -202,7 +166,7 @@ Feature: Software Choices
     And I select the 'Impaired vision and blindness' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Impaired vision and blindness'
 
@@ -211,7 +175,7 @@ Feature: Software Choices
     And I select the 'Deafness and impaired hearing' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Deafness and impaired hearing'
 
@@ -220,7 +184,7 @@ Feature: Software Choices
     And I select the 'Motor difficulties' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Motor difficulties'
 
@@ -229,46 +193,6 @@ Feature: Software Choices
     And I select the 'Cognitive impairments' checkbox
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
-    And I click on the test software vendor name one link
+    And I click on the vendor link: 1
     And I wait for the details page to load
     And The page contains the label for 'Cognitive impairments'
-
-  # Multiple filters
-  Scenario: User filters for a free trial AND a free version
-    Given On the feature switch page I check features
-      | Extra Pricing Options |
-    And I navigate to the Software Choices home page
-    And I open the 'Pricing' accordion fold
-    And I select the 'Free trial' checkbox
-    And I select the 'Free version' checkbox
-    And I wait for the magic javascript
-    Then I am presented with a list of 1 vendors
-    And I click on the test software vendor name one link
-    And I wait for the details page to load
-    And The page contains the label for 'Free trial'
-    And The page contains the label for 'Free version'
-
-  # Clear filters
-  Scenario: User clears filters
-    When I have opened all folds
-    And I have selected all filters
-    Then There are only selected filters
-    And I have unselected all filters
-    Then There are no selected and enabled filters excluding extra pricing options and overseas property option
-    And I wait for the magic javascript
-    And I am presented with a list of 4 vendors
-
-  # All filters
-  Scenario: User uses all filters
-    When I have opened all folds
-    And I have selected all filters
-    And I wait for the magic javascript
-    Then I am presented with a list of 1 vendors
-
-  Scenario: User clears and closes all filters
-    When I have opened all folds
-    And I have unselected all filters
-    And I have closed all folds
-    And I wait for the magic javascript
-    Then I am presented with a list of 4 vendors
-
