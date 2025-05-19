@@ -37,17 +37,9 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     write(searchBarId, searchTerm)
   }
 
-  And("""^I wait for the magic javascript$""") { () =>
-    Thread.sleep(500)
-    fluentWait
-      .until(
-        ExpectedConditions.visibilityOfElementLocated(By.id(softwareVendorsId))
-      )
-  }
-
   Then("""^I am presented with a list of vendors matching '(.*)'$""") { (matchingTerm: String) =>
     driver
-      .findElements(By.cssSelector(".govuk-grid-column-two-thirds > div > h3"))
+      .findElements(By.cssSelector("#software-vendor-list > div > h3"))
       .asScala
       .foreach(_.getText should include(matchingTerm))
   }
@@ -200,5 +192,18 @@ class SoftwareChoicesStepDef extends BaseStepDef {
           cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
         }
   }
+
+  Then("""^I click on the search button$""") { () =>
+    driver
+      .findElement(By.id("searchButton"))
+      .click()
+  }
+
+  Then("""^I click on the apply filters button$""") { () =>
+    driver
+      .findElement(By.cssSelector(".apply-filters-button"))
+      .click()
+  }
+
 
 }
