@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import uk.gov.hmrc.test.ui.pages.ProductDetailsPage
+import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage._
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array(
-    "pretty",
-    "html:target/cucumber.html",
-    "json:target/cucumber.json",
-    "junit:target/test-reports/Runner.xml",
-    "unused:target/unusedStepDefs.txt"
-  ),
-  tags = "@ITSC"
-)
-class Runner {}
+class ProductDetailsStepDef extends BaseStepDef {
+
+  When("^I am on the product details page for vendor: '(.*)'$") { (vendor: String) =>
+    assertUrl(ProductDetailsPage.url(vendor))
+  }
+
+}

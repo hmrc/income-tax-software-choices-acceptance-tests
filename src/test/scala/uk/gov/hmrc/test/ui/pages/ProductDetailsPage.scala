@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.pages
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array(
-    "pretty",
-    "html:target/cucumber.html",
-    "json:target/cucumber.json",
-    "junit:target/test-reports/Runner.xml",
-    "unused:target/unusedStepDefs.txt"
-  ),
-  tags = "@ITSC"
-)
-class Runner {}
+import java.net.URLEncoder
+
+object ProductDetailsPage extends BasePage {
+
+  def url(vendor: String): String =
+    TestConfiguration.url("software-choices-frontend") + "/product-details/" + URLEncoder.encode(vendor, "UTF-8")
+
+}
