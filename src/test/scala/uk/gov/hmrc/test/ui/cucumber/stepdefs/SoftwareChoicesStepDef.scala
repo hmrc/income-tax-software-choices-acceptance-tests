@@ -72,8 +72,8 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.id(vendorCountId)))
     driver
-      .findElement(By.id(vendorCountId))
-      .getText should include(count.toString)
+      .findElements(By.cssSelector(s"#$softwareVendorList > div"))
+      .size() shouldBe count
   }
 
   When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
@@ -111,9 +111,10 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
-  And("""^I click on the test software vendor name one link$""") { () =>
+  And("""^I click on the vendor link: (\d)$""") { (index: Int) =>
     driver
-      .findElement(By.linkText("test software vendor name one"))
+      .findElement(By.id(s"software-vendor-${index - 1}"))
+      .findElement(By.tagName("a"))
       .click()
   }
 
