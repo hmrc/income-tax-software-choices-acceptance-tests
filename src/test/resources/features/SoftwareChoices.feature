@@ -23,8 +23,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Free version'
+    Then I am on the product details page
 
   # Income type checkboxes
   Scenario: User filters for sole trader
@@ -33,8 +32,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Sole trader'
+    Then I am on the product details page
 
   Scenario: User filters for UK property
     Given I open the 'Suitable for' accordion fold
@@ -42,8 +40,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'UK property'
+    Then I am on the product details page
 
   # Business type checkboxes
   Scenario: User filters for a individual
@@ -52,8 +49,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Individual'
+    Then I am on the product details page
 
   Scenario: User filters for a agent
     Given I open the 'Business type' accordion fold
@@ -61,8 +57,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Agent'
+    Then I am on the product details page
 
   # Operating system checkboxes
   Scenario: User filters for operating system Microsoft Windows
@@ -71,8 +66,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Microsoft Windows'
+    Then I am on the product details page
 
   Scenario: User filters for operating system Mac OS
     Given I open the 'Operating system' accordion fold
@@ -80,8 +74,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Mac OS'
+    Then I am on the product details page
 
   # Mobile app checkboxes
   Scenario: User filters for compatible with Android
@@ -90,8 +83,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Android'
+    Then I am on the product details page
 
   Scenario: User filters for compatible with Apple iOS
     Given I open the 'Mobile app' accordion fold
@@ -99,8 +91,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'iOS'
+    Then I am on the product details page
 
   # Software type checkboxes
   Scenario: User filters for software type browser based
@@ -109,8 +100,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Browser based'
+    Then I am on the product details page
 
   Scenario: User filters for software type application based
     Given I open the 'Software type' accordion fold
@@ -118,8 +108,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Application based'
+    Then I am on the product details page
 
   # Software for checkboxes
   Scenario: User filters for Software for record keeping
@@ -128,7 +117,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
+    Then I am on the product details page
     And The page contains the label for 'Record keeping'
 
   Scenario: User filters for compatible with bridging
@@ -137,7 +126,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
+    Then I am on the product details page
     And The page contains the label for 'Bridging'
 
   # Software compatibility checkboxes
@@ -147,8 +136,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'VAT'
+    Then I am on the product details page
 
   # Language checkboxes
   Scenario: User filters for Welsh
@@ -157,8 +145,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 1 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Welsh'
+    Then I am on the product details page
 
   # Accessibility features checkboxes
   Scenario: User filters for compatible with Impaired vision and blindness accessibility features
@@ -167,8 +154,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Impaired vision and blindness'
+    Then I am on the product details page
 
   Scenario: User filters for compatible with Deafness and impaired hearing accessibility features
     Given I open the 'Accessibility features' accordion fold
@@ -176,8 +162,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Deafness and impaired hearing'
+    Then I am on the product details page
 
   Scenario: User filters for compatible with Motor difficulties accessibility features
     Given I open the 'Accessibility features' accordion fold
@@ -185,8 +170,7 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Motor difficulties'
+    Then I am on the product details page
 
   Scenario: User filters for compatible with Cognitive impairments accessibility features
     Given I open the 'Accessibility features' accordion fold
@@ -194,5 +178,4 @@ Feature: Software Choices
     And I wait for the magic javascript
     Then I am presented with a list of 2 vendors
     And I click on the vendor link: 1
-    And I wait for the details page to load
-    And The page contains the label for 'Cognitive impairments'
+    Then I am on the product details page

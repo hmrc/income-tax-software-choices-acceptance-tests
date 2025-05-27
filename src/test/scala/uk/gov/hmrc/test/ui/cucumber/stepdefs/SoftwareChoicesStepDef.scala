@@ -124,9 +124,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
-  And("""^I wait for the details page to load$""") { () =>
+  And("""^I am on the product details page$""") { () =>
     fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.className("hmrc-report-technical-issue")))
+      .until(
+        ExpectedConditions.urlContains("making-tax-digital-income-tax-software/product-details/")
+      )
   }
 
   Then("""^I am presented with an alpha list of vendors which provide '(.*)'$""") { (text: String) =>
