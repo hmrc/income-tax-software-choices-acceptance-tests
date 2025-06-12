@@ -44,22 +44,6 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .foreach(_.getText should include(matchingTerm))
   }
 
-  Then("""^I am presented with an alpha list of vendors matching '(.*)'$""") { (matchingTerm: String) =>
-    driver
-      .findElements(By.cssSelector(".govuk-grid-column-two-thirds > div > h3"))
-      .asScala
-      .foreach(_.getText should include(matchingTerm))
-  }
-
-  Then("""^I am presented with an alpha list of (.*) vendors$""") { (count: Int) =>
-    fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.id(vendorCountId)))
-    driver
-      .findElement(By.id(vendorCountId))
-      .getText should include(count.toString)
-
-  }
-
   Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
     fluentWait
       .until(ExpectedConditions.presenceOfElementLocated(By.id(vendorCountId)))
@@ -74,34 +58,6 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
-  When("""^I open the '(.*)' accordion fold$""") { (accordionFoldName: String) =>
-    val accordionFold = driver
-      .findElement(By.id(toAccordionFoldId(accordionFoldName)))
-      .findElement(By.xpath("./.."))
-    if (accordionFold.getAttribute("aria-expanded") == "false")
-      accordionFold.click()
-  }
-
-  When("I have opened all folds") { () =>
-    toAccordionFoldId.values.foreach { accordionFoldId =>
-      val accordionFold = driver
-        .findElement(By.id(accordionFoldId))
-        .findElement(By.xpath("./.."))
-      if (accordionFold.getAttribute("aria-expanded") == "false")
-        accordionFold.click()
-    }
-  }
-
-  When("I have closed all folds") { () =>
-    toAccordionFoldId.values.foreach { accordionFoldId =>
-      val accordionFold = driver
-        .findElement(By.id(accordionFoldId))
-        .findElement(By.xpath("./.."))
-      if (accordionFold.getAttribute("aria-expanded") == "true")
-        accordionFold.click()
-    }
-  }
-
   When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
     val checkboxId: String = toFilterId(checkbox)
     driver
@@ -109,44 +65,11 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       .click()
   }
 
-  And("""^I click on the vendor link: (\d)$""") { (index: Int) =>
+  And("""^On the search software page, I click on the vendor link: (\d)$""") { (index: Int) =>
     driver
       .findElement(By.id(s"software-vendor-${index - 1}"))
       .findElement(By.tagName("a"))
       .click()
-  }
-
-  And("""^I click on the glossary link$""") { () =>
-    driver
-      .findElement(By.linkText("explanations"))
-      .click()
-  }
-
-  And("""^I am on the product details page$""") { () =>
-    fluentWait
-      .until(
-        ExpectedConditions.urlContains("making-tax-digital-income-tax-software/product-details/")
-      )
-  }
-
-  Then("""^I am presented with an alpha list of vendors which provide '(.*)'$""") { (text: String) =>
-    driver
-      .findElements(By.cssSelector("#software-vendor-list > div:not(:first-child)"))
-      .asScala
-      .foreach(_.getText should include(text))
-  }
-
-  Then("""^The page contains the label for '(.*)'$""") { (text: String) =>
-    driver
-      .findElement(By.id("main-content"))
-      .getText should include(text)
-  }
-
-  Then("""^I am presented with a list of vendors which provide '(.*)'$""") { (text: String) =>
-    driver
-      .findElements(By.cssSelector("#software-vendor-list > div"))
-      .asScala
-      .foreach(_.getText should include(text))
   }
 
   Given("""^I have selected all filters$""") { () =>
@@ -154,35 +77,6 @@ class SoftwareChoicesStepDef extends BaseStepDef {
       val filter = driver
         .findElement(By.id(checkboxId))
       if (!filter.isSelected) filter.click()
-    }
-  }
-
-  Given("""^I have unselected all filters$""") { () =>
-    toFilterId.values.foreach { checkboxId =>
-      val filter = driver
-        .findElement(By.id(checkboxId))
-      if (filter.isSelected) filter.click()
-    }
-  }
-
-  Then("""^There are only selected filters$""") { () =>
-    driver
-      .findElements(By.cssSelector("input[type=checkbox]"))
-      .asScala
-      .foreach(_.isSelected shouldBe true)
-  }
-
-  //  When("""^I click to clear filters$""") { () =>
-  //    driver
-  //      .findElement(By.cssSelector(".clear-filters-button"))
-  //      .click()
-  //  }
-  //
-  Then("""^There are no selected and enabled filters$""") { () =>
-    toFilterId.values.foreach { checkboxId =>
-      val cb = driver
-        .findElement(By.id(checkboxId))
-      cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
     }
   }
 

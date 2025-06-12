@@ -28,28 +28,6 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val softwareVendorList: String = "software-vendor-list"
 
-  val softwareVendorsId: String = "software-vendor-0"
-
-  private val filterSections: Seq[String] = Seq(
-    "Accessibility features",
-    "Pricing",
-    "Suitable for",
-    "Operating system",
-    "Mobile app",
-    "Software type",
-    "Software for",
-    "Business type",
-    "Software compatibility",
-    "Language"
-  )
-
-  val toAccordionFoldId: Map[String, String] = filterSections
-    .zip(1 to filterSections.size)
-    .map { case (section, index) =>
-      section -> s"accordion-default-heading-$index"
-    }
-    .toMap
-
   val toFilterId: Map[String, String] = Map(
     "Free version"                         -> "free-version-filter",
     "Record keeping"                       -> "record-keeping-filter",

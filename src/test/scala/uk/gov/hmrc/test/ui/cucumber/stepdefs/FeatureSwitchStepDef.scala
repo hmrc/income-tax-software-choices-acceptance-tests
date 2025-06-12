@@ -23,42 +23,19 @@ import uk.gov.hmrc.test.ui.pages.FeatureSwitchPage
 import uk.gov.hmrc.test.ui.pages.FeatureSwitchPage._
 
 class FeatureSwitchStepDef extends BaseStepDef {
-  private val submitButtonId = "continue-button"
 
   Given("^I navigate to the Feature Switch page$") { () =>
     FeatureSwitchPage.loadPage()
   }
 
-  Then("^I am on the Feature Switch page$")(() => assertUrl(FeatureSwitchPage.url))
-
-  When("""^I (.*) the '(.*)' check box$""") { (checkOrUncheck: String, featureName: String) =>
-    setFeature(featureName, checkOrUncheck)
-  }
-
-  And("""^I click to update the Feature Switches$""")(() => submitFeatureSwitches())
-
-  And("""^I wait for the page to return$""")(() => waitForPage)
-
-  And("""^The '(.*)' check box is (.*)$""") { (featureName: String, checkOrUncheck: String) =>
-    val checkBox = getCheckBox(featureName)
-
-    setFeature(featureName, checkOrUncheck)
-
-    if (checkOrUncheck == "checked")
-      checkBox.isSelected should be(true)
-
-    if (checkOrUncheck == "unchecked")
-      checkBox.isSelected should be(false)
-  }
-
   And("^On the feature switch page I (.*) features$") { (checkOrUncheck: String, collection: DataTable) =>
     FeatureSwitchPage.loadPage()
     collection.asList().forEach(featureName => setFeature(featureName, checkOrUncheck))
-    submitFeatureSwitches()
+    driver.findElement(By.id(continueButton)).click()
     waitForPage
   }
 
-  private def setFeature(featureName: String, checkOrUncheck: String) = {
+  private def setFeature(featureName: String, checkOrUncheck: String): Unit = {
     val checkBox = getCheckBox(featureName)
 
     if (checkOrUncheck == "check" && !checkBox.isSelected)
@@ -68,14 +45,9 @@ class FeatureSwitchStepDef extends BaseStepDef {
       checkBox.click()
   }
 
-  private def submitFeatureSwitches(): Unit =
-    driver
-      .findElement(By.id(submitButtonId))
-      .click()
-
   private def waitForPage =
     fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.id(submitButtonId)))
+      .until(ExpectedConditions.presenceOfElementLocated(By.id(continueButton)))
 
   private def getCheckBox(featureName: String) = {
     val checkBoxValue: String = switches.getOrElse(featureName, fail(s"Unknown feature name: $featureName"))

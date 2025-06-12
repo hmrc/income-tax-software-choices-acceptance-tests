@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,19 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object GlossaryPage extends BasePage {
+object BusinessIncomePage extends BasePage {
 
-  val url: String = TestConfiguration.url("software-choices-frontend") + "/glossary"
+  val businessIncomePageUrl: String = TestConfiguration.url("software-choices-frontend") + "/business-income"
 
-  val searchBarId: String = "searchTerm"
+  val fromBusinessIncomeToId: Map[String, String] = Map(
+    "Self-employment"  -> "businessIncome",
+    "UK property"      -> "businessIncome-2",
+    "Foreign property" -> "businessIncome-3"
+  )
 
-  def loadPage: this.type = {
-    driver.navigate().to(url)
-    assertUrl(url)
+  def loadPage(): this.type = {
+    driver.navigate().to(businessIncomePageUrl)
+    assertUrl(businessIncomePageUrl)
     this
   }
 
