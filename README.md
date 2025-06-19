@@ -15,7 +15,6 @@ This repo contains the acceptance tests for the income tax subscription service.
 ## Prerequisites
 
 * [sbt](http://www.scala-sbt.org/)
-* Either [docker-selenium-grid](https://github.com/hmrc/docker-selenium-grid) or [local-selenium-grid](https://github.com/hmrc/local-selenium-grid)
 * HMRC Service manager (*[Install Service-Manager](https://github.com/hmrc/service-manager/wiki/Install#install-service-manager)*)
 
 Also, possibly:
@@ -29,16 +28,38 @@ You will need to "trust" chromedriver. Open with ctrl-click in Finder and follow
 
 ### Before running any tests
 
-1. Start the services `sm2 --start ITSA_SOFTWARE_CHOICES_ALL`
+Start the services `sm2 --start ITSA_SOFTWARE_CHOICES_ALL`
 * Additional sm parameters such as `--offline` can be added if desired
-
-2. Start your chosen selenium grid by going to the repository and running the `./start.sh` script.
 
 ### Scripts
 
 #### Running the Journey tests
 ```
 ./run_tests.sh
+```
+
+**Running a set of tests**
+
+Many of the tests are tagged with feature set tags such as `@Filters`
+
+To run a single tag:
+```
+./scripts/run_tests.sh chrome local true @desiredTag
+```
+
+To run multiple tags:
+
+```
+./scripts/run_tests.sh chrome local true "@Filters or @SoftwareChoices"
+./scripts/run_tests.sh chrome local true "@Filters and @SoftwareChoices"
+```
+
+**Running tests without headless mode**
+
+In order to run the tests in non-headless mode, you can set the third parameter to the script as false.
+
+```
+./scripts/run_tests.sh chrome local false
 ```
 
 ## How to use

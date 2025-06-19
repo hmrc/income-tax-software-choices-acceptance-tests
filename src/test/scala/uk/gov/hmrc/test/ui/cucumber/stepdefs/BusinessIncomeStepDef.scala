@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,22 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.scala.{EN, ScalaDsl}
-import org.openqa.selenium.By
-import org.scalatest.concurrent.Eventually
-import org.scalatest.matchers.should.Matchers
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import io.cucumber.datatable.DataTable
+import uk.gov.hmrc.test.ui.pages.BusinessIncomePage._
 
-trait BaseStepDef extends ScalaDsl with EN with BrowserDriver with Eventually with Matchers {
+import scala.jdk.CollectionConverters.IterableHasAsScala
 
-  def clickById(id: String): Unit =
-    driver.findElement(By.id(id)).click()
+class BusinessIncomeStepDef extends BaseStepDef {
+
+  Given("""^I navigate to the business income page$""") { () =>
+    loadPage()
+  }
+
+  And("""^I am on the business income page, I select the following business income and click continue$""") {
+    (businessIncome: DataTable) =>
+      assertUrl(businessIncomePageUrl)
+      businessIncome.asList().asScala.map(fromBusinessIncomeToId).foreach(clickById)
+      submitPage()
+  }
 
 }

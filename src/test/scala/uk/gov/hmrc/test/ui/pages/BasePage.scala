@@ -39,14 +39,10 @@ trait BasePage extends BrowserDriver with Matchers {
   def assertUrl(url: String): Unit =
     fluentWait.until(ExpectedConditions.urlContains(url))
 
-  def submitPage(): Unit =
-    driver.findElement(By.id(continueButton)).click()
+  def submitPage(): Unit = {
+    val currentURL = driver.getCurrentUrl
+    driver.findElement(By.cssSelector("""form > button""")).click()
+    fluentWait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(currentURL)))
+  }
 
-  def onPage(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle)
-      throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
-      )
 }
-
-case class PageNotFoundException(s: String) extends Exception(s)
