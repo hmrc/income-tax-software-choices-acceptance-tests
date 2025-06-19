@@ -10,5 +10,14 @@ Feature: Software Choices
       | Self-employment  |
       | UK property      |
       | Foreign property |
+    And On the additional income page, I select the following incomes and click continue
+      | UK interest                  |
+      | Construction Industry Scheme |
+      | Employment (PAYE)            |
+      | UK dividends                 |
+      | State pension income         |
+      | Private pension incomes      |
+      | Foreign dividends            |
+      | Foreign interest             |
     And On the search software page, I click on the vendor link: 1
     Then I am on the product details page for vendor: 'test software vendor name one'
