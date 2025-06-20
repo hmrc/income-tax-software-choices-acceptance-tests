@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
+import io.cucumber.datatable.DataTable
+import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage._
 
-object BusinessIncomePage extends BasePage {
+import scala.jdk.CollectionConverters.CollectionHasAsScala
 
-  val businessIncomePageUrl: String = TestConfiguration.url("software-choices-frontend") + "/business-income"
+class AdditionalIncomeStepDef extends BaseStepDef {
 
-  val fromBusinessIncomeToId: Map[String, String] = Map(
-    "Self-employment"  -> "businessIncome",
-    "UK property"      -> "businessIncome-2",
-    "Foreign property" -> "businessIncome-3"
-  )
+  And("""^On the additional income page, I select the following incomes and click continue$""") {
+    (additionalIncome: DataTable) =>
+      assertUrl(additionalIncomePageUrl)
+      additionalIncome.asList().asScala.map(fromAdditionalIncomeToId).foreach(clickById)
+      submitPage()
+  }
 
 }

@@ -39,6 +39,12 @@ trait BasePage extends BrowserDriver with Matchers {
   def assertUrl(url: String): Unit =
     fluentWait.until(ExpectedConditions.urlContains(url))
 
+  def loadPage(url: String): this.type = {
+    driver.navigate().to(url)
+    assertUrl(url)
+    this
+  }
+
   def submitPage(): Unit = {
     val currentURL = driver.getCurrentUrl
     driver.findElement(By.cssSelector("""form > button""")).click()
