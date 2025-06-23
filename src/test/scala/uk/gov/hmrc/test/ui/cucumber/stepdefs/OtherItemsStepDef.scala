@@ -17,16 +17,16 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import io.cucumber.datatable.DataTable
-import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage._
+import uk.gov.hmrc.test.ui.pages.OtherItemsPage._
 
-import scala.jdk.CollectionConverters.CollectionHasAsScala
+import scala.jdk.CollectionConverters.IterableHasAsScala
 
-class AdditionalIncomeStepDef extends BaseStepDef {
+class OtherItemsStepDef extends BaseStepDef {
 
-  And("""^I am on the additional income page, I select the following incomes and click continue$""") {
-    (additionalIncome: DataTable) =>
-      assertUrl(additionalIncomePageUrl)
-      additionalIncome.asList().asScala.map(fromAdditionalIncomeToId).foreach(clickById)
+  And("""^I am on the other items page, I select the following other items and click continue$""") {
+    (otherItems: DataTable) =>
+      assertUrl(otherItemsPageUrl)
+      otherItems.asList().asScala.map(fromOtherItemToId).foreach(clickById)
       submitPage()
   }
 
