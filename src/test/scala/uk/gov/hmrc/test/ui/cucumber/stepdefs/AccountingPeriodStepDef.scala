@@ -16,23 +16,15 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.datatable.DataTable
-import uk.gov.hmrc.test.ui.pages.OtherItemsPage._
+import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage._
 
-import scala.jdk.CollectionConverters.IterableHasAsScala
+class AccountingPeriodStepDef extends BaseStepDef {
 
-class OtherItemsStepDef extends BaseStepDef {
-
-  And("""^I am on the other items page, I select the following other items and click continue$""") {
-    (otherItems: DataTable) =>
-      assertUrl(otherItemsPageUrl)
-      otherItems.asList().asScala.map(fromOtherItemToId).foreach(clickById)
-      submitPage()
-  }
-
-  And("""^I am on the other items page, I select '(.*)' and click continue$""") { (option: String) =>
-    assertUrl(otherItemsPageUrl)
-    clickById(fromOtherItemToId(option))
+  And(
+    """^I am on the accounting period page, I select '(6 April to 5 April|1 April to 31 March|Neither of these)', and click continue$"""
+  ) { (option: String) =>
+    assertUrl(accountingPeriodPageUrl)
+    clickById(fromAccountingPeriodToId(option))
     submitPage()
   }
 

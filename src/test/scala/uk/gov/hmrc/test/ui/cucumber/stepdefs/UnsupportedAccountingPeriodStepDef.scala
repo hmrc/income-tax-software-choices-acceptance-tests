@@ -16,24 +16,12 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.datatable.DataTable
-import uk.gov.hmrc.test.ui.pages.OtherItemsPage._
+import uk.gov.hmrc.test.ui.pages.UnsupportedAccountingPeriodPage._
 
-import scala.jdk.CollectionConverters.IterableHasAsScala
+class UnsupportedAccountingPeriodStepDef extends BaseStepDef {
 
-class OtherItemsStepDef extends BaseStepDef {
-
-  And("""^I am on the other items page, I select the following other items and click continue$""") {
-    (otherItems: DataTable) =>
-      assertUrl(otherItemsPageUrl)
-      otherItems.asList().asScala.map(fromOtherItemToId).foreach(clickById)
-      submitPage()
-  }
-
-  And("""^I am on the other items page, I select '(.*)' and click continue$""") { (option: String) =>
-    assertUrl(otherItemsPageUrl)
-    clickById(fromOtherItemToId(option))
-    submitPage()
+  And("^I am on the unsupported accounting period page$") { () =>
+    assertUrl(unsupportedAccountingPeriodPageUrl)
   }
 
 }

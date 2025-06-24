@@ -31,7 +31,7 @@ object AdditionalIncomePage extends BasePage {
     "Private pension incomes"      -> "additionalIncome-6",
     "Foreign dividends"            -> "additionalIncome-7",
     "Foreign interest"             -> "additionalIncome-8",
-    "None"                         -> "additionalIncome-10"
+    "None of these"                -> "additionalIncome-10"
   )
 
 }
