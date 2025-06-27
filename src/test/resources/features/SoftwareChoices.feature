@@ -27,5 +27,9 @@ Feature: Software Choices
       | Marriage Allowance                   |
       | Voluntary Class 2 National Insurance |
       | High Income Child Benefit Charge     |
+
+    # accounting period selection here
+
+    And I am on the check your answers page, I click confirm and continue
     And On the search software page, I click on the vendor link: 1
     Then I am on the product details page for vendor: 'test software vendor name one'
