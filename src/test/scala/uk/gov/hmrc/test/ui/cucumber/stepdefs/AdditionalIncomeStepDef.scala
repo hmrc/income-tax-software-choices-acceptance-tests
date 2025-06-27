@@ -30,4 +30,10 @@ class AdditionalIncomeStepDef extends BaseStepDef {
       submitPage()
   }
 
+  And("""^I am on the additional income page, I select '(.*)' and click continue$""") { (option: String) =>
+    assertUrl(additionalIncomePageUrl)
+    clickById(fromAdditionalIncomeToId(option))
+    submitPage()
+  }
+
 }

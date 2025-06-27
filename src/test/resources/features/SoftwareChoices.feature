@@ -27,5 +27,14 @@ Feature: Software Choices
       | Marriage Allowance                   |
       | Voluntary Class 2 National Insurance |
       | High Income Child Benefit Charge     |
+    And I am on the accounting period page, I select '6 April to 5 April', and click continue
     And On the search software page, I click on the vendor link: 1
     Then I am on the product details page for vendor: 'test software vendor name one'
+
+  Scenario: User has an unsupported accounting period
+    When I am on the business income page, I select the following business income and click continue
+      | Self-employment |
+    And I am on the additional income page, I select 'None of these' and click continue
+    And I am on the other items page, I select 'None of these' and click continue
+    And I am on the accounting period page, I select 'Neither of these', and click continue
+    And I am on the unsupported accounting period page
