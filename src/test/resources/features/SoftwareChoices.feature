@@ -3,7 +3,8 @@
 Feature: Software Choices
 
   Background:
-    Given I navigate to the business income page
+    Given I navigate to the user type page
+    And I am on the user type page, I select 'As a sole trader or landlord' and click continue
 
   Scenario: User answers pre-search questions and finds out more information about software vendor 1
     When I am on the business income page, I select the following business income and click continue
