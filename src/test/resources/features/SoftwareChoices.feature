@@ -26,7 +26,6 @@ Feature: Software Choices
     And I am on the accounting period page, I select 'Neither of these', and click continue
     And I am on the unsupported accounting period page
 
-    # TODO: Unfinished scenario
   Scenario: User has selected options which mean no software vendor supports all their needs in an all in one product.
     When I am on the business income page, I select the following business income and click continue
       | Self-employment  |
@@ -50,5 +49,6 @@ Feature: Software Choices
       | Voluntary Class 2 National Insurance |
       | High Income Child Benefit Charge     |
     And I am on the accounting period page, I select '1 April to 31 March', and click continue
-#    And I am on the check your answers page, I click confirm and continue
-#      Then I am on the ??? page and click continue
+    And I am on the check your answers page, I click confirm and continue
+    And I am on the zero results page and I click continue
+    Then I am on the combined software results page
