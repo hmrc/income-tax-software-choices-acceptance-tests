@@ -33,6 +33,10 @@ class SoftwareChoicesStepDef extends BaseStepDef {
     assertUrl(SoftwareChoicesHomePage.url)
   }
 
+  Then("^I am on the combined software results page$") { () =>
+    assertUrl(SoftwareChoicesHomePage.zeroResultsUrl)
+  }
+
   When("""^I enter '(.*)' into the search bar$""") { (searchTerm: String) =>
     write(searchBarId, searchTerm)
   }

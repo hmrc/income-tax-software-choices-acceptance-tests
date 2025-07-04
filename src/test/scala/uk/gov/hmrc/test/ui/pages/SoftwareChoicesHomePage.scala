@@ -22,6 +22,8 @@ object SoftwareChoicesHomePage extends BasePage {
 
   val url: String = TestConfiguration.url("software-choices-frontend") + "/"
 
+  val zeroResultsUrl: String = TestConfiguration.url("software-choices-frontend") + "?zeroResults=true"
+
   val searchBarId: String = "searchTerm"
 
   val vendorCountId: String = "vendor-count"
