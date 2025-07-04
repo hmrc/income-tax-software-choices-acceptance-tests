@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.pages.ProductDetailsPage
-import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage._
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-class ProductDetailsStepDef extends BaseStepDef {
+object IndexPage extends BasePage {
 
-  When("^I am on the product details page for vendor: '(.*)'$") { (vendor: String) =>
-    assertUrl(ProductDetailsPage.url(vendor))
-  }
+  val indexUrl: String = TestConfiguration.url("software-choices-frontend")
 
 }
