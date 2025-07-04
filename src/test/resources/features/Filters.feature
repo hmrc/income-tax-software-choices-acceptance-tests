@@ -4,8 +4,8 @@ Feature: Filters
 
   # Get onto the page
   Background:
-    And I navigate to the Software Choices home page
-    Then I am on the Software Choices home page
+    Given I navigate to the software results page
+    Then I am on the software results page
     And I am presented with a list of 4 vendors
     And There are no selected and enabled filters excluding extra pricing options and overseas property option
 
