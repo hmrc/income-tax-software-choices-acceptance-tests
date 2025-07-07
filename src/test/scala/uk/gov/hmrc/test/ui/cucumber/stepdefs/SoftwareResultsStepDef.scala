@@ -18,23 +18,23 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.ExpectedConditions
-import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage
-import uk.gov.hmrc.test.ui.pages.SoftwareChoicesHomePage._
+import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage
+import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage._
 
 import scala.jdk.CollectionConverters._
 
-class SoftwareChoicesStepDef extends BaseStepDef {
+class SoftwareResultsStepDef extends BaseStepDef {
 
-  Given("^I navigate to the Software Choices home page$") { () =>
-    SoftwareChoicesHomePage.loadPage
+  Given("^I navigate to the software results page$") { () =>
+    SoftwareResultsPage.loadPage
   }
 
-  Then("^I am on the Software Choices home page$") { () =>
-    assertUrl(SoftwareChoicesHomePage.url)
+  Then("^I am on the software results page$") { () =>
+    assertUrl(SoftwareResultsPage.url)
   }
 
   Then("^I am on the combined software results page$") { () =>
-    assertUrl(SoftwareChoicesHomePage.zeroResultsUrl)
+    assertUrl(SoftwareResultsPage.zeroResultsUrl)
   }
 
   When("""^I enter '(.*)' into the search bar$""") { (searchTerm: String) =>

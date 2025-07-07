@@ -3,7 +3,7 @@
 Feature: Software Choices
 
   Background:
-    Given I navigate to the user type page
+    Given I navigate to the index route
     And I am on the user type page, I select 'As a sole trader or landlord' and click continue
 
   Scenario: User answers pre-search questions and finds out more information about software vendor 1
