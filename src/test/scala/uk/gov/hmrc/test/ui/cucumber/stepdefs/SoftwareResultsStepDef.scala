@@ -56,9 +56,9 @@ class SoftwareResultsStepDef extends BaseStepDef {
       .size() shouldBe count
   }
 
-  Then("""^I click the clear all filters link$""") { () =>
+  Then("""^I click the clear filters link$""") { () =>
     driver
-      .findElement(By.linkText("Clear all filters"))
+      .findElement(By.linkText("Clear filters"))
       .click()
   }
 
