@@ -49,10 +49,8 @@ class SoftwareResultsStepDef extends BaseStepDef {
   }
 
   Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
-    fluentWait
-      .until(ExpectedConditions.presenceOfElementLocated(By.id(vendorCountId)))
     driver
-      .findElements(By.cssSelector(s"#$softwareVendorList > div"))
+      .findElements(By.cssSelector(s"#all-in-one-software > div"))
       .size() shouldBe count
   }
 
