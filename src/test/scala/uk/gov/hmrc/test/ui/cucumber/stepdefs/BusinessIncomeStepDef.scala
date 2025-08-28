@@ -23,10 +23,6 @@ import scala.jdk.CollectionConverters.IterableHasAsScala
 
 class BusinessIncomeStepDef extends BaseStepDef {
 
-  Given("""^I navigate to the business income page$""") { () =>
-    loadPage(businessIncomePageUrl)
-  }
-
   And("""^I am on the business income page, I select the following business income and click continue$""") {
     (businessIncome: DataTable) =>
       assertUrl(businessIncomePageUrl)
