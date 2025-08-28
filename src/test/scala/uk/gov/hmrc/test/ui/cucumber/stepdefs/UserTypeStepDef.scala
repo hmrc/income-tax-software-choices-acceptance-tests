@@ -20,10 +20,6 @@ import uk.gov.hmrc.test.ui.pages.UserTypePage._
 
 class UserTypeStepDef extends BaseStepDef {
 
-  Given("""^I navigate to the user type page$""") { () =>
-    loadPage(userTypePageUrl)
-  }
-
   And("""^I am on the user type page, I select '(As a sole trader or landlord|As an agent)' and click continue$""") {
     (option: String) =>
       assertUrl(userTypePageUrl)
