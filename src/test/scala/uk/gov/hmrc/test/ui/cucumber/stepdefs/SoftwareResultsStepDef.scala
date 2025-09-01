@@ -25,87 +25,14 @@ import scala.jdk.CollectionConverters._
 
 class SoftwareResultsStepDef extends BaseStepDef {
 
-  Given("^I navigate to the software results page$") { () =>
-    SoftwareResultsPage.loadPage
-  }
-
-  Then("^I am on the software results page$") { () =>
-    assertUrl(SoftwareResultsPage.url)
-  }
-
   Then("^I am on the combined software results page$") { () =>
     assertUrl(SoftwareResultsPage.zeroResultsUrl)
-  }
-
-  When("""^I enter '(.*)' into the search bar$""") { (searchTerm: String) =>
-    write(searchBarId, searchTerm)
-  }
-
-  Then("""^I am presented with a list of vendors matching '(.*)'$""") { (matchingTerm: String) =>
-    driver
-      .findElements(By.cssSelector("#software-vendor-list > div > h3"))
-      .asScala
-      .foreach(_.getText should include(matchingTerm))
-  }
-
-  Then("""^I am presented with a list of (.*) vendors$""") { (count: Int) =>
-    driver
-      .findElements(By.cssSelector(s"#all-in-one-software > div"))
-      .size() shouldBe count
-  }
-
-  Then("""^I click the clear filters link$""") { () =>
-    driver
-      .findElement(By.linkText("Clear filters"))
-      .click()
-  }
-
-  When("""^I select the '(.*)' checkbox$""") { (checkbox: String) =>
-    val checkboxId: String = toFilterId(checkbox)
-    driver
-      .findElement(By.id(checkboxId))
-      .click()
   }
 
   And("""^On the search software page, I click on the vendor link: (\d)$""") { (index: Int) =>
     driver
       .findElement(By.id(s"software-vendor-${index - 1}"))
       .findElement(By.tagName("a"))
-      .click()
-  }
-
-  Given("""^I have selected all filters$""") { () =>
-    toFilterId.values.foreach { checkboxId =>
-      val filter = driver
-        .findElement(By.id(checkboxId))
-      if (!filter.isSelected) filter.click()
-    }
-  }
-
-  val extraPricingOptions: Seq[String] = Seq("free-trial-filter", "paid-for-filter")
-
-  val overseasPropertyOption: Seq[String] = Seq("overseas-property-filter")
-
-  Then("""^There are no selected and enabled filters excluding extra pricing options and overseas property option$""") {
-    () =>
-      toFilterId.values
-        .filter(f => !(overseasPropertyOption ++ extraPricingOptions).contains(f))
-        .foreach { checkboxId =>
-          val cb = driver
-            .findElement(By.id(checkboxId))
-          cb.isEnabled && cb.isSelected shouldBe false //Can't be Enabled AND Selected
-        }
-  }
-
-  Then("""^I click on the search button$""") { () =>
-    driver
-      .findElement(By.id("searchButton"))
-      .click()
-  }
-
-  Then("""^I click on the apply filters button$""") { () =>
-    driver
-      .findElement(By.cssSelector(".apply-filters-button"))
       .click()
   }
 
