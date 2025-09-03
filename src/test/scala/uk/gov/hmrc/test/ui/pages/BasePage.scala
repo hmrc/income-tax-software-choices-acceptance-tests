@@ -19,6 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.openqa.selenium.{By, NoSuchElementException, WebDriver}
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
 import java.time.Duration
@@ -51,4 +52,6 @@ trait BasePage extends BrowserDriver with Matchers {
     fluentWait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(currentURL)))
   }
 
+  def getPageURL(url: String): String =
+    TestConfiguration.url("software-choices-frontend") + url
 }

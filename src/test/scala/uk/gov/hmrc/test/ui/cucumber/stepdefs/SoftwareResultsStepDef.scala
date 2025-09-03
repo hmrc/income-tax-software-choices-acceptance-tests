@@ -17,11 +17,8 @@
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.openqa.selenium.By
-import org.openqa.selenium.support.ui.ExpectedConditions
 import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage
 import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage._
-
-import scala.jdk.CollectionConverters._
 
 class SoftwareResultsStepDef extends BaseStepDef {
 

@@ -16,11 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object UnsupportedAccountingPeriodPage extends BasePage {
 
   val unsupportedAccountingPeriodPageUrl: String =
-    TestConfiguration.url("software-choices-frontend") + "/unsupported-accounting-period"
+    getPageURL("/accounting-period-not-supported")
 
 }

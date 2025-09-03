@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object FeatureSwitchPage extends BasePage {
 
-  val url: String = TestConfiguration.url("software-choices-frontend") + "/test-only/feature-switch"
+  val url: String =
+    getPageURL("/test-only/feature-switch")
 
   val switches: Map[String, String] = Map()
 

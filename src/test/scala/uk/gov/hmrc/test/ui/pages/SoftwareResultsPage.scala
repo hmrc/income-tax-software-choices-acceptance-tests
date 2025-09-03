@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object SoftwareResultsPage extends BasePage {
 
-  val url: String = TestConfiguration.url("software-choices-frontend") + "/software-results"
+  val url: String =
+    getPageURL("/software-results")
 
   val zeroResultsUrl: String = url + "?zeroResults=true"
 
