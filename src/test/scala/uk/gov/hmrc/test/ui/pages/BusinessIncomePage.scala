@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object BusinessIncomePage extends BasePage {
 
-  val businessIncomePageUrl: String = TestConfiguration.url("software-choices-frontend") + "/business-income"
+  val businessIncomePageUrl: String =
+    getPageURL("/which-income-source")
 
   val fromBusinessIncomeToId: Map[String, String] = Map(
     "Self-employment"  -> "businessIncome",

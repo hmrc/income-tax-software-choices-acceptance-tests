@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object OtherItemsPage extends BasePage {
 
-  val otherItemsPageUrl: String = TestConfiguration.url("software-choices-frontend") + "/other-items"
+  val otherItemsPageUrl: String =
+    getPageURL("/what-else-do-you-need-tell-us")
 
   val fromOtherItemToId: Map[String, String] = Map(
     "Private pension contributions"        -> "otherItems",

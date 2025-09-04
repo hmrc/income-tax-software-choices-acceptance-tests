@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object UserTypePage extends BasePage {
 
-  val userTypePageUrl: String = TestConfiguration.url("software-choices-frontend") + "/type-of-user"
+  val userTypePageUrl: String =
+    getPageURL("/how-will-you-use-it")
 
   val fromUserTypeToId: Map[String, String] = Map(
     "As a sole trader or landlord" -> "type-of-user",

@@ -16,13 +16,11 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 import java.net.URLEncoder
 
 object ProductDetailsPage extends BasePage {
 
   def url(vendor: String): String =
-    TestConfiguration.url("software-choices-frontend") + "/product-details/" + URLEncoder.encode(vendor, "UTF-8")
+    getPageURL("/product-details/") + URLEncoder.encode(vendor, "UTF-8")
 
 }

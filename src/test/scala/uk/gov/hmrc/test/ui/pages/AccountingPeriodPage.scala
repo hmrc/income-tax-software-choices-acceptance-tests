@@ -16,11 +16,10 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object AccountingPeriodPage extends BasePage {
 
-  val accountingPeriodPageUrl: String = TestConfiguration.url("software-choices-frontend") + "/accounting-period"
+  val accountingPeriodPageUrl: String =
+    getPageURL("/accounting-period-check")
 
   val fromAccountingPeriodToId: Map[String, String] = Map(
     "6 April to 5 April"  -> "accounting-period",

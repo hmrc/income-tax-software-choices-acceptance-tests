@@ -16,10 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object CheckYourAnswersPage extends BasePage {
 
-  val checkYourAnswersPageUrl: String = TestConfiguration.url("software-choices-frontend") + "/check-your-answers"
+  val checkYourAnswersPageUrl: String =
+    getPageURL("/check-answers")
 
 }
