@@ -51,4 +51,4 @@ Feature: Software Choices
     And I am on the accounting period page, I select '1 April to 31 March', and click continue
     And I am on the check your answers page, I click confirm and continue
     And I am on the zero results page and I click continue
-    Then I am on the combined software results page
+    Then I am on the session timeout page
