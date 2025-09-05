@@ -16,13 +16,26 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.pages.ZeroResultsPage._
 
 class ZeroResultsStepDef extends BaseStepDef {
+
+  And("""^I click Back$""") { () =>
+    driver
+      .findElement(By.linkText("Back"))
+      .click()
+  }
 
   And("""^I am on the zero results page and I click finish$""") { () =>
     assertUrl(zeroResultsPageUrl)
     submitPage()
   }
 
+  And("""^I am on the zero results page and I click browse software currently available$""") { () =>
+    assertUrl(zeroResultsPageUrl)
+    driver
+      .findElement(By.linkText("browse software that’s currently available"))
+      .click()
+  }
 }
