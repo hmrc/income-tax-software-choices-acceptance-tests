@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.pages.ZeroResultsPage._
 
 class ZeroResultsStepDef extends BaseStepDef {
 
-  And("""^I am on the zero results page and I click continue$""") { () =>
+  And("""^I am on the zero results page and I click finish$""") { () =>
     assertUrl(zeroResultsPageUrl)
     submitPage()
   }

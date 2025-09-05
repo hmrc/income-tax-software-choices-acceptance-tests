@@ -50,5 +50,5 @@ Feature: Software Choices
       | High Income Child Benefit Charge     |
     And I am on the accounting period page, I select '1 April to 31 March', and click continue
     And I am on the check your answers page, I click confirm and continue
-    And I am on the zero results page and I click continue
+    And I am on the zero results page and I click finish
     Then I am on the session timeout page
