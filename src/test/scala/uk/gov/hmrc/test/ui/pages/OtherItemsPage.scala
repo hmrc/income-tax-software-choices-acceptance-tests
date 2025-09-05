@@ -19,7 +19,7 @@ package uk.gov.hmrc.test.ui.pages
 object OtherItemsPage extends BasePage {
 
   val otherItemsPageUrl: String =
-    getPageURL("/what-else-do-you-need-tell-us")
+    getPageURL("/what-else-do-you-need-to-tell-us")
 
   val fromOtherItemToId: Map[String, String] = Map(
     "Private pension contributions"        -> "otherItems",
