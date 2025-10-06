@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 object CheckYourAnswersPage extends BasePage {
 
-  val checkYourAnswersPageUrl: String =
-    getPageURL("/check-answers")
+  val url: String = getPageURL("/check-answers")
 
 }

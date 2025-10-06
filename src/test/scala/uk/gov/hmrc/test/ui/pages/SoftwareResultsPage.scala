@@ -16,18 +16,13 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
+
 object SoftwareResultsPage extends BasePage {
 
-  val url: String =
-    getPageURL("/software-results")
+  val url: String = getPageURL("/software-results")
 
   val zeroResultsUrl: String = url + "?zeroResults=true"
-
-  val searchBarId: String = "searchTerm"
-
-  val vendorCountId: String = "vendor-count"
-
-  val softwareVendorList: String = "software-vendor-list"
 
   val toFilterId: Map[String, String] = Map(
     "Free version"                   -> "free-version-filter",
@@ -39,10 +34,9 @@ object SoftwareResultsPage extends BasePage {
     "Cognitive impairments"          -> "cognitive-filter"
   )
 
-  def loadPage: this.type = {
-    driver.navigate().to(url)
-    assertUrl(url)
-    this
+  def selectVendorLink(index: Int): Unit = {
+    val linkSelector: By = By.cssSelector(s"#software-vendor-${index - 1} a")
+    click(linkSelector)
   }
 
 }

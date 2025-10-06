@@ -18,13 +18,17 @@ package uk.gov.hmrc.test.ui.pages
 
 object AccountingPeriodPage extends BasePage {
 
-  val accountingPeriodPageUrl: String =
-    getPageURL("/accounting-period-check")
+  val url: String = getPageURL("/accounting-period-check")
 
-  val fromAccountingPeriodToId: Map[String, String] = Map(
-    "6 April to 5 April"  -> "accounting-period",
-    "1 April to 31 March" -> "accounting-period-2",
-    "Neither of these"    -> "accounting-period-4"
-  )
+  enum AccountingPeriod(val id: String):
+    case SixthToFifth extends AccountingPeriod("accounting-period")
+    case FirstToThirtyFirst extends AccountingPeriod("accounting-period-2")
+    case NeitherOfThese extends AccountingPeriod("accounting-period-4")
+
+  def selectAccountingPeriod(accountingPeriod: AccountingPeriod): Unit = {
+    assertUrl(AccountingPeriodPage.url)
+    clickById(accountingPeriod.id)
+    submitPage()
+  }
 
 }

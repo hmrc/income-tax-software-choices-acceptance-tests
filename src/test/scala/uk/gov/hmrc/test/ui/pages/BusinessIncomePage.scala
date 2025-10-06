@@ -18,13 +18,17 @@ package uk.gov.hmrc.test.ui.pages
 
 object BusinessIncomePage extends BasePage {
 
-  val businessIncomePageUrl: String =
-    getPageURL("/which-income-source")
+  val url: String = getPageURL("/which-income-source")
 
-  val fromBusinessIncomeToId: Map[String, String] = Map(
-    "Self-employment"  -> "businessIncome",
-    "UK property"      -> "businessIncome-2",
-    "Foreign property" -> "businessIncome-3"
-  )
+  enum BusinessIncome(val id: String):
+    case SelfEmployment extends BusinessIncome("businessIncome")
+    case UKProperty extends BusinessIncome("businessIncome-2")
+    case ForeignProperty extends BusinessIncome("businessIncome-3")
+
+  def selectBusinessIncomes(businessIncome: Seq[BusinessIncome]): Unit = {
+    assertUrl(url)
+    businessIncome.map(_.id).foreach(clickById)
+    submitPage()
+  }
 
 }

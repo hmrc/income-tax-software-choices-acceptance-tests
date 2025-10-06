@@ -18,18 +18,21 @@ package uk.gov.hmrc.test.ui.pages
 
 object OtherItemsPage extends BasePage {
 
-  val otherItemsPageUrl: String =
-    getPageURL("/what-else-do-you-need-to-tell-us")
+  val url: String = getPageURL("/what-else-do-you-need-to-tell-us")
 
-  val fromOtherItemToId: Map[String, String] = Map(
-    "Private pension contributions"        -> "otherItems",
-    "Charitable giving"                    -> "otherItems-2",
-    "Capital Gains Tax"                    -> "otherItems-3",
-    "Student Loan"                         -> "otherItems-4",
-    "Marriage Allowance"                   -> "otherItems-5",
-    "Voluntary Class 2 National Insurance" -> "otherItems-6",
-    "High Income Child Benefit Charge"     -> "otherItems-7",
-    "None of these"                        -> "otherItems-9"
-  )
+  enum OtherItems(val id: String):
+    case PrivatePensionContributions extends OtherItems("otherItems")
+    case CharitableGiving extends OtherItems("otherItems-2")
+    case CapitalGainsTax extends OtherItems("otherItems-3")
+    case StudentLoan extends OtherItems("otherItems-4")
+    case MarriageAllowance extends OtherItems("otherItems-5")
+    case VoluntaryClass2NationalInsurance extends OtherItems("otherItems-6")
+    case HighIncomeChildBenefitCharge extends OtherItems("otherItems-7")
+    case NoneOfThese extends OtherItems("otherItems-9")
 
+  def selectOtherItems(otherItems: Seq[OtherItems]): Unit = {
+    assertUrl(url)
+    otherItems.map(_.id).foreach(clickById)
+    submitPage()
+  }
 }
