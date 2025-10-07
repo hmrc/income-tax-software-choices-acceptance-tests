@@ -18,19 +18,23 @@ package uk.gov.hmrc.test.ui.pages
 
 object AdditionalIncomePage extends BasePage {
 
-  val additionalIncomePageUrl: String =
-    getPageURL("/which-additional-income-source")
+  val url: String = getPageURL("/which-additional-income-source")
 
-  val fromAdditionalIncomeToId: Map[String, String] = Map(
-    "UK interest"                  -> "additionalIncome",
-    "Construction Industry Scheme" -> "additionalIncome-2",
-    "Employment (PAYE)"            -> "additionalIncome-3",
-    "UK dividends"                 -> "additionalIncome-4",
-    "State pension income"         -> "additionalIncome-5",
-    "Private pension incomes"      -> "additionalIncome-6",
-    "Foreign dividends"            -> "additionalIncome-7",
-    "Foreign interest"             -> "additionalIncome-8",
-    "None of these"                -> "additionalIncome-10"
-  )
+  enum AdditionalIncome(val id: String):
+    case UkInterest extends AdditionalIncome("additionalIncome")
+    case ConstructionIndustryScheme extends AdditionalIncome("additionalIncome-2")
+    case EmploymentPAYE extends AdditionalIncome("additionalIncome-3")
+    case UkDividends extends AdditionalIncome("additionalIncome-4")
+    case StatePensionIncome extends AdditionalIncome("additionalIncome-5")
+    case PrivatePensionIncomes extends AdditionalIncome("additionalIncome-6")
+    case ForeignDividends extends AdditionalIncome("additionalIncome-7")
+    case ForeignInterest extends AdditionalIncome("additionalIncome-8")
+    case NoneOfThese extends AdditionalIncome("additionalIncome-10")
+
+  def selectAdditionalIncomes(additionalIncome: Seq[AdditionalIncome]): Unit = {
+    assertUrl(url)
+    additionalIncome.map(_.id).foreach(clickById)
+    submitPage()
+  }
 
 }

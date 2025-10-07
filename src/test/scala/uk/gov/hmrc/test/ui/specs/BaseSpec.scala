@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.stepdefs
+package uk.gov.hmrc.test.ui.specs
 
-import uk.gov.hmrc.test.ui.pages.ProductDetailsPage
-import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage._
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
+import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 
-class ProductDetailsStepDef extends BaseStepDef {
+trait BaseSpec
+    extends AnyFeatureSpec
+    with GivenWhenThen
+    with Matchers
+    with BeforeAndAfterEach
+    with Browser
+    with ScreenshotOnFailure {
 
-  When("^I am on the product details page for vendor: '(.*)'$") { (vendor: String) =>
-    assertUrl(ProductDetailsPage.url(vendor))
-  }
+  override def beforeEach(): Unit =
+    startBrowser()
 
+  override def afterEach(): Unit =
+    quitBrowser()
 }

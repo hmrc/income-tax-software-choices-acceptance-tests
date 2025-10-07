@@ -18,14 +18,8 @@ package uk.gov.hmrc.test.ui.pages
 
 object FeatureSwitchPage extends BasePage {
 
-  val url: String =
-    getPageURL("/test-only/feature-switch")
+  val url: String = getPageURL("/test-only/feature-switch")
 
   val switches: Map[String, String] = Map()
-
-  def loadPage(): Unit = {
-    driver.navigate().to(url)
-    assertUrl(url)
-  }
 
 }

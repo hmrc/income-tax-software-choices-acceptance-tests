@@ -20,7 +20,8 @@ import java.net.URLEncoder
 
 object ProductDetailsPage extends BasePage {
 
-  def url(vendor: String): String =
-    getPageURL("/product-details/") + URLEncoder.encode(vendor, "UTF-8")
+  val url = "/product-details/"
+
+  def onVendorPage(vendor: String): Unit = assertUrl(getPageURL(url) + URLEncoder.encode(vendor, "UTF-8"))
 
 }

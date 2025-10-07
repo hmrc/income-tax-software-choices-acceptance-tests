@@ -16,10 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
-
 object IndexPage extends BasePage {
 
-  val indexUrl: String = TestConfiguration.url("software-choices-frontend")
+  val url: String = getPageURL("/")
 
 }

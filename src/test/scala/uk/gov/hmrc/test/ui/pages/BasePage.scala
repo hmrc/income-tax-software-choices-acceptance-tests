@@ -19,36 +19,41 @@ package uk.gov.hmrc.test.ui.pages
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.openqa.selenium.{By, NoSuchElementException, WebDriver}
 import org.scalatest.matchers.should.Matchers
+import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 import java.time.Duration
 
-trait BasePage extends BrowserDriver with Matchers {
+trait BasePage extends Matchers with PageObject {
 
-  val continueButton = "continue-button"
+  val url: String
 
-  def fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](driver)
+  def onPage(): Unit            = assertUrl(url)
+  def onPage(url: String): Unit = assertUrl(url)
+
+  def goTo(): Unit = {
+    get(url)
+    assertUrl(url)
+  }
+
+  def clickById(id: String): Unit =
+    click(By.id(id))
+
+  def fluentWait: FluentWait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(2))
     .pollingEvery(Duration.ofMillis(250))
     .ignoring(classOf[NoSuchElementException])
 
-  def write(id: String, text: String): Unit = driver
-    .findElement(By.id(id))
-    .sendKeys(text)
+  def write(id: String, text: String): Unit =
+    sendKeys(By.id(id), text)
 
   def assertUrl(url: String): Unit =
     fluentWait.until(ExpectedConditions.urlContains(url))
 
-  def loadPage(url: String): this.type = {
-    driver.navigate().to(url)
-    assertUrl(url)
-    this
-  }
-
   def submitPage(): Unit = {
-    val currentURL = driver.getCurrentUrl
-    driver.findElement(By.cssSelector("""form > button""")).click()
+    val currentURL = getCurrentUrl
+    Driver.instance.findElement(By.cssSelector("""form > button""")).click()
     fluentWait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(currentURL)))
   }
 

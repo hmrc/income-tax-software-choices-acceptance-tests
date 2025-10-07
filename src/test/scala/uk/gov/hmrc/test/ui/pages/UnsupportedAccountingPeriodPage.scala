@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 object UnsupportedAccountingPeriodPage extends BasePage {
 
-  val unsupportedAccountingPeriodPageUrl: String =
-    getPageURL("/accounting-period-not-supported")
+  val url: String = getPageURL("/accounting-period-not-supported")
 
 }
