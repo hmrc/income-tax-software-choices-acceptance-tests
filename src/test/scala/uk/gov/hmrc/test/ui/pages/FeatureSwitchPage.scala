@@ -16,10 +16,30 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
+
 object FeatureSwitchPage extends BasePage {
 
   val url: String = getPageURL("/test-only/feature-switch")
 
-  val switches: Map[String, String] = Map()
+  val featureSwitches = Map {
+    "Intent" -> "intent"
+  }
+
+  def setFeatureSwitches(switches: Seq[String]): Unit = {
+    goTo()
+    switches.foreach { switch =>
+      selectCheckbox(checkBoxSelector(featureSwitches.getOrElse(switch, fail("Not a valid feature switch"))))
+    }
+    click(By.id("continue-button"))
+  }
+
+  def disableAllFeatureSwitches(): Unit = {
+    goTo()
+    featureSwitches.foreach(switch => deselectCheckbox(checkBoxSelector(switch._2)))
+    click(By.id("continue-button"))
+  }
+
+  private def checkBoxSelector(value: String) = By.cssSelector(s"input[type='checkbox'][value='$value']")
 
 }

@@ -1,9 +1,13 @@
 #!/bin/bash -e
 
-BROWSER=$1
-ENVIRONMENT=$2
-HEADLESS=$3
+BROWSER=${1:-chrome}
+ENVIRONMENT=${2:-local}
+HEADLESS=${3:-true}
 TAGS=$4
 
 sbt scalafmtCheckAll scalafmtSbtCheck
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dbrowser.option.headless="${HEADLESS:=true}" test testReport
+if [ -z "$TAGS" ]; then
+  sbt clean -Dbrowser="$BROWSER" -Denvironment="$ENVIRONMENT" -Dbrowser.option.headless="$HEADLESS" test testReport
+else
+  sbt clean -Dbrowser="$BROWSER" -Denvironment="$ENVIRONMENT" -Dbrowser.option.headless="$HEADLESS" "testOnly uk.gov.hmrc.test.ui.specs.* -- -n $TAGS" testReport
+fi
