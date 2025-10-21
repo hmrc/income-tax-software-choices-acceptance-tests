@@ -30,6 +30,10 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
   Feature("Sole Trader or Landlord journey") {
 
     Scenario("User answers pre-search questions and finds out more information about software vendor 1") {
+
+      Given("I disable all feature switches")
+      FeatureSwitchPage.disableAllFeatureSwitches()
+
       Given("I navigate to the index route")
       IndexPage.goTo()
 
@@ -61,6 +65,10 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
     }
 
     Scenario("User has an unsupported accounting period") {
+
+      Given("I disable all feature switches")
+      FeatureSwitchPage.disableAllFeatureSwitches()
+
       Given("I navigate to the index route")
       IndexPage.goTo()
 
@@ -84,6 +92,10 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
     }
 
     Scenario("User selects options which results in no all-in-one software and they continue browsing") {
+
+      Given("I disable all feature switches")
+      FeatureSwitchPage.disableAllFeatureSwitches()
+
       Given("I navigate to the index route")
       IndexPage.goTo()
 
@@ -133,6 +145,10 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
     }
 
     Scenario("User selects options which results in no all-in-one software and they click Finish") {
+
+      Given("I disable all feature switches")
+      FeatureSwitchPage.disableAllFeatureSwitches()
+
       Given("I navigate to the index route")
       IndexPage.goTo()
 

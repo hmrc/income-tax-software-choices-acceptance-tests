@@ -1,10 +1,9 @@
-# Income-Tax-Software-Choices-Acceptance-Tests
+# income-tax-software-choices-acceptance-tests
 
-This repo contains the acceptance tests for the income tax subscription service.
+This repo contains the acceptance tests for the income tax software choices frontend service.
 
 - [Prerequisites](#Prerequisites)
 - [Running the tests](#Running-the-tests)
-- [How to use](#How-to-use)
 
 
 ## Prerequisites
@@ -14,57 +13,45 @@ Start the services `sm2 --start ITSA_SOFTWARE_CHOICES_ALL`
 
 ## Running the tests
 
-#### Running the Journey tests
-```
+### Run all tests
+```bash
 ./run_tests.sh
 ```
-
-**Running a set of tests**
-
-Many of the tests are tagged with feature set tags such as `@Filters`
-
-To run a single tag:
 ```
-./run_tests.sh chrome local true @desiredTag
-```
-
-To run multiple tags:
-
-```
-./run_tests.sh chrome local true "@Filters or @SoftwareChoices"
-./run_tests.sh chrome local true "@Filters and @SoftwareChoices"
+./run_tests.sh <browser> <environment> <headless> <optional tag>
 ```
 
 **Running tests without headless mode**
 
 In order to run the tests in non-headless mode, you can set the third parameter to the script as false.
 
-```
+```bash
 ./run_tests.sh chrome local false
 ```
 
-## How to use
+### Run a set of tests
 
-### Choose which features to test
-Add custom tags to features or scenarios.
-
-* Tag a feature:
-  *testName.feature*
+You can run a set of tests using tags, for example with the tag `Intent`
 ```
-@ITSA
-@CustomTag
-Feature: Description
-# ...
+./run_tags.sh chrome local true Intent
 ```
 
-* Tag a scenario:
-  *testName.feature*
-```
-@ITSA
-Feature: Description
+## Scalafmt
 
-@CustomTag
-Scenario: Description
-# ...
+Check all project files are formatted as expected as follows:
+
+```bash
+sbt scalafmtCheckAll scalafmtCheck
 ```
 
+Format `*.sbt` and `project/*.scala` files as follows:
+
+```bash
+sbt scalafmtSbt
+```
+
+Format all project files as follows:
+
+```bash
+sbt scalafmtAll
+```

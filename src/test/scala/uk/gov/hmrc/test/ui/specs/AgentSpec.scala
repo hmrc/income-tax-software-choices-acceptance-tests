@@ -17,12 +17,17 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType
-import uk.gov.hmrc.test.ui.pages.{IndexPage, ProductDetailsPage, SoftwareResultsPage, UserTypePage}
+import uk.gov.hmrc.test.ui.pages.{FeatureSwitchPage, IndexPage, ProductDetailsPage, SoftwareResultsPage, UserTypePage}
 
 class AgentSpec extends BaseSpec {
 
   Feature("Agent journey") {
+
     Scenario("Agent uses the software choices tool and views details for vendor 1") {
+
+      Given("I disable all feature switches")
+      FeatureSwitchPage.disableAllFeatureSwitches()
+
       Given("I navigate to the index route")
       IndexPage.goTo()
 
