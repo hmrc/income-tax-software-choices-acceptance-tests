@@ -29,7 +29,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
   Feature("Sole Trader or Landlord journey") {
 
-    Scenario("User answers pre-search questions and finds out more information about software vendor 1") {
+    Scenario("User answers pre-search questions and finds out more information about a software vendor") {
 
       Given("I disable all feature switches")
       FeatureSwitchPage.disableAllFeatureSwitches()
@@ -56,12 +56,12 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
-      And("On the software results page I select vendor 1")
+      And("On the software results page I select the first vendor")
       SoftwareResultsPage.onPage()
       SoftwareResultsPage.selectVendorLink(1)
 
-      Then("I am on the product details page for vendor 1")
-      ProductDetailsPage.onVendorPage("test software vendor name one")
+      Then("I am on the product details page for vendor 5")
+      ProductDetailsPage.onVendorPage("vendor 05")
     }
 
     Scenario("User has an unsupported accounting period") {

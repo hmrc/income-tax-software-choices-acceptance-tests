@@ -35,13 +35,13 @@ class IntentSpec extends BaseSpec {
       Given("I set required feature switches")
       FeatureSwitchPage.setFeatureSwitches(Seq("Intent"))
 
-      Given("I navigate to the index route")
+      When("I navigate to the index route")
       IndexPage.goTo()
 
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
-      When("I select my business income sources and click continue")
+      And("I select my business income sources and click continue")
       BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment))
 
       And("I select my additional income sources and click continue")
