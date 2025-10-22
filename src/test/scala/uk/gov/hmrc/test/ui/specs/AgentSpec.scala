@@ -39,7 +39,7 @@ class AgentSpec extends BaseSpec {
       SoftwareResultsPage.selectVendorLink(1)
 
       Then("I am on the product details page for vendor 1")
-      ProductDetailsPage.onVendorPage("test software vendor name one")
+      ProductDetailsPage.onVendorPage("vendor 01")
     }
   }
 }
