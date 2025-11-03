@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object AdditionalIncomePage extends BasePage {
 
-  val url: String = getPageURL("/which-additional-income-source")
+  val url: String = getPageURL("/which-other-income-source-tax-return")
 
   enum AdditionalIncome(val id: String):
     case UkInterest extends AdditionalIncome("additionalIncome")
