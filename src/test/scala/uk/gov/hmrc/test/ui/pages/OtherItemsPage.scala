@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object OtherItemsPage extends BasePage {
 
-  val url: String = getPageURL("/what-else-do-you-need-to-tell-us")
+  val url: String = getPageURL("/which-other-items-tax-return")
 
   enum OtherItems(val id: String):
     case PrivatePensionContributions extends OtherItems("otherItems")
