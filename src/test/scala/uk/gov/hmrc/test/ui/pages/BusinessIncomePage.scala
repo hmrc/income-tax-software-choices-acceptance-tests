@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object BusinessIncomePage extends BasePage {
 
-  val url: String = getPageURL("/which-income-source")
+  val url: String = getPageURL("/which-income-source-quarterly-updates")
 
   enum BusinessIncome(val id: String):
     case SelfEmployment extends BusinessIncome("businessIncome")
