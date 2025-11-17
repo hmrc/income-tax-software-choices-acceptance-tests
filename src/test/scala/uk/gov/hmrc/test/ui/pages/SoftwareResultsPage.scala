@@ -22,8 +22,6 @@ object SoftwareResultsPage extends BasePage {
 
   val url: String = getPageURL("/software-results")
 
-  val zeroResultsUrl: String = url + "?zeroResults=true"
-
   val toFilterId: Map[String, String] = Map(
     "Free version"                   -> "free-version-filter",
     "Bridging"                       -> "bridging-filter",
