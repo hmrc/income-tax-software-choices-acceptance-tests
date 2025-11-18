@@ -56,6 +56,10 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
+      And("On the choosing software page I click continue")
+      ChoosingSoftwarePage.onPage()
+      ChoosingSoftwarePage.submitPage()
+
       And("On the software results page I select the first vendor")
       SoftwareResultsPage.onPage()
       SoftwareResultsPage.selectVendorLink(1)
@@ -89,59 +93,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
       Then("I am on the unsupported accounting period page")
       UnsupportedAccountingPeriodPage.onPage()
-    }
-
-    Scenario("User selects options which results in no all-in-one software and they continue browsing") {
-
-      Given("I disable all feature switches")
-      FeatureSwitchPage.disableAllFeatureSwitches()
-
-      Given("I navigate to the index route")
-      IndexPage.goTo()
-
-      And("I select 'As a sole trader or landlord' and click continue")
-      UserTypePage.selectUserType(SoleTraderOrLandlord)
-
-      When("I select my business income sources and click continue")
-      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment, UKProperty, ForeignProperty))
-
-      And("I select my additional income sources and click continue")
-      AdditionalIncomePage.selectAdditionalIncomes(
-        Seq(
-          UkInterest,
-          ConstructionIndustryScheme,
-          EmploymentPAYE,
-          UkDividends,
-          StatePensionIncome,
-          PrivatePensionIncomes,
-          ForeignDividends,
-          ForeignInterest
-        )
-      )
-
-      And("I select my other income sources and click continue")
-      OtherItemsPage.selectOtherItems(
-        Seq(
-          PrivatePensionContributions,
-          CharitableGiving,
-          CapitalGainsTax,
-          StudentLoan,
-          MarriageAllowance,
-          VoluntaryClass2NationalInsurance,
-          HighIncomeChildBenefitCharge
-        )
-      )
-
-      And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(FirstToThirtyFirst)
-      And("On the CYA page I click continue")
-      CheckYourAnswersPage.submitPage()
-
-      And("I am on the zero results page and click continue browsing")
-      ZeroResultsPage.continueBrowsing()
-
-      Then("I am on the combined software results page")
-      SoftwareResultsPage.onPage(SoftwareResultsPage.zeroResultsUrl)
     }
 
     Scenario("User selects options which results in no all-in-one software and they click Finish") {

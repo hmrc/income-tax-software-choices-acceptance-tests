@@ -31,9 +31,9 @@ In order to run the tests in non-headless mode, you can set the third parameter 
 
 ### Run a set of tests
 
-You can run a set of tests using tags, for example with the tag `Intent`
+You can run a set of tests using tags, for example with the tag `<TagName>`
 ```
-./run_tags.sh chrome local true Intent
+./run_tags.sh chrome local true TagName
 ```
 
 ## Scalafmt

@@ -16,16 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-
 object ZeroResultsPage extends BasePage {
 
   val url: String = getPageURL("/no-all-in-one-product")
-
-  def continueBrowsing(): Unit = {
-    assertUrl(url)
-    click(By.linkText("browse software that’s currently available"))
-  }
 
   def finish(): Unit = {
     assertUrl(url)
