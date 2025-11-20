@@ -18,10 +18,11 @@ package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import org.openqa.selenium.{By, NoSuchElementException, WebDriver}
+import org.scalatest.compatible.Assertion
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.selenium.component.PageObject
-import uk.gov.hmrc.test.ui.conf.TestConfiguration
 import uk.gov.hmrc.selenium.webdriver.Driver
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 import java.time.Duration
 
@@ -59,4 +60,16 @@ trait BasePage extends Matchers with PageObject {
 
   def getPageURL(url: String): String =
     TestConfiguration.url("software-choices-frontend") + url
+
+  def waitForElement(locator: By): Unit = fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))
+
+  def assertPresenceOfElement(selector: String, expectedResult: Boolean): Assertion = {
+    waitForElement(By.cssSelector("footer"))
+    val elementDisplayed = Driver.instance.findElements(By.cssSelector(selector)).size() > 0
+    assert(
+      elementDisplayed == expectedResult,
+      s"Presence of element $selector does not match expected result of $expectedResult"
+    )
+  }
+
 }

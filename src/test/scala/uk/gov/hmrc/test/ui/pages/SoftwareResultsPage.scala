@@ -17,6 +17,7 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.scalatest.compatible.Assertion
 
 object SoftwareResultsPage extends BasePage {
 
@@ -32,9 +33,24 @@ object SoftwareResultsPage extends BasePage {
     "Cognitive impairments"          -> "cognitive-filter"
   )
 
+  def onPage(isAgent: Boolean): Assertion = {
+    assertUrl(url)
+    assertPresenceOfElement("#agent-filter", isAgent)
+  }
+
   def selectVendorLink(index: Int): Unit = {
     val linkSelector: By = By.cssSelector(s"#software-vendor-${index - 1} a")
     click(linkSelector)
+  }
+
+  def selectPreferenceFilters(preferences: Seq[String]): Unit = {
+    preferences.map(toFilterId).foreach(id => selectCheckbox(By.id(id)))
+    click(By.cssSelector("button[type='submit']"))
+  }
+
+  def clearFilters(): Unit = {
+    click(By.linkText("Clear filters"))
+    assertUrl(url)
   }
 
 }
