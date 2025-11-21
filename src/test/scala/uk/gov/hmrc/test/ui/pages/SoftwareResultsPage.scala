@@ -46,7 +46,7 @@ object SoftwareResultsPage extends BasePage {
 
   def selectPreferenceFilters(preferences: Seq[String]): Unit = {
     preferences.map(toFilterId).foreach(id => selectCheckbox(By.id(id)))
-    click(By.cssSelector("button[type='submit']"))
+    click(By.cssSelector(".apply-filters-button"))
   }
 
   def clearFilters(): Unit = {
