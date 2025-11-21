@@ -17,9 +17,8 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.scalactic.Prettifier.default
+import org.openqa.selenium.support.ui.ExpectedConditions
 import org.scalatest.compatible.Assertion
-import uk.gov.hmrc.selenium.webdriver.Driver
 
 object SoftwareResultsPage extends BasePage {
 
@@ -56,6 +55,11 @@ object SoftwareResultsPage extends BasePage {
   }
 
   def checkVendorDisplayed(vendor: Int, expected: Boolean): Assertion =
+    fluentWait.until(
+      ExpectedConditions.refreshed(
+        ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#software-vendor-0"))
+      )
+    )
     assertPresenceOfElement(By.partialLinkText(s"vendor 0$vendor"), expected)
 
 }
