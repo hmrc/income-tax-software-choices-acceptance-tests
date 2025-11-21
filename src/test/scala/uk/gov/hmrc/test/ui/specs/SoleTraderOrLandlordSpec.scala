@@ -62,15 +62,15 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
       And("On the software results page I select a preference filter")
       SoftwareResultsPage.onPage(isAgent = false)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = 5, expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("VAT"))
       SoftwareResultsPage.onPage(isAgent = false)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = 5, expected = false)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = false)
 
       And("On the software results page I clear all preference filters")
       SoftwareResultsPage.clearFilters()
       SoftwareResultsPage.onPage(isAgent = false)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = 5, expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
 
       And("On the software results page I select the first vendor")
       SoftwareResultsPage.selectVendorLink(1)

@@ -36,15 +36,15 @@ class AgentSpec extends BaseSpec {
 
       And("On the software results page I select a preference filter")
       SoftwareResultsPage.onPage(isAgent = true)
-      SoftwareResultsPage.checkVendorDisplayed(1, true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
       SoftwareResultsPage.onPage(isAgent = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = 1, expected = false)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
 
       And("On the software results page I clear all preference filters")
       SoftwareResultsPage.clearFilters()
       SoftwareResultsPage.onPage(isAgent = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = 1, expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
 
       And("On the software results page I select the first vendor")
       SoftwareResultsPage.selectVendorLink(1)

@@ -54,12 +54,12 @@ object SoftwareResultsPage extends BasePage {
     assertUrl(url)
   }
 
-  def checkVendorDisplayed(vendor: Int, expected: Boolean): Assertion =
+  def checkVendorDisplayed(vendor: String, expected: Boolean): Assertion =
     fluentWait.until(
       ExpectedConditions.refreshed(
         ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#software-vendor-0"))
       )
     )
-    assertPresenceOfElement(By.partialLinkText(s"vendor 0$vendor"), expected)
+    assertPresenceOfElement(By.partialLinkText(s"vendor $vendor"), expected)
 
 }
