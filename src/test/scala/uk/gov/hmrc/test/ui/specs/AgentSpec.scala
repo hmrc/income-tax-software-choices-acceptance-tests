@@ -34,8 +34,19 @@ class AgentSpec extends BaseSpec {
       When("I select 'As an agent' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
 
-      And("On the software results page I select vendor 1")
-      SoftwareResultsPage.onPage()
+      And("On the software results page I select a preference filter")
+      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
+      SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
+      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
+
+      And("On the software results page I clear all preference filters")
+      SoftwareResultsPage.clearFilters()
+      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
+
+      And("On the software results page I select the first vendor")
       SoftwareResultsPage.selectVendorLink(1)
 
       Then("I am on the product details page for vendor 1")
