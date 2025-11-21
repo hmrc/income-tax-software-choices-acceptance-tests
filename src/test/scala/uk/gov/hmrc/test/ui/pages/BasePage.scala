@@ -63,9 +63,9 @@ trait BasePage extends Matchers with PageObject {
 
   def waitForElement(locator: By): Unit = fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))
 
-  def assertPresenceOfElement(selector: String, expectedResult: Boolean): Assertion = {
+  def assertPresenceOfElement(selector: By, expectedResult: Boolean): Assertion = {
     waitForElement(By.cssSelector("footer"))
-    val elementDisplayed = Driver.instance.findElements(By.cssSelector(selector)).size() > 0
+    val elementDisplayed = Driver.instance.findElements(selector).size() > 0
     assert(
       elementDisplayed == expectedResult,
       s"Presence of element $selector does not match expected result of $expectedResult"

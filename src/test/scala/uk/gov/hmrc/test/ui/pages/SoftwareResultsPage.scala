@@ -17,7 +17,9 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.scalactic.Prettifier.default
 import org.scalatest.compatible.Assertion
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 object SoftwareResultsPage extends BasePage {
 
@@ -35,7 +37,7 @@ object SoftwareResultsPage extends BasePage {
 
   def onPage(isAgent: Boolean): Assertion = {
     assertUrl(url)
-    assertPresenceOfElement("#agent-filter", isAgent)
+    assertPresenceOfElement(By.cssSelector("#agent-filter"), isAgent)
   }
 
   def selectVendorLink(index: Int): Unit = {
@@ -52,5 +54,8 @@ object SoftwareResultsPage extends BasePage {
     click(By.linkText("Clear filters"))
     assertUrl(url)
   }
+
+  def checkVendorDisplayed(vendor: Int, expected: Boolean): Assertion =
+    assertPresenceOfElement(By.partialLinkText(s"vendor 0$vendor"), expected)
 
 }
