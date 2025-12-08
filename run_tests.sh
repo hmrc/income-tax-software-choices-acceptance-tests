@@ -7,7 +7,7 @@ TAGS=$4
 
 sbt scalafmtCheckAll scalafmtSbtCheck
 if [ -z "$TAGS" ]; then
-  sbt clean -Dbrowser="$BROWSER" -Denvironment="$ENVIRONMENT" -Dbrowser.option.headless="$HEADLESS" test testReport
+  sbt  -Dbrowser="$BROWSER" -Denvironment="$ENVIRONMENT" -Dbrowser.option.headless="$HEADLESS" test testReport
 else
-  sbt clean -Dbrowser="$BROWSER" -Denvironment="$ENVIRONMENT" -Dbrowser.option.headless="$HEADLESS" "testOnly uk.gov.hmrc.test.ui.specs.* -- -n $TAGS" testReport
+  sbt  -Dbrowser="$BROWSER" -Denvironment="$ENVIRONMENT" -Dbrowser.option.headless="$HEADLESS" "testOnly uk.gov.hmrc.test.ui.specs.* -- -n $TAGS" testReport
 fi
