@@ -79,7 +79,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       ProductDetailsPage.onVendorPage("vendor 05")
     }
 
-    Scenario("User has an unsupported accounting period") {
+    Scenario("User has a non aligned accounting period") {
 
       Given("I disable all feature switches")
       FeatureSwitchPage.disableAllFeatureSwitches()
@@ -102,8 +102,20 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriod(NeitherOfThese)
 
-      Then("I am on the unsupported accounting period page")
-      UnsupportedAccountingPeriodPage.onPage()
+      And("Onn the accounting period not aligned page I click continue")
+      AccountingPeriodNotAlignedPage.onPage()
+      AccountingPeriodNotAlignedPage.submitPage()
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.submitPage()
+
+      And("On the choosing software page I click continue")
+      ChoosingSoftwarePage.onPage()
+      ChoosingSoftwarePage.submitPage()
+
+      Then("I am the software results page")
+      SoftwareResultsPage.onPage(isAgent = false)
     }
 
     Scenario("User selects options which results in no all-in-one software and they click Finish") {
