@@ -60,6 +60,18 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       ChoosingSoftwarePage.onPage()
       ChoosingSoftwarePage.submitPage()
 
+      And("On the software results page I select Change answers")
+      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.clickChangeAnswers()
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.submitPage()
+
+      And("On the choosing software page I click continue")
+      ChoosingSoftwarePage.onPage()
+      ChoosingSoftwarePage.submitPage()
+
       And("On the software results page I select a preference filter")
       SoftwareResultsPage.onPage(isAgent = false)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
