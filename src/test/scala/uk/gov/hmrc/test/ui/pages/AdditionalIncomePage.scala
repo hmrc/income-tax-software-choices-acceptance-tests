@@ -27,9 +27,10 @@ object AdditionalIncomePage extends BasePage {
     case UkDividends extends AdditionalIncome("additionalIncome-4")
     case StatePensionIncome extends AdditionalIncome("additionalIncome-5")
     case PrivatePensionIncomes extends AdditionalIncome("additionalIncome-6")
-    case ForeignDividends extends AdditionalIncome("additionalIncome-7")
-    case ForeignInterest extends AdditionalIncome("additionalIncome-8")
-    case NoneOfThese extends AdditionalIncome("additionalIncome-10")
+    case PartnerIncome extends AdditionalIncome("additionalIncome-7")
+    case ForeignDividends extends AdditionalIncome("additionalIncome-8")
+    case ForeignInterest extends AdditionalIncome("additionalIncome-9")
+    case NoneOfThese extends AdditionalIncome("additionalIncome-11")
 
   def selectAdditionalIncomes(additionalIncome: Seq[AdditionalIncome]): Unit = {
     assertUrl(url)
