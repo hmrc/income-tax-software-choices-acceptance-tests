@@ -62,4 +62,6 @@ object SoftwareResultsPage extends BasePage {
     )
     assertPresenceOfElement(By.partialLinkText(s"vendor $vendor"), expected)
 
+  def clickChangeAnswers(): Unit = click(By.linkText("Change answers"))
+
 }
