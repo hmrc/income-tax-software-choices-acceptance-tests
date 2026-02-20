@@ -22,6 +22,6 @@ object ProductDetailsPage extends BasePage {
 
   val url = "/product-details"
 
-  def onVendorPage(productId: Int): Unit = assertUrl(s"${getPageURL(url)}/$productId")
+  def onVendorPage(productId: Int): Unit = assertUrl(s"${getPageURL(url)}?productId=$productId")
 
 }
