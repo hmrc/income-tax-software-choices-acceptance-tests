@@ -88,7 +88,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       SoftwareResultsPage.selectVendorLink(1)
 
       Then("I am on the product details page for vendor 5")
-      ProductDetailsPage.onVendorPage(105)
+      ProductDetailsPage.onPage()
     }
 
     Scenario("User has a non aligned accounting period") {

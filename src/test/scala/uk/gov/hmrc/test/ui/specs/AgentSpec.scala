@@ -50,7 +50,7 @@ class AgentSpec extends BaseSpec {
       SoftwareResultsPage.selectVendorLink(1)
 
       Then("I am on the product details page for vendor 1")
-      ProductDetailsPage.onVendorPage(101)
+      ProductDetailsPage.onPage()
     }
   }
 }
