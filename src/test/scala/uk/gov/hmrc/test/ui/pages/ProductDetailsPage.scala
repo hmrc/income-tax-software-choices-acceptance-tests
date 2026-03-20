@@ -16,12 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import java.net.URLEncoder
-
 object ProductDetailsPage extends BasePage {
 
   val url = "/product-details"
-
-  def onVendorPage(productId: Int): Unit = assertUrl(s"${getPageURL(url)}?productId=$productId")
 
 }
