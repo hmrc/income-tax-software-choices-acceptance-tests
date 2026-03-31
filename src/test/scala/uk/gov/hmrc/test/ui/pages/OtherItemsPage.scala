@@ -22,13 +22,14 @@ object OtherItemsPage extends BasePage {
 
   enum OtherItems(val id: String):
     case PrivatePensionContributions extends OtherItems("otherItems")
-    case CharitableGiving extends OtherItems("otherItems-2")
-    case CapitalGainsTax extends OtherItems("otherItems-3")
-    case StudentLoan extends OtherItems("otherItems-4")
-    case MarriageAllowance extends OtherItems("otherItems-5")
-    case VoluntaryClass2NationalInsurance extends OtherItems("otherItems-6")
-    case HighIncomeChildBenefitCharge extends OtherItems("otherItems-7")
-    case NoneOfThese extends OtherItems("otherItems-9")
+    case ConstructionIndustryScheme extends OtherItems("otherItems-2")
+    case CharitableGiving extends OtherItems("otherItems-3")
+    case CapitalGainsTax extends OtherItems("otherItems-4")
+    case StudentLoan extends OtherItems("otherItems-5")
+    case MarriageAllowance extends OtherItems("otherItems-6")
+    case VoluntaryClass2NationalInsurance extends OtherItems("otherItems-7")
+    case HighIncomeChildBenefitCharge extends OtherItems("otherItems-8")
+    case NoneOfThese extends OtherItems("otherItems-10")
 
   def selectOtherItems(otherItems: Seq[OtherItems]): Unit = {
     assertUrl(url)
