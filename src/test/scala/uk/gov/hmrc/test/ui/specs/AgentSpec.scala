@@ -17,7 +17,7 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType
-import uk.gov.hmrc.test.ui.pages.{FeatureSwitchPage, IndexPage, ProductDetailsPage, SoftwareResultsPage, UserTypePage}
+import uk.gov.hmrc.test.ui.pages.{FeatureSwitchPage, HowYouFindSoftwarePage, IndexPage, ProductDetailsPage, SoftwareResultsPage, UserTypePage}
 
 class AgentSpec extends BaseSpec {
 
@@ -51,6 +51,24 @@ class AgentSpec extends BaseSpec {
 
       Then("I am on the product details page for vendor 1")
       ProductDetailsPage.onPage()
+    }
+
+    Scenario("Agent user selects Find journey when Check feature switch is enabled") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Find)
+
+      When("I select 'As an agent' and click continue")
+      UserTypePage.selectUserType(UserType.Agent)
+
+      Then("I am on the software results page")
+      SoftwareResultsPage.onPage(isAgent = true)
     }
   }
 }
