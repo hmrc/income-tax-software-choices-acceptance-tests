@@ -23,6 +23,7 @@ import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.*
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.*
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.*
+import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Find
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.SoleTraderOrLandlord
 
 class SoleTraderOrLandlordSpec extends BaseSpec {
@@ -161,6 +162,44 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
       Then("I am on the session expired page")
       SessionExpiredPage.onPage()
+    }
+
+    Scenario("User selects Find journey when Check Journey feature switch enabled") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Find)
+
+      And("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment, UKProperty, ForeignProperty))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.submitPage()
+
+      And("On the choosing software page I click continue")
+      ChoosingSoftwarePage.onPage()
+      ChoosingSoftwarePage.submitPage()
+
+      Then("I am on the software results page")
+      SoftwareResultsPage.onPage(isAgent = false)
     }
   }
 }
