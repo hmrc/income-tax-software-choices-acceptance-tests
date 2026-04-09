@@ -23,6 +23,7 @@ import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.*
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.*
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.*
+import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Find
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.SoleTraderOrLandlord
 
 class SoleTraderOrLandlordSpec extends BaseSpec {
@@ -172,7 +173,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       IndexPage.goTo()
 
       And("I select the 'Find' option and click continue")
-      HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Find)
+      HowYouFindSoftwarePage.selectJourney(Find)
 
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)

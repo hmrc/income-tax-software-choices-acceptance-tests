@@ -17,8 +17,8 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType
-import uk.gov.hmrc.test.ui.pages.{FeatureSwitchPage, HowYouFindSoftwarePage, IndexPage, ProductDetailsPage, SoftwareResultsPage, UserTypePage}
-
+import uk.gov.hmrc.test.ui.pages.*
+import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Find
 class AgentSpec extends BaseSpec {
 
   Feature("Agent journey") {
@@ -62,7 +62,7 @@ class AgentSpec extends BaseSpec {
       IndexPage.goTo()
 
       And("I select the 'Find' option and click continue")
-      HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Find)
+      HowYouFindSoftwarePage.selectJourney(Find)
 
       When("I select 'As an agent' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
