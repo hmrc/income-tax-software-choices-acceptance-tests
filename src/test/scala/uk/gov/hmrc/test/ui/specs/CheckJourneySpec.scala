@@ -48,7 +48,6 @@ class CheckJourneySpec extends BaseSpec {
       EnterSoftwareNamePage.submitPage()
 
       Then("I should be taken to the How will you use it page")
-      Thread.sleep(1000)
       UserTypePage.onPage()
     }
     Scenario("User checks if they need additional software") {
