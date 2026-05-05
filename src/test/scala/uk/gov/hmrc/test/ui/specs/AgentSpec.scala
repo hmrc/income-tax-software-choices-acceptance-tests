@@ -28,8 +28,14 @@ class AgentSpec extends BaseSpec {
       Given("I disable all feature switches")
       FeatureSwitchPage.disableAllFeatureSwitches()
 
-      Given("I navigate to the index route")
+      When("I navigate to the index route")
       IndexPage.goTo()
+
+      Given("I navigate directly to the do u have software page")
+      HowYouFindSoftwarePage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Find)
 
       When("I select 'As an agent' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
@@ -60,6 +66,9 @@ class AgentSpec extends BaseSpec {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
+
+      And("I navigate directly to the do you have software page")
+      HowYouFindSoftwarePage.goTo()
 
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)
