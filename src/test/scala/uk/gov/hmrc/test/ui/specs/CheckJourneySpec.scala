@@ -134,7 +134,7 @@ class CheckJourneySpec extends BaseSpec {
       Then("I should be directed to the no software listed static page")
       NoSoftwareListedPage.onPage()
     }
-/* TO DO: Once the software in development page is ready, update this test case.
+    /* TO DO: Once the software in development page is ready, update this test case.
     Scenario("User checks if their software is in development") {
 
       Given("I navigate directly to the do u have software page")
