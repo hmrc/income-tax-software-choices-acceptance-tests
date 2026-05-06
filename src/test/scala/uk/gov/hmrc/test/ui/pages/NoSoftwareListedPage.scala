@@ -16,8 +16,18 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.{By, Keys}
+import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.selenium.webdriver.Driver
+
 object NoSoftwareListedPage extends BasePage {
 
   val url: String = getPageURL("/no-software-listed")
 
+  def clickSoftwareNotListed(): Unit = {
+    val link = By.linkText("My software is not listed")
+    Driver.instance.findElement(By.id("enter-software-name")).sendKeys(Keys.ESCAPE)
+    fluentWait.until(ExpectedConditions.elementToBeClickable(link))
+    click(link)
+  }
 }

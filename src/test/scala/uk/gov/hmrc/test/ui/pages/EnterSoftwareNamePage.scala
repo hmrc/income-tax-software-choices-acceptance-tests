@@ -16,10 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.{By, Keys}
-import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
-import scala.jdk.CollectionConverters._
 
 object EnterSoftwareNamePage extends BasePage {
 
@@ -31,24 +29,4 @@ object EnterSoftwareNamePage extends BasePage {
     waitForElement(suggestion)
     Driver.instance.findElement(suggestion).click()
   }
-
-  def isNameInAutocompleteList(name: String): Boolean = {
-    val options = Driver.instance.findElements(By.cssSelector(".autocomplete__option"))
-    options.asScala.exists(_.getText.toLowerCase.contains(name.toLowerCase))
-  }
-
-  def writeAndCheckIfNotListed(name: String): Unit = {
-    write("enter-software-name", name)
-    if (!isNameInAutocompleteList(name)) {
-      clickSoftwareNotListed()
-    }
-  }
-
-  def clickSoftwareNotListed(): Unit = {
-    val link = By.linkText("My software is not listed")
-    Driver.instance.findElement(By.id("enter-software-name")).sendKeys(Keys.ESCAPE)
-    fluentWait.until(ExpectedConditions.elementToBeClickable(link))
-    click(link)
-  }
-
 }

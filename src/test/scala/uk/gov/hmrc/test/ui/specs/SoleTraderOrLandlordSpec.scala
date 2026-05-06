@@ -100,12 +100,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       Given("I navigate to the index route")
       IndexPage.goTo()
 
-      Given("I navigate directly to the do u have software page")
-      HowYouFindSoftwarePage.goTo()
-
-      And("I select the 'Find' option and click continue")
-      HowYouFindSoftwarePage.selectJourney(Find)
-
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
@@ -145,12 +139,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       Given("I navigate to the index route")
       IndexPage.goTo()
 
-      Given("I navigate directly to the do u have software page")
-      HowYouFindSoftwarePage.goTo()
-
-      And("I select the 'Find' option and click continue")
-      HowYouFindSoftwarePage.selectJourney(Find)
-
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
@@ -183,9 +171,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
-
-      Given("I navigate directly to the do u have software page")
-      HowYouFindSoftwarePage.goTo()
 
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)

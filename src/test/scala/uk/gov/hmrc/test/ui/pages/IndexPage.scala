@@ -20,7 +20,4 @@ object IndexPage extends BasePage {
 
   val url: String = getPageURL("/")
 
-  override def goTo(): Unit =
-    get(url)
-
 }
