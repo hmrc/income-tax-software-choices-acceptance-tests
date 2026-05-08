@@ -21,7 +21,7 @@ import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.{ForeignProperty, SelfEmployment, UKProperty}
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.SoleTraderOrLandlord
-import uk.gov.hmrc.test.ui.pages.{AccountingPeriodPage, AdditionalIncomePage, BusinessIncomePage, CheckYourAnswersPage, ChoosingSoftwarePage, EnterSoftwareNamePage, FeatureSwitchPage, HowYouFindSoftwarePage, IndexPage, NeedAdditionalSoftwarePage, NoSoftwareListedPage, OtherItemsPage, SoftwareResultsPage, UserTypePage}
+import uk.gov.hmrc.test.ui.pages.*
 
 class CheckJourneySpec extends BaseSpec {
 
@@ -37,11 +37,8 @@ class CheckJourneySpec extends BaseSpec {
       And("I select 'Check' and click continue")
       HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
 
-      And("I should be on the Enter Software Name page")
-      EnterSoftwareNamePage.onPage()
-
-      And("I type in my software name and click continue")
-      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 01")
+      And("I type in my software name 'vendor 05'  and click continue")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 05")
       EnterSoftwareNamePage.submitPage()
 
       And("I select 'As a sole trader or landlord' and click continue")
@@ -63,14 +60,87 @@ class CheckJourneySpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
+      Then("I am on the fully compatible page")
+      FullyCompatiblePage.onPage()
+    }
 
-      Then("I am on the software results page")
-      SoftwareResultsPage.onPage(isAgent = false)
+    Scenario("User checks if their software is partly compatible") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select 'Check' and click continue")
+      HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
+
+      And("I type in my software name 'vendor 04'  and click continue")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 04")
+      EnterSoftwareNamePage.submitPage()
+
+      And("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment, UKProperty, ForeignProperty))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.submitPage()
+
+      Then("I am on the partly compatible page")
+      PartlyCompatiblePage.onPage()
+    }
+
+    Scenario("User checks if their software is compatible for quarterly updates only") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select 'Check' and click continue")
+      HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
+
+      And("I type in my software name 'vendor 02'  and click continue")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 02")
+      EnterSoftwareNamePage.submitPage()
+
+      And("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment, UKProperty, ForeignProperty))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      //CheckYourAnswersPage.submitPage()
+
+      /* To Do - Update this to redirect to the correct page once the quarterly updates only page is implemented. */
+      //Then("I am on the compatible for quarterly updates page")
 
     }
+
     Scenario("User checks if they need additional software") {
 
       Given("I enable the Check Journey feature switch")
@@ -82,15 +152,15 @@ class CheckJourneySpec extends BaseSpec {
       When("I select 'Check if my current software is compatible' and click continue")
       HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
 
-      And("I should be on the Enter Software Name page")
-      EnterSoftwareNamePage.onPage()
-
-      And("I type in my software name and click continue")
+      And("I type in my software name as 'Google Sheets' and click continue")
       EnterSoftwareNamePage.enterAndSelectSoftwareName("Google Sheets")
       EnterSoftwareNamePage.submitPage()
 
       And("I should be taken to the You will need Additional Software ")
-      NeedAdditionalSoftwarePage.onPage()
+      NeedAdditionalSoftwarePage.submitPage()
+
+      Then("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
     }
 
     Scenario("User checks if their software is not listed") {
@@ -104,17 +174,13 @@ class CheckJourneySpec extends BaseSpec {
       When("I select 'Check if my current software is compatible' and click continue")
       HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
 
-      And("I should be on the Enter Software Name page")
-      EnterSoftwareNamePage.onPage()
-
-      And("I type in an unlisted software name and click on My software is not listed")
+      And("I type in an unlisted software name 'Vendor11' and click on My software is not listed")
       EnterSoftwareNamePage.write("enter-software-name", "Vendor11")
       NoSoftwareListedPage.clickSoftwareNotListed()
 
       Then("I should be directed to the no software listed static page")
       NoSoftwareListedPage.onPage()
     }
-    /* TO DO: Once the software in development page is ready, update this test case.
     Scenario("User checks if their software is in development") {
 
       Given("I enable the Check Journey feature switch")
@@ -123,19 +189,19 @@ class CheckJourneySpec extends BaseSpec {
       Given("I navigate to the index route")
       IndexPage.goTo()
 
-      When("I select the 'Check' option and click continue")
+      When("I select 'Check if my current software is compatible' and click continue")
       HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
 
-      And("I should be on the Enter Software Name page")
-      EnterSoftwareNamePage.onPage()
-
-      And("I type in my software name and click continue")
-      EnterSoftwareNamePage.enterAndSelectSoftwareName("Vendor11")
+      And("I type in my software name as 'Maybe Vendor' and click continue")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("Maybe Vendor")
       EnterSoftwareNamePage.submitPage()
 
-      Then("I should be directed to the software in development static page")
-      SoftwareInDevelopmentPage.onPage()
-    }*/
+      And("I should be directed to the software in development static page")
+      SoftwareInDevelopmentPage.submitPage()
+
+      Then("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+    }
 
   }
 }

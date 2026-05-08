@@ -16,16 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
-import uk.gov.hmrc.selenium.webdriver.Driver
+object SoftwareInDevelopmentPage extends BasePage {
 
-object EnterSoftwareNamePage extends BasePage {
+  val url: String = getPageURL("/software-in-development")
 
-  val url: String = getPageURL("/enter-software-name")
-  def enterAndSelectSoftwareName(name: String): Unit = {
-    write("enter-software-name", name)
-    val suggestion = By.cssSelector(".autocomplete__option")
-    waitForElement(suggestion)
-    Driver.instance.findElement(suggestion).click()
-  }
 }
