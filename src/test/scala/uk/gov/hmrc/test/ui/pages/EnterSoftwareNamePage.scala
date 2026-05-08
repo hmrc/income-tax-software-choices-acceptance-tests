@@ -16,16 +16,26 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.selenium.webdriver.Driver
+import org.openqa.selenium.{By, Keys}
+import org.openqa.selenium.support.ui.ExpectedConditions
 
 object EnterSoftwareNamePage extends BasePage {
 
   val url: String = getPageURL("/enter-software-name")
+
   def enterAndSelectSoftwareName(name: String): Unit = {
+    assertUrl(url)
     write("enter-software-name", name)
     val suggestion = By.cssSelector(".autocomplete__option")
     waitForElement(suggestion)
     Driver.instance.findElement(suggestion).click()
+  }
+
+  def clickSoftwareNotListed(): Unit = {
+    val link = By.linkText("My software is not listed")
+    Driver.instance.findElement(By.id("enter-software-name")).sendKeys(Keys.ESCAPE)
+    fluentWait.until(ExpectedConditions.elementToBeClickable(link))
+    click(link)
   }
 }

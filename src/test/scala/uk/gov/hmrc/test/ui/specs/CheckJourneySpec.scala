@@ -214,12 +214,16 @@ class CheckJourneySpec extends BaseSpec {
       HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
 
       And("I type in an unlisted software name 'Vendor11' and click on My software is not listed")
-      EnterSoftwareNamePage.write("enter-software-name", "Vendor11")
-      NoSoftwareListedPage.clickSoftwareNotListed()
+      EnterSoftwareNamePage.clickSoftwareNotListed()
 
-      Then("I should be directed to the no software listed static page")
-      NoSoftwareListedPage.onPage()
+      And("I should be directed to the no software listed static page")
+      NoSoftwareListedPage.submitPage()
+
+      Then("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+
     }
+
     Scenario("User checks if their software is in development") {
 
       Given("I enable the Check Journey feature switch")
