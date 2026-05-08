@@ -64,7 +64,7 @@ class CheckJourneySpec extends BaseSpec {
       FullyCompatiblePage.onPage()
     }
 
-    Scenario("User checks if their software is partly compatible") {
+    Scenario("User checks if their software is partially compatible") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -99,7 +99,7 @@ class CheckJourneySpec extends BaseSpec {
       CheckYourAnswersPage.submitPage()
 
       Then("I am on the partly compatible page")
-      PartlyCompatiblePage.onPage()
+      PartiallyCompatiblePage.onPage()
     }
 
     Scenario("User checks if their software is compatible for quarterly updates only") {
@@ -138,6 +138,45 @@ class CheckJourneySpec extends BaseSpec {
 
       /* To Do - Update this to redirect to the correct page once the quarterly updates only page is implemented. */
       //Then("I am on the compatible for quarterly updates page")
+
+    }
+
+    Scenario("User checks if their software is not compatible") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select 'Check' and click continue")
+      HowYouFindSoftwarePage.selectJourney(HowYouFindSoftwarePage.JourneyType.Check)
+
+      And("I type in my software name 'vendor 01'  and click continue")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 01")
+      EnterSoftwareNamePage.submitPage()
+
+      And("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment, UKProperty, ForeignProperty))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      //CheckYourAnswersPage.submitPage()
+
+      /* To Do - Update this to redirect to the correct page once the quarterly updates only page is implemented. */
+      //Then("I am on the software not compatible page")
 
     }
 

@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object PartlyCompatiblePage extends BasePage {
+object PartiallyCompatiblePage extends BasePage {
 
   val url: String = getPageURL("/partly-compatible")
 
