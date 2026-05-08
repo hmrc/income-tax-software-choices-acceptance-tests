@@ -16,11 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object IndexPage extends BasePage {
+object NeedAdditionalSoftwarePage extends BasePage {
 
-  val url: String = getPageURL("/")
+  val url: String = getPageURL("/need-additional-software")
 
-  override def goTo(): Unit =
-    get(url)
-    assertUrl(url)
 }

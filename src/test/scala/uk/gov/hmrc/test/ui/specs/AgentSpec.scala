@@ -28,7 +28,7 @@ class AgentSpec extends BaseSpec {
       Given("I disable all feature switches")
       FeatureSwitchPage.disableAllFeatureSwitches()
 
-      Given("I navigate to the index route")
+      When("I navigate to the index route")
       IndexPage.goTo()
 
       When("I select 'As an agent' and click continue")

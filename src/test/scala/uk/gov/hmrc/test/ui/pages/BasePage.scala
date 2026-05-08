@@ -54,7 +54,7 @@ trait BasePage extends Matchers with PageObject {
 
   def submitPage(): Unit = {
     val currentURL = getCurrentUrl
-    Driver.instance.findElement(By.cssSelector("""form > button""")).click()
+    fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".govuk-button"))).click()
     fluentWait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(currentURL)))
   }
 

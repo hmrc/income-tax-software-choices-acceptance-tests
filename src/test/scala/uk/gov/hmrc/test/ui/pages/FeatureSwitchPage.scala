@@ -17,6 +17,8 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.selenium.webdriver.Driver
 
 object FeatureSwitchPage extends BasePage {
 
@@ -32,13 +34,17 @@ object FeatureSwitchPage extends BasePage {
     switches.foreach { switch =>
       selectCheckbox(checkBoxSelector(featureSwitches.getOrElse(switch, fail("Not a valid feature switch"))))
     }
+    val continueButton = Driver.instance.findElement(By.id("continue-button"))
     click(By.id("continue-button"))
+    fluentWait.until(ExpectedConditions.stalenessOf(continueButton))
   }
 
   def disableAllFeatureSwitches(): Unit = {
     goTo()
     featureSwitches.foreach(switch => deselectCheckbox(checkBoxSelector(switch._2)))
+    val continueButton = Driver.instance.findElement(By.id("continue-button"))
     click(By.id("continue-button"))
+    fluentWait.until(ExpectedConditions.stalenessOf(continueButton))
   }
 
   private def checkBoxSelector(value: String) = By.cssSelector(s"input[type='checkbox'][value='$value']")

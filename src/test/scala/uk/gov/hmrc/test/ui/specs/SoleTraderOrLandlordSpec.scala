@@ -115,7 +115,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriod(NeitherOfThese)
 
-      And("Onn the accounting period not aligned page I click continue")
+      And("On the accounting period not aligned page I click continue")
       AccountingPeriodNotAlignedPage.onPage()
       AccountingPeriodNotAlignedPage.submitPage()
 
