@@ -177,6 +177,10 @@ class CheckJourneySpec extends BaseSpec {
 
       Then("I am on the software not compatible page")
       NotCompatiblePage.onPage()
+
+      Then("I reach the software results page when I click 'find compatible software")
+      NotCompatiblePage.submitPage()
+      SoftwareResultsPage.onPage()
     }
 
     Scenario("User checks if they need additional software") {
