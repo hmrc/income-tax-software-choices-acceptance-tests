@@ -18,7 +18,12 @@ package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType
 import uk.gov.hmrc.test.ui.pages.*
+import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.SixthToFifth
+import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.UkInterest
+import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.SelfEmployment
 import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Find
+import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.PrivatePensionContributions
+
 class AgentSpec extends BaseSpec {
 
   Feature("Agent journey") {
@@ -35,15 +40,15 @@ class AgentSpec extends BaseSpec {
       UserTypePage.selectUserType(UserType.Agent)
 
       And("On the software results page I select a preference filter")
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
 
       And("On the software results page I clear all preference filters")
       SoftwareResultsPage.clearFilters()
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
 
       And("On the software results page I select the first vendor")
@@ -67,8 +72,28 @@ class AgentSpec extends BaseSpec {
       When("I select 'As an agent' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
 
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(UkInterest))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(PrivatePensionContributions))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.submitPage()
+
+      And("On the choosing software page I click continue")
+      ChoosingSoftwarePage.onPage()
+      ChoosingSoftwarePage.submitPage()
+
       Then("I am on the software results page")
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = false)
     }
   }
 }

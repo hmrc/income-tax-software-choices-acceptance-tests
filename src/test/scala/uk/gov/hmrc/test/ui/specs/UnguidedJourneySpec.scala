@@ -39,10 +39,10 @@ class UnguidedJourneySpec extends BaseSpec {
       UserTypePage.selectUserType(UserType.Agent)
 
       And("On the software results page I select a preference filter")
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
 
     }
@@ -63,7 +63,7 @@ class UnguidedJourneySpec extends BaseSpec {
 
       And("On the software results page I clear all preference filters")
       SoftwareResultsPage.clearFilters()
-      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.onPage(isUnguided = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
     }
   }
