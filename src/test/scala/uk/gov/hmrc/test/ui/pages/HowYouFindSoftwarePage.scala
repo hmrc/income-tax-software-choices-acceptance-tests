@@ -23,6 +23,7 @@ object HowYouFindSoftwarePage extends BasePage {
   enum JourneyType(val id: String):
     case Find extends JourneyType("how-you-find-software")
     case Check extends JourneyType("how-you-find-software-2")
+    case ViewAll extends JourneyType("how-you-find-software-2")
 
   def selectJourney(journeyType: JourneyType): Unit = {
     assertUrl(url)

@@ -17,14 +17,14 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.*
-import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Find
+import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.ViewAll
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType
 
 class UnguidedJourneySpec extends BaseSpec {
 
   Feature("Unguided journey") {
 
-    Scenario("User selects View All journey when Check feature switch is enabled") {
+    Scenario("An Agent selects View All journey when Check feature switch is enabled") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -33,17 +33,38 @@ class UnguidedJourneySpec extends BaseSpec {
       IndexPage.goTo()
 
       And("I select the 'Show a list of all' option and click continue")
-      HowYouFindSoftwarePage.selectJourney(Find)
+      HowYouFindSoftwarePage.selectJourney(ViewAll)
 
       And("I select 'As an agent' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
 
-      Then("On the software results page I select a preference filter")
+      And("On the software results page I select a preference filter")
       SoftwareResultsPage.onPage(isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
       SoftwareResultsPage.onPage(isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
+
+    }
+
+    Scenario("An Individual selects View All journey when Check feature switch is enabled") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      When("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select the 'Show a list of all' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(ViewAll)
+
+      And("I select 'As an individual' and click continue")
+      UserTypePage.selectUserType(UserType.SoleTraderOrLandlord)
+
+      And("On the software results page I clear all preference filters")
+      SoftwareResultsPage.clearFilters()
+      SoftwareResultsPage.onPage(isAgent = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
     }
   }
 }
