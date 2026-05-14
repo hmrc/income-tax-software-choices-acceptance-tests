@@ -62,7 +62,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       ChoosingSoftwarePage.submitPage()
 
       And("On the software results page I select Change answers")
-      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.onPage(isUnguided = false)
       SoftwareResultsPage.clickChangeAnswers()
 
       And("On the CYA page I click continue")
@@ -74,15 +74,15 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       ChoosingSoftwarePage.submitPage()
 
       And("On the software results page I select a preference filter")
-      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.onPage(isUnguided = false)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("VAT"))
-      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.onPage(isUnguided = false)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = false)
 
       And("On the software results page I clear all preference filters")
       SoftwareResultsPage.clearFilters()
-      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.onPage(isUnguided = false)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
 
       And("On the software results page I select the first vendor")
@@ -128,7 +128,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       ChoosingSoftwarePage.submitPage()
 
       Then("I am the software results page")
-      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.onPage(isUnguided = false)
     }
 
     Scenario("User selects options which results in no all-in-one software and they click Finish") {
@@ -199,7 +199,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       ChoosingSoftwarePage.submitPage()
 
       Then("I am on the software results page")
-      SoftwareResultsPage.onPage(isAgent = false)
+      SoftwareResultsPage.onPage(isUnguided = false)
     }
   }
 }

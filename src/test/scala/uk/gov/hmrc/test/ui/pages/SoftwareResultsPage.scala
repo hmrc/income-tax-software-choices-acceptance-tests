@@ -34,9 +34,9 @@ object SoftwareResultsPage extends BasePage {
     "Cognitive impairments"          -> "cognitive-filter"
   )
 
-  def onPage(isAgent: Boolean): Assertion = {
+  def onPage(isUnguided: Boolean): Assertion = {
     assertUrl(url)
-    assertPresenceOfElement(By.cssSelector("#agent-filter"), isAgent)
+    assertPresenceOfElement(By.cssSelector("#agent-filter"), isUnguided)
   }
 
   def selectVendorLink(index: Int): Unit = {
