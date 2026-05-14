@@ -26,7 +26,7 @@ import uk.gov.hmrc.test.ui.pages.*
 class CheckJourneySpec extends BaseSpec {
 
   Feature("Check journey") {
-    Scenario("User checks if their software is fully compatible") {
+    Scenario("User checks fully compatible software") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -64,7 +64,7 @@ class CheckJourneySpec extends BaseSpec {
       FullyCompatiblePage.onPage()
     }
 
-    Scenario("User checks if their software is partially compatible") {
+    Scenario("User checks partially compatible software") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -102,7 +102,7 @@ class CheckJourneySpec extends BaseSpec {
       PartiallyCompatiblePage.onPage()
     }
 
-    Scenario("User checks if their software is compatible for quarterly updates only") {
+    Scenario("User checks software that is compatible for quarterly updates only") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -141,7 +141,7 @@ class CheckJourneySpec extends BaseSpec {
 
     }
 
-    Scenario("User checks if their software is not compatible") {
+    Scenario("User checks not compatible software") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -173,11 +173,12 @@ class CheckJourneySpec extends BaseSpec {
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
-      //CheckYourAnswersPage.submitPage()
+      CheckYourAnswersPage.submitPage()
 
-      /* To Do - Update this to redirect to the correct page once the quarterly updates only page is implemented. */
-      //Then("I am on the software not compatible page")
-
+      Then("On the software not compatible page I click the 'find compatible software' button")
+      NotCompatiblePage.onPage()
+      NotCompatiblePage.submitPage()
+      SoftwareResultsPage.onPage()
     }
 
     Scenario("User checks if they need additional software") {
