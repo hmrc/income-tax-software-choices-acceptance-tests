@@ -16,8 +16,19 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.ExpectedConditions
+import uk.gov.hmrc.test.ui.pages.SoftwareResultsPage.click
+
 object CheckYourAnswersPage extends BasePage {
 
   val url: String = getPageURL("/check-answers")
 
+  def clickLink(href: String): Unit =
+    fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(s"a[href='$href']"))).click()
+
+  def clickChangeUserType(): Unit =
+    clickLink("/find-making-tax-digital-income-tax-software/how-will-you-use-it?editMode=true")
+
+  def clickChange(): Unit = click(By.linkText("\"Change\""))
 }
