@@ -72,7 +72,4 @@ trait BasePage extends Matchers with PageObject {
     )
   }
 
-  def assertTextOnPage(text: String): Assertion =
-    assertPresenceOfElement(By.xpath(s"//*[contains(text(), '$text')]"), true)
-
 }

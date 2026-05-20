@@ -16,14 +16,15 @@
 
 package uk.gov.hmrc.test.ui.specs
 
+import org.scalatest.Tag
 import uk.gov.hmrc.test.ui.pages.*
 import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.*
 import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome
 import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.*
-import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
-import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.*
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.*
 import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Find
+import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
+import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.*
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.{Agent, SoleTraderOrLandlord}
 
 class SoleTraderOrLandlordSpec extends BaseSpec {
@@ -202,7 +203,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       SoftwareResultsPage.onPage(isUnguided = false)
     }
 
-    Scenario("User changes user type") {
+    Scenario("User changes user answers") {
 
       Given("I enable the Check Journey feature switch")
       FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
@@ -217,31 +218,54 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
-      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment, UKProperty, ForeignProperty))
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment))
 
       And("I select my additional income sources and click continue")
       AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
 
       And("I select my other income sources and click continue")
-      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+      OtherItemsPage.selectOtherItems(Seq(StudentLoan))
 
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
-
-      And("On the CYA page I click change user type")
       CheckYourAnswersPage.onPage()
-//      CheckYourAnswersPage.clickLink(
-//        "/find-making-tax-digital-income-tax-software/how-will-you-use-it?editMode=true"
-//      )
+
+      And("On the CYA page, I can change my user type answer to 'Agent'")
+      CheckYourAnswersPage.assertUserTypeAnswer("Sole trader or landlord")
       CheckYourAnswersPage.clickChangeUserType()
-//      CheckYourAnswersPage.clickChange()
-
-      And("On how will you use it page, I select 'Agent'")
       UserTypePage.selectUserType(Agent)
-
-      And("On the CYA page, user type 'Agent' is displayed, and then I click continue")
       CheckYourAnswersPage.onPage()
-      CheckYourAnswersPage.assertTextOnPage("Agent")
+      CheckYourAnswersPage.assertUserTypeAnswer("Agent")
+
+      And("On the CYA page, I can change my business incomes answer to 'UK Property'")
+      CheckYourAnswersPage.assertBusinessIncomesAnswer("Being self-employed as a sole trader")
+      CheckYourAnswersPage.clickChangeBusinessIncomes()
+      BusinessIncomePage.selectBusinessIncomes(Seq(UKProperty))
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertBusinessIncomesAnswer("Renting out a UK property")
+
+      And("On the CYA page, I can change my additional incomes answer to 'UK interest'")
+      CheckYourAnswersPage.assertAdditionalIncomesAnswer("None selected")
+      CheckYourAnswersPage.clickChangeAdditionalIncomes()
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(UkInterest))
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertAdditionalIncomesAnswer("UK interest")
+
+      And("On the CYA page, I can change my other items answer to 'None of these'")
+      CheckYourAnswersPage.assertOtherItemsAnswer("Student loan")
+      CheckYourAnswersPage.clickChangeOtherItems()
+      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertOtherItemsAnswer("None selected")
+
+      And("On the CYA page, I can change my accounting period answer to '1 April to 31 March'")
+      CheckYourAnswersPage.assertAccountingPeriodAnswer("6 April to 5 April")
+      CheckYourAnswersPage.clickChangeAccountingPeriod()
+      AccountingPeriodPage.selectAccountingPeriod(FirstToThirtyFirst)
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertAccountingPeriodAnswer("1 April to 31 March")
+
+      And("I select 'confirm and continue'")
       CheckYourAnswersPage.submitPage()
 
       And("On the choosing software page I click continue")

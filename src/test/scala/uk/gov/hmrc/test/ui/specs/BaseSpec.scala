@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.specs
 
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.{BeforeAndAfterEach, GivenWhenThen}
+import org.scalatest.{BeforeAndAfterEach, GivenWhenThen, Tag}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 
 trait BaseSpec
@@ -35,3 +35,9 @@ trait BaseSpec
   override def afterEach(): Unit =
     quitBrowser()
 }
+
+// When only wanting to run a single test (or a few tests) at a time, (temporarily) append TestTag as a second argument to a Scenario, e.g.:
+// Scenario("User changes user answers", TestTag)
+// Then run the tests from the root of this project using:
+// ./run_tests.sh chrome local true TestTag
+object TestTag extends Tag("TestTag")
