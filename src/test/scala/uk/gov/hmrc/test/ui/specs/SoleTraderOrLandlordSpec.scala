@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.test.ui.specs
 
-import org.scalatest.Tag
 import uk.gov.hmrc.test.ui.pages.*
 import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.*
 import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome
