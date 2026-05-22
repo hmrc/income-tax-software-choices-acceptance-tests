@@ -25,6 +25,9 @@ object CheckYourAnswersPage extends BasePage {
 
   val url: String = getPageURL("/check-answers")
 
+  def clickChangeSoftwareName(): Unit =
+    clickLink("/find-making-tax-digital-income-tax-software/enter-software-name?editMode=true")
+
   def clickChangeUserType(): Unit =
     clickLink("/find-making-tax-digital-income-tax-software/how-will-you-use-it?editMode=true")
 
@@ -39,6 +42,9 @@ object CheckYourAnswersPage extends BasePage {
 
   def clickChangeAccountingPeriod(): Unit =
     clickLink("/find-making-tax-digital-income-tax-software/accounting-period-check?editMode=true")
+
+  def assertSoftwareNameAnswer(expectedValue: String): Unit =
+    assertUserAnswer("Software name", expectedValue)
 
   def assertUserTypeAnswer(expectedValue: String): Unit =
     assertUserAnswer("User type", expectedValue)

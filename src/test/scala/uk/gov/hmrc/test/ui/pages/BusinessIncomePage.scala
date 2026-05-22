@@ -31,4 +31,9 @@ object BusinessIncomePage extends BasePage {
     submitPage()
   }
 
+  def deselectBusinessIncomes(businessIncome: Seq[BusinessIncome]): Unit = {
+    assertUrl(url)
+    businessIncome.map(_.id).foreach(clickById)
+  }
+
 }
