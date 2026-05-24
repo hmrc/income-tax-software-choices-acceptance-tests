@@ -72,7 +72,4 @@ trait BasePage extends Matchers with PageObject {
     )
   }
 
-  def goBack(): Unit =
-    fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".govuk-back-link"))).click()
-
 }

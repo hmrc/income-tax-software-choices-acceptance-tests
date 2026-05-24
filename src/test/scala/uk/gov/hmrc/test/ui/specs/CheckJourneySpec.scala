@@ -16,12 +16,15 @@
 
 package uk.gov.hmrc.test.ui.specs
 
-import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.SixthToFifth
+import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.{FirstToThirtyFirst, SixthToFifth}
 import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.{ForeignProperty, SelfEmployment, UKProperty}
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
-import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.SoleTraderOrLandlord
+import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.{Agent, SoleTraderOrLandlord}
 import uk.gov.hmrc.test.ui.pages.*
+import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.UkInterest
+import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Check
+import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.StudentLoan
 
 class CheckJourneySpec extends BaseSpec {
 
@@ -247,5 +250,138 @@ class CheckJourneySpec extends BaseSpec {
       UserTypePage.selectUserType(SoleTraderOrLandlord)
     }
 
+    Scenario("User can select other software type product and see recognition page") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select the 'Check' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Check)
+
+      And("I can select future product and see recognition page")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("Maybe Vendor")
+      EnterSoftwareNamePage.submitPage()
+      SoftwareInDevelopmentPage.onPage()
+
+      And("I can select spreadsheet product and see recognition page")
+      EnterSoftwareNamePage.goTo()
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("WPS Spreadsheets")
+      EnterSoftwareNamePage.submitPage()
+      NeedAdditionalSoftwarePage.onPage()
+
+      And("I can select my software is not listed and see recognition page")
+      EnterSoftwareNamePage.goTo()
+      EnterSoftwareNamePage.clickSoftwareNotListed()
+      NoSoftwareListedPage.onPage()
+    }
+
+    Scenario("User changes user answers") {
+
+      Given("I enable the Check Journey feature switch")
+      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select the 'Check' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Check)
+
+      And("I select 'Vendor 3' and click continue")
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 03")
+      EnterSoftwareNamePage.submitPage()
+
+      And("I select 'As a sole trader or landlord' and click continue")
+      UserTypePage.selectUserType(SoleTraderOrLandlord)
+
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(StudentLoan))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      CheckYourAnswersPage.onPage()
+
+      And("On the CYA page, I can change the product to future product")
+      CheckYourAnswersPage.assertSoftwareNameAnswer("vendor 03")
+      CheckYourAnswersPage.clickChangeSoftwareName()
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("Maybe Vendor")
+      EnterSoftwareNamePage.submitPage()
+      SoftwareInDevelopmentPage.onPage()
+      SoftwareInDevelopmentPage.submitPage()
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertSoftwareNameAnswer("Maybe Vendor")
+
+      And("On the CYA page, I can change the product to a spreadsheet product")
+      CheckYourAnswersPage.clickChangeSoftwareName()
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("WPS Spreadsheets")
+      EnterSoftwareNamePage.submitPage()
+      NeedAdditionalSoftwarePage.onPage()
+      NeedAdditionalSoftwarePage.submitPage()
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertSoftwareNameAnswer("WPS Spreadsheets")
+
+      And("On the CYA page, I can select my software is not listed")
+      CheckYourAnswersPage.clickChangeSoftwareName()
+      EnterSoftwareNamePage.clickSoftwareNotListed()
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertSoftwareNameAnswer("Software not listed")
+
+      And("On the CYA page, I can change the selected product answer to 'vendor 05'")
+      CheckYourAnswersPage.clickChangeSoftwareName()
+      EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 03")
+      EnterSoftwareNamePage.submitPage()
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertSoftwareNameAnswer("vendor 03")
+
+      And("On the CYA page, I can change my user type answer to 'Agent'")
+      CheckYourAnswersPage.assertUserTypeAnswer("Sole trader or landlord")
+      CheckYourAnswersPage.clickChangeUserType()
+      UserTypePage.selectUserType(Agent)
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertUserTypeAnswer("Agent")
+
+      And("On the CYA page, I can change my business incomes answer to 'UK Property'")
+      CheckYourAnswersPage.assertBusinessIncomesAnswer("Being self-employed as a sole trader")
+      CheckYourAnswersPage.clickChangeBusinessIncomes()
+      BusinessIncomePage.deselectBusinessIncomes(Seq(SelfEmployment))
+      BusinessIncomePage.selectBusinessIncomes(Seq(UKProperty))
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertBusinessIncomesAnswer("Renting out a UK property")
+
+      And("On the CYA page, I can change my additional incomes answer to 'UK interest'")
+      CheckYourAnswersPage.assertAdditionalIncomesAnswer("None selected")
+      CheckYourAnswersPage.clickChangeAdditionalIncomes()
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(UkInterest))
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertAdditionalIncomesAnswer("UK interest")
+
+      And("On the CYA page, I can change my other items answer to 'None of these'")
+      CheckYourAnswersPage.assertOtherItemsAnswer("Student loan")
+      CheckYourAnswersPage.clickChangeOtherItems()
+      OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertOtherItemsAnswer("None selected")
+
+      And("On the CYA page, I can change my accounting period answer to '1 April to 31 March'")
+      CheckYourAnswersPage.assertAccountingPeriodAnswer("6 April to 5 April")
+      CheckYourAnswersPage.clickChangeAccountingPeriod()
+      AccountingPeriodPage.selectAccountingPeriod(FirstToThirtyFirst)
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.assertAccountingPeriodAnswer("1 April to 31 March")
+
+      And("I select 'confirm and continue'")
+      CheckYourAnswersPage.submitPage()
+
+      Then("I am on the fully compatible page")
+      FullyCompatiblePage.onPage()
+    }
   }
 }
