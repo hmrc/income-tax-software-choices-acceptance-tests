@@ -249,7 +249,7 @@ class CheckJourneySpec extends BaseSpec {
       Then("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
     }
-    
+
     Scenario("User changes user answers") {
 
       Given("I enable the Check Journey feature switch")
@@ -306,13 +306,13 @@ class CheckJourneySpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.assertSoftwareNameAnswer("Software not listed")
 
-      And("On the CYA page, I can change the selected product answer to 'vendor 05'")
+      And("On the CYA page, I can change the selected product answer to 'vendor 03'")
       CheckYourAnswersPage.clickChangeSoftwareName()
       EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 03")
       EnterSoftwareNamePage.submitPage()
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.assertSoftwareNameAnswer("vendor 03")
-      
+
       And("I select 'confirm and continue'")
       CheckYourAnswersPage.submitPage()
 
