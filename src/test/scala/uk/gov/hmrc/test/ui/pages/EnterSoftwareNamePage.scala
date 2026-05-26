@@ -26,10 +26,17 @@ object EnterSoftwareNamePage extends BasePage {
 
   def enterAndSelectSoftwareName(name: String): Unit = {
     assertUrl(url)
+    clearText()
     write("enter-software-name", name)
     val suggestion = By.cssSelector(".autocomplete__option")
     waitForElement(suggestion)
     Driver.instance.findElement(suggestion).click()
+  }
+
+  private def clearText(): Unit = {
+    val element = Driver.instance.findElement(By.id("enter-software-name"))
+    while (!element.getAttribute("value").equals(""))
+      element.sendKeys(Keys.BACK_SPACE)
   }
 
   def clickSoftwareNotListed(): Unit = {
