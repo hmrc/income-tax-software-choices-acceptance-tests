@@ -269,7 +269,7 @@ class CheckJourneySpec extends BaseSpec {
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
-      BusinessIncomePage.selectBusinessIncomes(Seq(SelfEmployment))
+      BusinessIncomePage.selectBusinessIncomes(Seq(UKProperty))
 
       And("I select my additional income sources and click continue")
       AdditionalIncomePage.selectAdditionalIncomes(Seq(AdditionalIncome.NoneOfThese))
@@ -303,6 +303,8 @@ class CheckJourneySpec extends BaseSpec {
       And("On the CYA page, I can select my software is not listed")
       CheckYourAnswersPage.clickChangeSoftwareName()
       EnterSoftwareNamePage.clickSoftwareNotListed()
+      NoSoftwareListedPage.onPage()
+      NoSoftwareListedPage.submitPage()
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.assertSoftwareNameAnswer("Software not listed")
 
