@@ -57,10 +57,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
-
       And("On the software results page I select Change answers")
       SoftwareResultsPage.onPage(isUnguided = false)
       SoftwareResultsPage.clickChangeAnswers()
@@ -68,10 +64,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
-
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
 
       And("On the software results page I select a preference filter")
       SoftwareResultsPage.onPage(isUnguided = false)
@@ -122,10 +114,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
-
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
 
       Then("I am the software results page")
       SoftwareResultsPage.onPage(isUnguided = false)
@@ -193,10 +181,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
-
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
 
       Then("I am on the software results page")
       SoftwareResultsPage.onPage(isUnguided = false)
@@ -266,10 +250,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
       And("I select 'confirm and continue'")
       CheckYourAnswersPage.submitPage()
-
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
 
       Then("I am on the software results page")
       SoftwareResultsPage.onPage(isUnguided = false)
