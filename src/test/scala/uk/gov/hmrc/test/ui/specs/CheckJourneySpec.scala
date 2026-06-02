@@ -137,11 +137,6 @@ class CheckJourneySpec extends BaseSpec {
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
-      //CheckYourAnswersPage.submitPage()
-
-      /* To Do - Update this to redirect to the correct page once the quarterly updates only page is implemented. */
-      //Then("I am on the compatible for quarterly updates page")
-
     }
 
     Scenario("User checks not compatible software") {
