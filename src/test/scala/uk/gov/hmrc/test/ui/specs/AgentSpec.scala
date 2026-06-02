@@ -88,10 +88,6 @@ class AgentSpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
-      And("On the choosing software page I click continue")
-      ChoosingSoftwarePage.onPage()
-      ChoosingSoftwarePage.submitPage()
-
       Then("I am on the software results page")
       SoftwareResultsPage.onPage(isUnguided = false)
     }

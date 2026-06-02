@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object ChoosingSoftwarePage extends BasePage {
+object QuarterlyUpdatesOnlyPage extends BasePage {
 
-  val url: String = getPageURL("/choosing-software-from-your-results")
+  val url: String = getPageURL("/quarterly-updates-only")
 
 }
