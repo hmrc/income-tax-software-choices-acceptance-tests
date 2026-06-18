@@ -18,6 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 object SessionExpiredPage extends BasePage {
 
-  val url: String = getPageURL("/session-expired/true")
+  val url: String = getPageURL("/session-expired/auto")
 
 }
