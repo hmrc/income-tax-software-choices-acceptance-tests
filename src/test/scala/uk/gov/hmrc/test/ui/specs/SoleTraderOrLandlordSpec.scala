@@ -32,11 +32,11 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
     Scenario("User answers pre-search questions and finds out more information about a software vendor") {
 
-      Given("I disable all feature switches")
-      FeatureSwitchPage.disableAllFeatureSwitches()
-
       Given("I navigate to the index route")
       IndexPage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Find)
 
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
@@ -86,11 +86,11 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
     Scenario("User has a non aligned accounting period") {
 
-      Given("I disable all feature switches")
-      FeatureSwitchPage.disableAllFeatureSwitches()
-
       Given("I navigate to the index route")
       IndexPage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Find)
 
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
@@ -121,11 +121,11 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
 
     Scenario("User selects options which results in no all-in-one software and they click Finish") {
 
-      Given("I disable all feature switches")
-      FeatureSwitchPage.disableAllFeatureSwitches()
-
       Given("I navigate to the index route")
       IndexPage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Find)
 
       And("I select 'As a sole trader or landlord' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
@@ -152,10 +152,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       SessionExpiredPage.onPage()
     }
 
-    Scenario("User selects Find journey when Check Journey feature switch enabled") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
+    Scenario("User selects Find journey") {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -187,9 +184,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
     }
 
     Scenario("User changes user answers") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
 
       Given("I navigate to the index route")
       IndexPage.goTo()

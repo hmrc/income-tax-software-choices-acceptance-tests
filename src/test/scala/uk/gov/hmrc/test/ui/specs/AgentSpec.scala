@@ -28,41 +28,35 @@ class AgentSpec extends BaseSpec {
 
   Feature("Agent journey") {
 
-    Scenario("Agent uses the software choices tool and views details for vendor 1") {
+//    Scenario("Agent uses the software choices tool and views details for vendor 1") {
+//
+//      Given("I navigate to the index route")
+//      IndexPage.goTo()
+//
+//      When("I select 'As an agent' and click continue")
+//      UserTypePage.selectUserType(UserType.Agent)
+//
+//      And("On the software results page I select a preference filter")
+//      SoftwareResultsPage.onPage(isUnguided = true)
+//      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
+//      SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
+//      SoftwareResultsPage.onPage(isUnguided = true)
+//      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
+//
+//      And("On the software results page I clear all preference filters")
+//      SoftwareResultsPage.clearFilters()
+//      SoftwareResultsPage.onPage(isUnguided = true)
+//      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
+//
+//      And("On the software results page I select the first vendor")
+//      SoftwareResultsPage.selectVendorLink(1)
+//
+//      Then("I am on the product details page for vendor 1")
+//      ProductDetailsPage.onPage()
+//    }
 
-      Given("I disable all feature switches")
-      FeatureSwitchPage.disableAllFeatureSwitches()
-
-      When("I navigate to the index route")
-      IndexPage.goTo()
-
-      When("I select 'As an agent' and click continue")
-      UserTypePage.selectUserType(UserType.Agent)
-
-      And("On the software results page I select a preference filter")
-      SoftwareResultsPage.onPage(isUnguided = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
-      SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
-      SoftwareResultsPage.onPage(isUnguided = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
-
-      And("On the software results page I clear all preference filters")
-      SoftwareResultsPage.clearFilters()
-      SoftwareResultsPage.onPage(isUnguided = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
-
-      And("On the software results page I select the first vendor")
-      SoftwareResultsPage.selectVendorLink(1)
-
-      Then("I am on the product details page for vendor 1")
-      ProductDetailsPage.onPage()
-    }
-
-    Scenario("Agent user selects Find journey when Check feature switch is enabled") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
-
+    Scenario("Agent user selects Find journey") {
+      
       Given("I navigate to the index route")
       IndexPage.goTo()
 

@@ -24,12 +24,9 @@ class UnguidedJourneySpec extends BaseSpec {
 
   Feature("Unguided journey") {
 
-    Scenario("An Agent selects View All journey when Check feature switch is enabled") {
+    Scenario("An Agent selects View All journey") {
 
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
-
-      When("I navigate to the index route")
+      Given("I navigate to the index route")
       IndexPage.goTo()
 
       And("I select the 'Show a list of all' option and click continue")
@@ -47,12 +44,9 @@ class UnguidedJourneySpec extends BaseSpec {
 
     }
 
-    Scenario("An Individual selects View All journey when Check feature switch is enabled") {
+    Scenario("An Individual selects View All journey") {
 
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
-
-      When("I navigate to the index route")
+      Given("I navigate to the index route")
       IndexPage.goTo()
 
       And("I select the 'Show a list of all' option and click continue")
