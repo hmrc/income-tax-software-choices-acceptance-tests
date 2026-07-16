@@ -26,11 +26,11 @@ import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.*
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.{Agent, SoleTraderOrLandlord}
 
-class SoleTraderOrLandlordSpec extends BaseSpec {
+class FindJourneySpec extends BaseSpec {
 
-  Feature("Sole Trader or Landlord journey") {
+  Feature("Find journey") {
 
-    Scenario("User answers pre-search questions and finds out more information about a software vendor") {
+    Scenario("Individual answers pre-search questions and finds out more information about a software vendor") {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -80,11 +80,60 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       And("On the software results page I select the first vendor")
       SoftwareResultsPage.selectVendorLink(1)
 
-      Then("I am on the product details page for vendor 5")
+      Then("I am on the product details page")
       ProductDetailsPage.onPage()
     }
 
-    Scenario("User has a non aligned accounting period") {
+    Scenario("Agent answers pre-search questions and finds out more information about a software vendor") {
+
+      Given("I navigate to the index route")
+      IndexPage.goTo()
+
+      And("I select the 'Find' option and click continue")
+      HowYouFindSoftwarePage.selectJourney(Find)
+
+      When("I select 'As an agent' and click continue")
+      UserTypePage.selectUserType(Agent)
+
+      When("I select my business income sources and click continue")
+      BusinessIncomePage.selectBusinessIncomes(Seq(UKProperty))
+
+      And("I select my additional income sources and click continue")
+      AdditionalIncomePage.selectAdditionalIncomes(Seq(UkDividends))
+
+      And("I select my other income sources and click continue")
+      OtherItemsPage.selectOtherItems(Seq(ConstructionIndustryScheme))
+
+      And("I select my accounting period and click continue")
+      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+
+      And("On the CYA page I click continue")
+      CheckYourAnswersPage.onPage()
+      CheckYourAnswersPage.submitPage()
+
+      And("On the software results page I select a preference filter")
+      SoftwareResultsPage.onPage(isUnguided = false)
+//      SoftwareResultsPage.checkVendorDisplayed(vendor = "07", expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
+      SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
+      SoftwareResultsPage.onPage(isUnguided = false)
+//      SoftwareResultsPage.checkVendorDisplayed(vendor = "07", expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
+
+      And("On the software results page I clear all preference filters")
+      SoftwareResultsPage.clearFilters()
+      SoftwareResultsPage.onPage(isUnguided = false)
+//      SoftwareResultsPage.checkVendorDisplayed(vendor = "07", expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
+
+      And("On the software results page I select the first vendor")
+      SoftwareResultsPage.selectVendorLink(1)
+
+      Then("I am on the product details page")
+      ProductDetailsPage.onPage()
+    }
+
+    Scenario("Individual has a non aligned accounting period") {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -119,7 +168,7 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       SoftwareResultsPage.onPage(isUnguided = false)
     }
 
-    Scenario("User selects options which results in no all-in-one software and they click Finish") {
+    Scenario("Individual selects options which results in no all-in-one software and they click Finish") {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -217,5 +266,6 @@ class SoleTraderOrLandlordSpec extends BaseSpec {
       Then("I am on the software results page")
       SoftwareResultsPage.onPage(isUnguided = false)
     }
+
   }
 }

@@ -25,7 +25,7 @@ object FeatureSwitchPage extends BasePage {
   val url: String = getPageURL("/test-only/feature-switch")
 
   val featureSwitches: Map[String, String] = Map(
-    "TestFeature"  -> "test"
+    "TestFeature" -> "test"
   )
 
   def setFeatureSwitches(switches: Seq[String]): Unit = {

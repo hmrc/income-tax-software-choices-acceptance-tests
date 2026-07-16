@@ -17,14 +17,13 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.*
-import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.{FirstToThirtyFirst, SixthToFifth}
+import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.SixthToFifth
 import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome
-import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.UkInterest
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.{ForeignProperty, SelfEmployment, UKProperty}
 import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Check
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.StudentLoan
-import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.{Agent, SoleTraderOrLandlord}
+import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.SoleTraderOrLandlord
 
 class CheckJourneySpec extends BaseSpec {
 

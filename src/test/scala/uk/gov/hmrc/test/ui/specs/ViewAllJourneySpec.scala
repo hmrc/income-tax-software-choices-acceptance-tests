@@ -20,9 +20,9 @@ import uk.gov.hmrc.test.ui.pages.*
 import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.ViewAll
 import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType
 
-class UnguidedJourneySpec extends BaseSpec {
+class ViewAllJourneySpec extends BaseSpec {
 
-  Feature("Unguided journey") {
+  Feature("View All journey") {
 
     Scenario("An Agent selects View All journey") {
 
