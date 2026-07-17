@@ -113,18 +113,15 @@ class FindJourneySpec extends BaseSpec {
 
       And("On the software results page I select a preference filter")
       SoftwareResultsPage.onPage(isUnguided = false)
-//      SoftwareResultsPage.checkVendorDisplayed(vendor = "07", expected = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
-      SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "06", expected = true)
+      SoftwareResultsPage.selectPreferenceFilters(Seq("Bridging"))
       SoftwareResultsPage.onPage(isUnguided = false)
-//      SoftwareResultsPage.checkVendorDisplayed(vendor = "07", expected = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "06", expected = true)
 
       And("On the software results page I clear all preference filters")
       SoftwareResultsPage.clearFilters()
       SoftwareResultsPage.onPage(isUnguided = false)
-//      SoftwareResultsPage.checkVendorDisplayed(vendor = "07", expected = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "05", expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "06", expected = true)
 
       And("On the software results page I select the first vendor")
       SoftwareResultsPage.selectVendorLink(1)
