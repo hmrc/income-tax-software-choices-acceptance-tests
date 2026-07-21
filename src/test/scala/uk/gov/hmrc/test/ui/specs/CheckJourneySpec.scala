@@ -17,22 +17,18 @@
 package uk.gov.hmrc.test.ui.specs
 
 import uk.gov.hmrc.test.ui.pages.*
-import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.{FirstToThirtyFirst, SixthToFifth}
+import uk.gov.hmrc.test.ui.pages.AccountingPeriodPage.AccountingPeriod.SixthToFifth
 import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome
-import uk.gov.hmrc.test.ui.pages.AdditionalIncomePage.AdditionalIncome.UkInterest
 import uk.gov.hmrc.test.ui.pages.BusinessIncomePage.BusinessIncome.{ForeignProperty, SelfEmployment, UKProperty}
 import uk.gov.hmrc.test.ui.pages.HowYouFindSoftwarePage.JourneyType.Check
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems
 import uk.gov.hmrc.test.ui.pages.OtherItemsPage.OtherItems.StudentLoan
-import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.{Agent, SoleTraderOrLandlord}
+import uk.gov.hmrc.test.ui.pages.UserTypePage.UserType.SoleTraderOrLandlord
 
 class CheckJourneySpec extends BaseSpec {
 
   Feature("Check journey") {
     Scenario("User checks fully compatible software") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -69,9 +65,6 @@ class CheckJourneySpec extends BaseSpec {
 
     Scenario("User checks partially compatible software") {
 
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
-
       Given("I navigate to the index route")
       IndexPage.goTo()
 
@@ -106,9 +99,6 @@ class CheckJourneySpec extends BaseSpec {
     }
 
     Scenario("User checks software that is compatible for quarterly updates only") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -145,9 +135,6 @@ class CheckJourneySpec extends BaseSpec {
     }
 
     Scenario("User checks not compatible software") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -186,9 +173,6 @@ class CheckJourneySpec extends BaseSpec {
 
     Scenario("User checks if they need additional software") {
 
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
-
       Given("I navigate to the index route")
       IndexPage.goTo()
 
@@ -207,9 +191,6 @@ class CheckJourneySpec extends BaseSpec {
     }
 
     Scenario("User checks if their software is not listed") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -230,9 +211,6 @@ class CheckJourneySpec extends BaseSpec {
 
     Scenario("User checks if their software is in development") {
 
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
-
       Given("I navigate to the index route")
       IndexPage.goTo()
 
@@ -251,9 +229,6 @@ class CheckJourneySpec extends BaseSpec {
     }
 
     Scenario("User changes user answers") {
-
-      Given("I enable the Check Journey feature switch")
-      FeatureSwitchPage.setFeatureSwitches(Seq("CheckJourney"))
 
       Given("I navigate to the index route")
       IndexPage.goTo()
