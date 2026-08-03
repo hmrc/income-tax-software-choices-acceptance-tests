@@ -50,13 +50,13 @@ object CheckYourAnswersPage extends BasePage {
     assertUserAnswer("User type", expectedValue)
 
   def assertBusinessIncomesAnswer(expectedValue: String): Unit =
-    assertUserAnswer("Income sources (quarterly updates and tax return)", expectedValue)
+    assertUserAnswer("Income sources for quarterly updates", expectedValue)
 
   def assertAdditionalIncomesAnswer(expectedValue: String): Unit =
-    assertUserAnswer("Other incomes (tax return only)", expectedValue)
+    assertUserAnswer("Income for tax return", expectedValue)
 
   def assertOtherItemsAnswer(expectedValue: String): Unit =
-    assertUserAnswer("Other items (tax return only)", expectedValue)
+    assertUserAnswer("Items for tax return", expectedValue)
 
   def assertAccountingPeriodAnswer(expectedValue: String): Unit =
     assertUserAnswer("Accounting period", expectedValue)
