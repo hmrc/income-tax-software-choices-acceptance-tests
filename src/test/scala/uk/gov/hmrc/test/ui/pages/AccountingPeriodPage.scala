@@ -23,7 +23,7 @@ object AccountingPeriodPage extends BasePage {
   enum AccountingPeriod(val id: String):
     case SixthToFifth extends AccountingPeriod("accounting-period")
     case FirstToThirtyFirst extends AccountingPeriod("accounting-period-2")
-    case NeitherOfThese extends AccountingPeriod("accounting-period-4")
+    case Other extends AccountingPeriod("accounting-period-3")
 
   def selectAccountingPeriod(accountingPeriod: AccountingPeriod): Unit = {
     assertUrl(AccountingPeriodPage.url)

@@ -151,7 +151,7 @@ class FindJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(NeitherOfThese)
+      AccountingPeriodPage.selectAccountingPeriod(Other)
 
       And("On the accounting period not aligned page I click continue")
       AccountingPeriodNotAlignedPage.onPage()
