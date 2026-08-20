@@ -51,7 +51,7 @@ class FindJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(PrivatePensionContributions))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
@@ -105,7 +105,7 @@ class FindJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(ConstructionIndustryScheme))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth, FirstToThirtyFirst))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
@@ -150,8 +150,8 @@ class FindJourneySpec extends BaseSpec {
       And("I select my other income sources and click continue")
       OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
 
-      And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(NeitherOfThese)
+      And("I select my two accounting periods and click continue")
+      AccountingPeriodPage.selectAccountingPeriods(Seq(DifferentAccountingPeriod))
 
       And("On the accounting period not aligned page I click continue")
       AccountingPeriodNotAlignedPage.onPage()
@@ -186,7 +186,7 @@ class FindJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(PrivatePensionContributions))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(FirstToThirtyFirst)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(FirstToThirtyFirst))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.submitPage()
@@ -219,7 +219,7 @@ class FindJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(StudentLoan))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
       CheckYourAnswersPage.onPage()
 
       And("On the CYA page, I can change my user type answer to 'Agent'")
@@ -253,7 +253,7 @@ class FindJourneySpec extends BaseSpec {
       And("On the CYA page, I can change my accounting period answer to '1 April to 31 March'")
       CheckYourAnswersPage.assertAccountingPeriodAnswer("6 April to 5 April")
       CheckYourAnswersPage.clickChangeAccountingPeriod()
-      AccountingPeriodPage.selectAccountingPeriod(FirstToThirtyFirst)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(FirstToThirtyFirst))
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.assertAccountingPeriodAnswer("1 April to 31 March")
 

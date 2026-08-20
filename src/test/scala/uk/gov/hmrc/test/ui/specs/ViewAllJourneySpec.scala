@@ -24,7 +24,7 @@ class ViewAllJourneySpec extends BaseSpec {
 
   Feature("View All journey") {
 
-    Scenario("An Agent selects View All journey") {
+    Scenario("An Agent selects View All journey and interacts with the filters") {
 
       Given("I navigate to the index route")
       IndexPage.goTo()
@@ -35,13 +35,54 @@ class ViewAllJourneySpec extends BaseSpec {
       And("I select 'As an agent' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
 
-      And("On the software results page I select a preference filter")
+      And("On the software results page I select the free version preference filter")
       SoftwareResultsPage.onPage(isUnguided = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
       SoftwareResultsPage.selectPreferenceFilters(Seq("Free version"))
       SoftwareResultsPage.onPage(isUnguided = true)
-      SoftwareResultsPage.checkVendorDisplayed(vendor = "01", expected = false)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = false)
 
+      And("On the software results page I deselect the free version preference filter")
+      SoftwareResultsPage.deselectPreferenceFilters(Seq("Free version"))
+      SoftwareResultsPage.onPage(isUnguided = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
+
+      And("On the software results page I select four additional preference filters")
+      SoftwareResultsPage.selectPreferenceFilters(
+        Seq(
+          "Web browser",
+          "Android",
+          "Cognitive impairments",
+          "All-in-one software"
+        )
+      )
+      SoftwareResultsPage.onPage(isUnguided = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = false)
+
+      And("On the software results page I remove two of the additional preference filters")
+      SoftwareResultsPage.deselectPreferenceFilters(
+        Seq(
+          "Android",
+          "All-in-one software"
+        )
+      )
+      SoftwareResultsPage.onPage(isUnguided = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
+
+      And("On the software results page I select both accounting period preference filters")
+      SoftwareResultsPage.selectPreferenceFilters(
+        Seq(
+          "6 April to 5 April",
+          "1 April to 31 March"
+        )
+      )
+      SoftwareResultsPage.onPage(isUnguided = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = false)
+
+      And("On the software results page I deselect the calendar update period preference filter")
+      SoftwareResultsPage.deselectPreferenceFilters(Seq("1 April to 31 March"))
+      SoftwareResultsPage.onPage(isUnguided = true)
+      SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
     }
 
     Scenario("An Individual selects View All journey") {
