@@ -25,6 +25,7 @@ object SoftwareResultsPage extends BasePage {
   val url: String = getPageURL("/software-results")
 
   val toFilterId: Map[String, String] = Map(
+    "Individual"            -> "individual-filter",
     "Free version"          -> "free-version-filter",
     "Bridging"              -> "bridging-filter",
     "All-in-one software"   -> "record-keeping-filter",
@@ -36,9 +37,11 @@ object SoftwareResultsPage extends BasePage {
     "1 April to 31 March"   -> "calendar-update-periods-filter"
   )
 
-  def onPage(isUnguided: Boolean): Assertion = {
+  def onPage(isUnguided: Boolean = false, isAgent: Boolean = false): Assertion = {
     assertUrl(url)
-    assertPresenceOfElement(By.cssSelector("#agent-filter"), isUnguided)
+    val expectedResult = if (isUnguided && isAgent) true else false
+    assertPresenceOfElement(By.cssSelector("#agent-filter"), expectedResult)
+    assertPresenceOfElement(By.cssSelector("#individual-filter"), expectedResult)
   }
 
   def selectVendorLink(index: Int): Unit = {
