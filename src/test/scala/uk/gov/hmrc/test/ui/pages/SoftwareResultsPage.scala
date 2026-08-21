@@ -25,15 +25,15 @@ object SoftwareResultsPage extends BasePage {
   val url: String = getPageURL("/software-results")
 
   val toFilterId: Map[String, String] = Map(
-    "Free version"                   -> "free-version-filter",
-    "Bridging"                       -> "bridging-filter",
-    "All-in-one software"            -> "record-keeping-filter",
-    "VAT"                            -> "vat-filter",
-    "Cognitive impairments"          -> "cognitive-filter",
-    "Web browser"                    -> "web-browser-filter",
-    "Android"                        -> "android-filter",
-    "6 April to 5 April"             -> "standard-update-periods-filter",
-    "1 April to 31 March"            -> "calendar-update-periods-filter"
+    "Free version"          -> "free-version-filter",
+    "Bridging"              -> "bridging-filter",
+    "All-in-one software"   -> "record-keeping-filter",
+    "VAT"                   -> "vat-filter",
+    "Cognitive impairments" -> "cognitive-filter",
+    "Web browser"           -> "web-browser-filter",
+    "Android"               -> "android-filter",
+    "6 April to 5 April"    -> "standard-update-periods-filter",
+    "1 April to 31 March"   -> "calendar-update-periods-filter"
   )
 
   def onPage(isUnguided: Boolean): Assertion = {
