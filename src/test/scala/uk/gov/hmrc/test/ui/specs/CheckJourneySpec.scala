@@ -53,7 +53,7 @@ class CheckJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
@@ -88,7 +88,7 @@ class CheckJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
@@ -123,7 +123,7 @@ class CheckJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
@@ -159,7 +159,7 @@ class CheckJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(OtherItems.NoneOfThese))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
@@ -253,7 +253,7 @@ class CheckJourneySpec extends BaseSpec {
       OtherItemsPage.selectOtherItems(Seq(StudentLoan))
 
       And("I select my accounting period and click continue")
-      AccountingPeriodPage.selectAccountingPeriod(SixthToFifth)
+      AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
       CheckYourAnswersPage.onPage()
 
       And("On the CYA page, I can change the product to future product")
