@@ -32,11 +32,14 @@ object SoftwareResultsPage extends BasePage {
     "Cognitive impairments" -> "cognitive-filter",
     "Web browser"           -> "web-browser-filter",
     "Android"               -> "android-filter"
+    "Individual"            -> "individual-filter"
   )
 
-  def onPage(isUnguided: Boolean): Assertion = {
+  def onPage(isUnguided: Boolean = false, isAgent: Boolean = false): Assertion = {
     assertUrl(url)
-    assertPresenceOfElement(By.cssSelector("#agent-filter"), isUnguided)
+    val expectedResult = if (isUnguided && isAgent) true else false
+    assertPresenceOfElement(By.cssSelector("#agent-filter"), expectedResult)
+    assertPresenceOfElement(By.cssSelector("#individual-filter"), expectedResult)
   }
 
   def selectVendorLink(index: Int): Unit = {
