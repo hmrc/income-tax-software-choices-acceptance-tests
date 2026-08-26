@@ -25,13 +25,13 @@ object SoftwareResultsPage extends BasePage {
   val url: String = getPageURL("/software-results")
 
   val toFilterId: Map[String, String] = Map(
-    "Free version"                   -> "free-version-filter",
-    "Bridging"                       -> "bridging-filter",
-    "VAT"                            -> "vat-filter",
-    "Blindness or impaired vision"   -> "visual-filter",
-    "Deafness or impaired hearing"   -> "hearing-filter",
-    "Motor or physical difficulties" -> "motor-filter",
-    "Cognitive impairments"          -> "cognitive-filter"
+    "Free version"          -> "free-version-filter",
+    "Bridging"              -> "bridging-filter",
+    "All-in-one software"   -> "record-keeping-filter",
+    "VAT"                   -> "vat-filter",
+    "Cognitive impairments" -> "cognitive-filter",
+    "Web browser"           -> "web-browser-filter",
+    "Android"               -> "android-filter"
   )
 
   def onPage(isUnguided: Boolean): Assertion = {
@@ -46,6 +46,11 @@ object SoftwareResultsPage extends BasePage {
 
   def selectPreferenceFilters(preferences: Seq[String]): Unit = {
     preferences.map(toFilterId).foreach(id => selectCheckbox(By.id(id)))
+    click(By.cssSelector(".apply-filters-button"))
+  }
+
+  def deselectPreferenceFilters(preferences: Seq[String]): Unit = {
+    preferences.map(toFilterId).foreach(id => deselectCheckbox(By.id(id)))
     click(By.cssSelector(".apply-filters-button"))
   }
 
