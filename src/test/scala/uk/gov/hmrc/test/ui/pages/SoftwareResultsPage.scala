@@ -37,7 +37,7 @@ object SoftwareResultsPage extends BasePage {
 
   def onPage(isUnguided: Boolean = false, isAgent: Boolean = false): Assertion = {
     assertUrl(url)
-    val expectedResult = if (isUnguided && isAgent) true else false
+    val expectedResult = isUnguided && isAgent
     assertPresenceOfElement(By.cssSelector("#agent-filter"), expectedResult)
     assertPresenceOfElement(By.cssSelector("#individual-filter"), expectedResult)
   }
