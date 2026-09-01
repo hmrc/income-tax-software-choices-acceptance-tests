@@ -31,7 +31,7 @@ object SoftwareResultsPage extends BasePage {
     "VAT"                   -> "vat-filter",
     "Cognitive impairments" -> "cognitive-filter",
     "Web browser"           -> "web-browser-filter",
-    "Android"               -> "android-filter"
+    "Android"               -> "android-filter",
     "Individual"            -> "individual-filter"
   )
 
