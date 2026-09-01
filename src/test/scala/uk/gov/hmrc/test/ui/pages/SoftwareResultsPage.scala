@@ -31,12 +31,15 @@ object SoftwareResultsPage extends BasePage {
     "VAT"                   -> "vat-filter",
     "Cognitive impairments" -> "cognitive-filter",
     "Web browser"           -> "web-browser-filter",
-    "Android"               -> "android-filter"
+    "Android"               -> "android-filter",
+    "Individual"            -> "individual-filter"
   )
 
-  def onPage(isUnguided: Boolean): Assertion = {
+  def onPage(isUnguided: Boolean = false, isAgent: Boolean = false): Assertion = {
     assertUrl(url)
-    assertPresenceOfElement(By.cssSelector("#agent-filter"), isUnguided)
+    val expectedResult = isUnguided && isAgent
+    assertPresenceOfElement(By.cssSelector("#agent-filter"), expectedResult)
+    assertPresenceOfElement(By.cssSelector("#individual-filter"), expectedResult)
   }
 
   def selectVendorLink(index: Int): Unit = {
