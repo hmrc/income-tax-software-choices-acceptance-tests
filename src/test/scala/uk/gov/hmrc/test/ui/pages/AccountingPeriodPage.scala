@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import org.openqa.selenium.By
+
 object AccountingPeriodPage extends BasePage {
 
   val url: String = getPageURL("/accounting-period-check")
@@ -23,11 +25,11 @@ object AccountingPeriodPage extends BasePage {
   enum AccountingPeriod(val id: String):
     case SixthToFifth extends AccountingPeriod("accounting-period")
     case FirstToThirtyFirst extends AccountingPeriod("accounting-period-2")
-    case NeitherOfThese extends AccountingPeriod("accounting-period-4")
+    case DifferentAccountingPeriod extends AccountingPeriod("accounting-period-3")
 
-  def selectAccountingPeriod(accountingPeriod: AccountingPeriod): Unit = {
+  def selectAccountingPeriods(accountingPeriods: Seq[AccountingPeriod]): Unit = {
     assertUrl(AccountingPeriodPage.url)
-    clickById(accountingPeriod.id)
+    accountingPeriods.foreach(period => selectCheckbox(By.id(period.id)))
     submitPage()
   }
 
