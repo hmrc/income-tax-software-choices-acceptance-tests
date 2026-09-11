@@ -57,9 +57,9 @@ class FindJourneySpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
-      And("On the software results page I select Change answers")
+      And("On the software results page I navigate back to CYA page")
       SoftwareResultsPage.onPage(isUnguided = false)
-      SoftwareResultsPage.clickChangeAnswers()
+      SoftwareResultsPage.clickBack()
 
       And("On the CYA page I click continue")
       CheckYourAnswersPage.onPage()
