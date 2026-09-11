@@ -72,4 +72,10 @@ trait BasePage extends Matchers with PageObject {
     )
   }
 
+  def clickBack(): Unit = {
+    val currentURL = getCurrentUrl
+    fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".govuk-back-link"))).click()
+    fluentWait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(currentURL)))
+  }
+
 }
