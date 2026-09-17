@@ -79,7 +79,7 @@ class ViewAllJourneySpec extends BaseSpec {
       And("I select the 'Show a list of all' option and click continue")
       HowYouFindSoftwarePage.selectJourney(ViewAll)
 
-      And("I select 'As an individual' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(UserType.SoleTraderOrLandlord)
 
       And("On the software results page I clear all preference filters")
