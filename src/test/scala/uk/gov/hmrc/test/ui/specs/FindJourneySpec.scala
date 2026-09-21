@@ -223,7 +223,7 @@ class FindJourneySpec extends BaseSpec {
       CheckYourAnswersPage.onPage()
 
       And("On the CYA page, I can change my user type answer to 'Agent'")
-      CheckYourAnswersPage.assertUserTypeAnswer("Sole trader or landlord")
+      CheckYourAnswersPage.assertUserTypeAnswer("Sole trader, landlord or both")
       CheckYourAnswersPage.clickChangeUserType()
       UserTypePage.selectUserType(Agent)
       CheckYourAnswersPage.onPage()
