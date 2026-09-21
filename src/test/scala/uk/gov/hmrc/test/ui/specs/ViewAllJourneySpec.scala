@@ -47,11 +47,9 @@ class ViewAllJourneySpec extends BaseSpec {
       SoftwareResultsPage.onPage(isUnguided = true, isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
 
-      And("On the software results page I select four additional preference filters")
+      And("On the software results page I select two additional preference filters")
       SoftwareResultsPage.selectPreferenceFilters(
         Seq(
-          "Web browser",
-          "Android",
           "Cognitive impairments",
           "All-in-one software"
         )
@@ -59,10 +57,9 @@ class ViewAllJourneySpec extends BaseSpec {
       SoftwareResultsPage.onPage(isUnguided = true, isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = false)
 
-      And("On the software results page I remove two of the additional preference filters")
+      And("On the software results page I remove 'all-in-one software' filter")
       SoftwareResultsPage.deselectPreferenceFilters(
         Seq(
-          "Android",
           "All-in-one software"
         )
       )

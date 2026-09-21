@@ -30,8 +30,6 @@ object SoftwareResultsPage extends BasePage {
     "All-in-one software"   -> "record-keeping-filter",
     "VAT"                   -> "vat-filter",
     "Cognitive impairments" -> "cognitive-filter",
-    "Web browser"           -> "web-browser-filter",
-    "Android"               -> "android-filter",
     "Individual"            -> "individual-filter"
   )
 
