@@ -37,6 +37,7 @@ object SoftwareResultsPage extends BasePage {
 
   def onPage(isUnguided: Boolean = false, isAgent: Boolean = false): Assertion = {
     assertUrl(url)
+    fluentWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".apply-filters-button")))
     val expectedResult = isUnguided && isAgent
     assertPresenceOfElement(By.cssSelector("#agent-filter"), expectedResult)
     assertPresenceOfElement(By.cssSelector("#individual-filter"), expectedResult)
@@ -69,7 +70,4 @@ object SoftwareResultsPage extends BasePage {
       )
     )
     assertPresenceOfElement(By.partialLinkText(s"vendor $vendor"), expected)
-
-  def clickChangeAnswers(): Unit = click(By.linkText("Change answers"))
-
 }
