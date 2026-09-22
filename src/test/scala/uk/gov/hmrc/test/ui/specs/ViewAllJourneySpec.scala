@@ -55,12 +55,8 @@ class ViewAllJourneySpec extends BaseSpec {
       SoftwareResultsPage.onPage(isUnguided = true, isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = false)
 
-      And("On the software results page I remove 'all-in-one software' filter")
-      SoftwareResultsPage.deselectPreferenceFilters(
-        Seq(
-          "All-in-one software"
-        )
-      )
+      And("On the software results page I remove two of the additional preference filters")
+      SoftwareResultsPage.deselectPreferenceFilters(Seq("All-in-one software"))
       SoftwareResultsPage.onPage(isUnguided = true, isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
     }
