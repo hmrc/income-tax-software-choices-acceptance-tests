@@ -40,7 +40,7 @@ class CheckJourneySpec extends BaseSpec {
       EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 05")
       EnterSoftwareNamePage.submitPage()
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -55,7 +55,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -75,7 +75,7 @@ class CheckJourneySpec extends BaseSpec {
       EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 04")
       EnterSoftwareNamePage.submitPage()
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -90,7 +90,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -110,7 +110,7 @@ class CheckJourneySpec extends BaseSpec {
       EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 02")
       EnterSoftwareNamePage.submitPage()
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -125,7 +125,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -146,7 +146,7 @@ class CheckJourneySpec extends BaseSpec {
       EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 01")
       EnterSoftwareNamePage.submitPage()
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -161,7 +161,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -186,7 +186,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I should be taken to the You will need Additional Software ")
       NeedAdditionalSoftwarePage.submitPage()
 
-      Then("I select 'As a sole trader or landlord' and click continue")
+      Then("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
     }
 
@@ -204,7 +204,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I should be directed to the no software listed static page")
       NoSoftwareListedPage.submitPage()
 
-      Then("I select 'As a sole trader or landlord' and click continue")
+      Then("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
     }
@@ -224,7 +224,7 @@ class CheckJourneySpec extends BaseSpec {
       And("I should be directed to the software in development static page")
       SoftwareInDevelopmentPage.submitPage()
 
-      Then("I select 'As a sole trader or landlord' and click continue")
+      Then("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
     }
 
@@ -240,7 +240,7 @@ class CheckJourneySpec extends BaseSpec {
       EnterSoftwareNamePage.enterAndSelectSoftwareName("vendor 03")
       EnterSoftwareNamePage.submitPage()
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")

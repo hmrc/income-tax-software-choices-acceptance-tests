@@ -32,7 +32,7 @@ class ViewAllJourneySpec extends BaseSpec {
       And("I select the 'Show a list of all' option and click continue")
       HowYouFindSoftwarePage.selectJourney(ViewAll)
 
-      And("I select 'As an agent' and click continue")
+      And("I select 'I’m an agent working on behalf of a client' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
 
       And("On the software results page I select the free version preference filter")
@@ -49,10 +49,8 @@ class ViewAllJourneySpec extends BaseSpec {
 
       And("On the software results page I select two additional preference filters")
       SoftwareResultsPage.selectPreferenceFilters(
-        Seq(
-          "Cognitive impairments",
-          "All-in-one software"
-        )
+
+        Seq("Cognitive impairments", "All-in-one software")
       )
       SoftwareResultsPage.onPage(isUnguided = true, isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = false)
@@ -65,7 +63,6 @@ class ViewAllJourneySpec extends BaseSpec {
       )
       SoftwareResultsPage.onPage(isUnguided = true, isAgent = true)
       SoftwareResultsPage.checkVendorDisplayed(vendor = "04", expected = true)
-
     }
 
     Scenario("An Individual selects View All journey") {
@@ -93,7 +90,7 @@ class ViewAllJourneySpec extends BaseSpec {
       And("I select the 'Show a list of all' option and click continue")
       HowYouFindSoftwarePage.selectJourney(ViewAll)
 
-      And("I select 'As an agent' and click continue")
+      And("I select 'I’m an agent working on behalf of a client' and click continue")
       UserTypePage.selectUserType(UserType.Agent)
 
       And("On the software results page I clear the agent preference filter")

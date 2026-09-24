@@ -38,7 +38,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -53,7 +53,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -84,7 +84,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)
 
-      When("I select 'As an agent' and click continue")
+      When("I select 'I’m an agent working on behalf of a client' and click continue")
       UserTypePage.selectUserType(Agent)
 
       When("I select my business income sources and click continue")
@@ -99,7 +99,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select my two accounting periods and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(SixthToFifth, FirstToThirtyFirst))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -130,7 +130,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -149,7 +149,7 @@ class FindJourneySpec extends BaseSpec {
       AccountingPeriodNotAlignedPage.onPage()
       AccountingPeriodNotAlignedPage.submitPage()
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.onPage()
       CheckYourAnswersPage.submitPage()
 
@@ -165,7 +165,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
@@ -180,7 +180,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select my accounting period and click continue")
       AccountingPeriodPage.selectAccountingPeriods(Seq(FirstToThirtyFirst))
 
-      And("On the CYA page I click continue")
+      And("On the CYA page I click confirm and continue")
       CheckYourAnswersPage.submitPage()
 
       And("I am on the zero results page and click finish")
@@ -198,7 +198,7 @@ class FindJourneySpec extends BaseSpec {
       And("I select the 'Find' option and click continue")
       HowYouFindSoftwarePage.selectJourney(Find)
 
-      And("I select 'As a sole trader or landlord' and click continue")
+      And("I select 'I’m a sole trader, a landlord or both' and click continue")
       UserTypePage.selectUserType(SoleTraderOrLandlord)
 
       When("I select my business income sources and click continue")
