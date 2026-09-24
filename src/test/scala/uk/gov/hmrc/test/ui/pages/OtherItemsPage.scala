@@ -33,6 +33,7 @@ object OtherItemsPage extends BasePage {
 
   def selectOtherItems(otherItems: Seq[OtherItems]): Unit = {
     assertUrl(url)
+    clearCheckboxes(OtherItems.values.map(_.id).toSet)
     otherItems.map(_.id).foreach(clickById)
     submitPage()
   }

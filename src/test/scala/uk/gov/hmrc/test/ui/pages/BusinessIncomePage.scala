@@ -27,6 +27,7 @@ object BusinessIncomePage extends BasePage {
 
   def selectBusinessIncomes(businessIncome: Seq[BusinessIncome]): Unit = {
     assertUrl(url)
+    clearCheckboxes(BusinessIncome.values.map(_.id).toSet)
     businessIncome.map(_.id).foreach(clickById)
     submitPage()
   }
