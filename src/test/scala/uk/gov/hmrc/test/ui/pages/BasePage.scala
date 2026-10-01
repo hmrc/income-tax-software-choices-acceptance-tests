@@ -58,7 +58,12 @@ trait BasePage extends Matchers with PageObject {
     fluentWait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(currentURL)))
   }
 
-  def getPageURL(url: String): String =
+  def clearCheckboxes(allIds: Set[String]): Unit =
+    allIds.foreach { id =>
+      val checkbox = Driver.instance.findElement(By.id(id))
+      if (checkbox.isSelected) checkbox.click()
+    }
+  def getPageURL(url: String): String            =
     TestConfiguration.url("software-choices-frontend") + url
 
   def waitForElement(locator: By): Unit = fluentWait.until(ExpectedConditions.presenceOfElementLocated(locator))

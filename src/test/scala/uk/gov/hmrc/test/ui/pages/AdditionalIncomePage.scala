@@ -33,6 +33,7 @@ object AdditionalIncomePage extends BasePage {
 
   def selectAdditionalIncomes(additionalIncome: Seq[AdditionalIncome]): Unit = {
     assertUrl(url)
+    clearCheckboxes(AdditionalIncome.values.map(_.id).toSet)
     additionalIncome.map(_.id).foreach(clickById)
     submitPage()
   }
