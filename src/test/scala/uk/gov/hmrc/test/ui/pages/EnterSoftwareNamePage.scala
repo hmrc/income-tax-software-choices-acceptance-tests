@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 
 object EnterSoftwareNamePage extends BasePage {
 
-  val url: String = getPageURL("/enter-software-name")
+  val url: String = getPageURL("/check-software")
 
   def enterAndSelectSoftwareName(name: String): Unit = {
     assertUrl(url)

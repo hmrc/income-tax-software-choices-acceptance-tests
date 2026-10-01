@@ -18,6 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 object NoSoftwareListedPage extends BasePage {
 
-  val url: String = getPageURL("/no-software-listed")
+  val url: String = getPageURL("/software-not-recognised")
 
 }

@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object ZeroResultsPage extends BasePage {
 
-  val url: String = getPageURL("/no-all-in-one-product")
+  val url: String = getPageURL("/no-software-matches")
 
   def finish(): Unit = {
     assertUrl(url)
