@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object HowYouFindSoftwarePage extends BasePage {
 
-  val url: String = getPageURL("/do-you-have-software")
+  val url: String = getPageURL("/how-to-find-software")
 
   enum JourneyType(val id: String):
     case Find extends JourneyType("how-you-find-software")

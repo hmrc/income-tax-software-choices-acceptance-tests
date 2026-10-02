@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object UserTypePage extends BasePage {
 
-  val url: String = getPageURL("/how-will-you-use-it")
+  val url: String = getPageURL("/about-you")
 
   enum UserType(val id: String):
     case SoleTraderOrLandlord extends UserType("type-of-user")
