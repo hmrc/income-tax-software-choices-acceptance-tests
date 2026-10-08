@@ -40,7 +40,7 @@ object EnterSoftwareNamePage extends BasePage {
   }
 
   def clickSoftwareNotListed(): Unit = {
-    val link = By.linkText("My software is not listed")
+    val link = By.linkText("This software is not listed")
     Driver.instance.findElement(By.id("enter-software-name")).sendKeys(Keys.ESCAPE)
     fluentWait.until(ExpectedConditions.elementToBeClickable(link))
     click(link)
